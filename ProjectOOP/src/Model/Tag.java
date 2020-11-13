@@ -8,6 +8,10 @@ public class Tag {
 
     }
 
+    public Tag(String tagName) {
+        this.tagName = tagName;
+    }
+
     public Tag(String tagName, String tagType) {
         this.tagName = tagName;
         this.tagType = tagType;
