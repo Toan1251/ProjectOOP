@@ -1,4 +1,4 @@
-package inout;
+package Model;
 
 //class used for reading csv file
 //Lớp được dùng cho đọc tệp xê ét vê
