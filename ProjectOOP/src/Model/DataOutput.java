@@ -34,4 +34,19 @@ public class DataOutput extends DataTagging{
     public void setSentences(ArrayList<String> sentences) {
         this.sentences = sentences;
     }
+
+    //Hàm thêm câu vào ArrayList sentences
+    //Ý tưởng: Khi đã lấy được các câu từ các group cần thiết, thì ta cho chúng vào cùng một arraylist chung để phục vụ
+    //cho việc tạo paragraph sau này.
+    public void addSentences(String stc){
+        this.sentences.add(stc);
+    }
+
+    //Ham xoa cau theo index trong Arraylist
+    public void removeSenteces(String stc){
+
+    }
+
 }
+
+
