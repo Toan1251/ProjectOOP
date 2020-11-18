@@ -33,17 +33,18 @@ public class TagManager {
     }
 
     public Tag findTag(String tag ) {
-        if(getTagSet().equals(tag) == true) {
-            Tag t = new Tag();
-            t.setTagName(tag);
-            return t;
+        if(isHaveThisTag(tag)){
+            for (Tag temp : tagSet) {
+                if (temp.getTagName().equals(tag)){
+                    return temp;
+                }
+            }
         }
-        else {
-            return null;
-        }
+        return null;
     }
 
     public boolean isHaveThisTag(String tag) {
-        return tagSet.equals(tag);
+        Tag temp = new Tag(tag);
+        return tagSet.contains(temp);
     }
 }
