@@ -10,7 +10,8 @@ Là 1 bộ các hàm để Add 1 số Tag kiểu Ranking (Top10 klgd, Top10 tăn
 của cả tập DataFileInput (Có thể xây dựng 1 lớp mới chuyên để Add các Tag kiểu Ranking)
 
 - makeSentencesFuntions:
-Tương tự taggingFunctions để xây dựng bộ các câu cần thiết cho mỗi đơn vị dữ liệu
+Tương tự taggingFunctions để xây dựng bộ các câu cần thiết cho một số đơn vị dữ liệu có các Tag đặc biệt (Ranking)
+Cũng có thể xây dựng thành 1 Lớp riêng
 
 - handleFile:
 Nhận tham số truyền vào là 1 DataFileInput, đầu ra là 1 DataFileOutput đã được xử lý đầy đủ
@@ -21,7 +22,7 @@ Nhận tham số truyền vào là 1 DataFileInput, đầu ra là 1 DataFileOutp
 - Lớp Controler cũng không cần bất kỳ 1 thuộc tính nào, nó sẽ chỉ chịu trách nhiệm truyền, gửi thông điệp và dữ liệu tới View và DataFileOutput
 
 - sentRequest(DataFileOutput data, Object Request):
-gửi một yêu cầu Request tới DataFileOutput, trả về một List( hoặc Set ) các DataOutput thỏa mãn Request
+gửi một yêu cầu Request tới DataFileOutput, trả về một Đoạn văn phù hợp với Request
 
 - sentData(View view, Object data):
 gửi data nhận được từ Request tới View
