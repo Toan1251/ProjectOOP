@@ -1,8 +1,8 @@
 package Model;
 
 public class Tag {
-    private String tagName;
-    private String tagType;
+    private String tagName; // tên của Tag
+    private String tagType; // kiểu của Tag
 
     public Tag() {
 
