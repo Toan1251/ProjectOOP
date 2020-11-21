@@ -10,6 +10,7 @@ public class DataTagging {
 
     }
 
+
     public DataTagging(DataInput data) {
         this.data = data;
     }
@@ -34,4 +35,26 @@ public class DataTagging {
     public void setTags(TagManager tags) {
         this.tags = tags;
     }
+
+    //tự động điền các tag kiểu change và name vào bộ quản lý tag
+    public void autoAddTagChange() {
+        // thêm change Tag
+        String name;
+        if(data.Close - data.Open > 0) {
+            name = "up";
+        }
+        else if(data.Close - data.Open < 0) {
+            name = "down";
+        }
+        else {
+            name = "stand";
+        }
+        Tag tagChange = new Tag(name, "change");
+        tags.addTag(tagChange);
+        // thêm name Tag
+        Tag tagName = new Tag(data.getName(),"name");
+        tags.addTag(tagName);
+    }
+
+
 }
