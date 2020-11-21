@@ -1,46 +1,18 @@
 # ProjectOOP
-Chuẩn bị xây dựng các lớp DataFileHandle, Controller và DataFileOutput
+Linh:
 
---- DataFileHandle
+Sửa lại các hàm get set, contructor nếu muốn quản lý và lưu trữ Tag bằng ArrayList thay vì Set
 
-- Lớp DataFileHandle căn bản là không cần bất kỳ một thuộc tính nào, nó chỉ chứa các phương thức cần thiết để biến DataFileInput -> DataFileOutput
+Sửa lại các lỗi (nếu có) xảy ra khi ép kiểu Set về Tag
 
-- taggingFuntions:
-Là 1 bộ các hàm để Add 1 số Tag kiểu Ranking (Top10 klgd, Top10 tăng, Top10 giảm, .....) cho 1 số đơn vị dữ liệu
-của cả tập DataFileInput (Có thể xây dựng 1 lớp mới chuyên để Add các Tag kiểu Ranking)
+Biến TagManager tồn tại trong lớp DataTagging là công cụ để quản lý Tag của các câu liên quan đến 1 đơn vị dữ liệu, còn TagManager trong DataFileOutput để quản lý việc hiển thị các Tag khả dụng cho người dùng. Vì vậy hàm findTag sẽ nhận 1 String từ người dùng. Hàm findTag của bạn hiện tại chưa hề sử dụng String do người dùng gửi đến để thực hiện tìm kiếm trong TagManager, vì vậy bạn cần phải sửa lại hàm này 
 
-- makeSentencesFuntions:
-Tương tự taggingFunctions để xây dựng bộ các câu cần thiết cho một số đơn vị dữ liệu có các Tag đặc biệt (Ranking)
-Cũng có thể xây dựng thành 1 Lớp riêng
+Hiếu:
 
-- handleFile:
-Nhận tham số truyền vào là 1 DataFileInput, đầu ra là 1 DataFileOutput đã được xử lý đầy đủ
+Nếu được thì đ/c có thể Comment Code bằng tiếng ziệt được không, tôi bị Mind Break bởi trình độ Engrich của đ/c mất
 
+Cái trường thứ 2 của Dữ liệu không phải ID đâu nó là YYYY/MM/DD đấy, mặc dù giống hệt nhau nhưng đồng chí có thể làm thêm về đoạn phân tích cái dãy đấy thành dữ liệu kiểu Date không
 
---- Controller
+Tôi rất vui nếu đ/c thay vì tạo ra luôn 1 package mới thì cứ vứt nó vào package model đi, DataFileOutput thì vẫn cần có vài hàm xử lý do những người khác viết mà
 
-- Lớp Controler cũng không cần bất kỳ 1 thuộc tính nào, nó sẽ chỉ chịu trách nhiệm truyền, gửi thông điệp và dữ liệu tới View và DataFileOutput
-
-- sentRequest(DataFileOutput data, Object Request):
-gửi một yêu cầu Request tới DataFileOutput, trả về một Đoạn văn phù hợp với Request
-
-- sentData(View view, Object data):
-gửi data nhận được từ Request tới View
-
-- openView(View view), close(View view)
-Đóng mở View
-
-
---- DataFileOutput
-
-- chứa dữ liệu đã qua xử lý, các phương thức hỗ trợ việc tìm kiếm dữ liệu cần thiết để hiển thị lên View
-
-- ArrayList<DataOutput>: chứa tất cả các dữ liệu đã qua xử lý
- 
-- tagManager: chứa tất cả các Tag có thể tìm kiếm trong DataFileOutput
-
-- findTag(String tag):
-Nhận 1 String do view gửi lên, trả về 1 Tag nếu nó tồn tại trong tagManager
-
-- paraghaph(Tag tag):
-Dựa vào Tag muốn tìm kiếm, Trả về 1 đoạn văn để gửi về View
+Cuối cùng là trong lớp DataFileInput của đ/c phải bổ sung thêm 1 object CSVParser vào nhé không thì các lớp khác không lấy được Data từ đấy đâu
