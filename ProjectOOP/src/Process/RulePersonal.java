@@ -206,7 +206,46 @@ public class RulePersonal extends Rules {
 
         }
         else {
-            DataInput obj= filterByName(data,name);
+            ArrayList<DataInput> demo=new ArrayList<DataInput>();//list chứa các đối tượng để random
+            for (int i=0;i<data.size();i++){
+                if(!(data.get(i).getName().equals("BID") || data.get(i).getName().equals("CTG") || data.get(i).getName().equals("HDB")
+                   ||data.get(i).getName().equals("MBB") || data.get(i).getName().equals("TCB") || data.get(i).getName().equals("VCB")
+                   ||data.get(i).getName().equals("VPB") || data.get(i).getName().equals("CTG") || data.get(i).getName().equals("ASP")
+                   ||data.get(i).getName().equals("PGC") || data.get(i).getName().equals("PJT") || data.get(i).getName().equals("PLX")
+                   ||data.get(i).getName().equals("PVD") || data.get(i).getName().equals("PVT") || data.get(i).getName().equals("PXS")
+                   ||data.get(i).getName().equals("ANV") || data.get(i).getName().equals("IDI") || data.get(i).getName().equals("VHC")
+                   ||data.get(i).getName().equals("TS4") || data.get(i).getName().equals("HVN") || data.get(i).getName().equals("VJC")
+                   ||data.get(i).getName().equals("DRC") || data.get(i).getName().equals("DPR") || data.get(i).getName().equals("TRC")
+                   ||data.get(i).getName().equals("HRC") || data.get(i).getName().equals("TRC") || data.get(i).getName().equals("CSM")
+                   ||data.get(i).getName().equals("NKG") || data.get(i).getName().equals("TLH") || data.get(i).getName().equals("POM")
+                   ||data.get(i).getName().equals("MWG") || data.get(i).getName().equals("PET") || data.get(i).getName().equals("BVG")
+                   ||data.get(i).getName().equals("HPG") || data.get(i).getName().equals("HSG") || data.get(i).getName().equals("SMC")
+                   ||data.get(i).getName().equals("VIC") || data.get(i).getName().equals("VHM") || data.get(i).getName().equals("VRE")
+                   ||data.get(i).getName().equals("^AEX")|| data.get(i).getName().equals("^AORD")||data.get(i).getName().equals("^ATX")
+                   ||data.get(i).getName().equals("^BDS")|| data.get(i).getName().equals("^BFX") ||data.get(i).getName().equals("^BSESN")
+                   ||data.get(i).getName().equals("^CAOSU")||data.get(i).getName().equals("^CK") ||data.get(i).getName().equals("^CONGNGHE")
+                   ||data.get(i).getName().equals("^DAUKHI")||data.get(i).getName().equals("^DICHVU")||data.get(i).getName().equals("^DJI")
+                   ||data.get(i).getName().equals("^DTPT")||data.get(i).getName().equals("^DTXD")||data.get(i).getName().equals("^DUOCPHAM")
+                   ||data.get(i).getName().equals("^FCHI")||data.get(i).getName().equals("^FTSE")||data.get(i).getName().equals("^GDAXI")
+                   ||data.get(i).getName().equals("^GIAODUC")||data.get(i).getName().equals("^GSPC") ||data.get(i).getName().equals("^HASTC")
+                   ||data.get(i).getName().equals("^HK")||data.get(i).getName().equals("^HNX30")||data.get(i).getName().equals("^HSI")
+                   ||data.get(i).getName().equals("^IXIC")||data.get(i).getName().equals("^JKSE")||data.get(i).getName().equals("^KHOANGSAN")
+                   ||data.get(i).getName().equals("^KLSE")||data.get(i).getName().equals("^KS11")||data.get(i).getName().equals("^LARGECAP")
+                   ||data.get(i).getName().equals("^MIDCAP")||data.get(i).getName().equals("^N255")||data.get(i).getName().equals("^NANGLUONG")
+                   ||data.get(i).getName().equals("^NGANHANG")||data.get(i).getName().equals("^NHUA")||data.get(i).getName().equals("^NYA")
+                   ||data.get(i).getName().equals("^NZ50")||data.get(i).getName().equals("^OMXSPI")||data.get(i).getName().equals("OSEAX")
+                   ||data.get(i).getName().equals("^PHANBON")||data.get(i).getName().equals("^SMALLCAP")||data.get(i).getName().equals("^SSMI")
+                   ||data.get(i).getName().equals("^STI")||data.get(i).getName().equals("^SKXD")||data.get(i).getName().equals("^THEP")
+                   ||data.get(i).getName().equals("^THUCPHAM")||data.get(i).getName().equals("^THUONGMAI")||data.get(i).getName().equals("^THUYSAN")
+                   ||data.get(i).getName().equals("^TWII")||data.get(i).getName().equals("^UPCOM")||data.get(i).getName().equals("^VANTAI")
+                   ||data.get(i).getName().equals("^VLXD")||data.get(i).getName().equals("^VN30")||data.get(i).getName().equals("^VNINDEX")
+                   ||data.get(i).getName().equals("^XAYDUNG")))
+
+                {
+                    demo.add(data.get(i));
+                }
+            }
+            DataInput obj= filterByName(demo,name);
             map.put("nameSS",obj.getName());
             map.put("volume2",Integer.toString(obj.getVolume()));
             sosanh(tmp,obj);
