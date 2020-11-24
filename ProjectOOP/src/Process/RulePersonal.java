@@ -75,7 +75,7 @@ public class RulePersonal extends Rules {
         map.put("numHigh",Double.toString(tmp.getHigh()*1000));
         map.put("numClose",Double.toString(tmp.getClose()*1000));
         map.put("percent",Double.toString(percent));
-        map.put("volume1",Integer.toString(tmp.getVolume()));
+        map.put("volume1",Double.toString(tmp.getVolume()));
         map.put("gtgd",Double.toString(dauhieu(tmp)/1000000));//tỉ đồng
 
         //thay thế chỗ dấu hiệu dựa vào lượng gtgd.
@@ -106,7 +106,7 @@ public class RulePersonal extends Rules {
             demo.add(filterByName(data,"VPB"));
             DataInput obj= randomOBJ(demo);
             map.put("nameSS",obj.getName()+"thuộc cùng nhóm ngân hàng");
-            map.put("volume2",Integer.toString(obj.getVolume()));
+            map.put("volume2",Double.toString(obj.getVolume()));
             sosanh(tmp,obj);
             level(tmp,obj);
 
@@ -124,7 +124,7 @@ public class RulePersonal extends Rules {
             demo.add(filterByName(data,"PXS"));
             DataInput obj= randomOBJ(demo);
             map.put("nameSS",obj.getName()+"thuộc cùng nhóm dầu khí");
-            map.put("volume2",Integer.toString(obj.getVolume()));
+            map.put("volume2",Double.toString(obj.getVolume()));
             sosanh(tmp,obj);
             level(tmp,obj);
 
@@ -138,7 +138,7 @@ public class RulePersonal extends Rules {
             demo.add(filterByName(data,"TS4"));
             DataInput obj= randomOBJ(demo);
             map.put("nameSS",obj.getName()+"thuộc cùng nhóm thuỷ sản");
-            map.put("volume2",Integer.toString(obj.getVolume()));
+            map.put("volume2",Double.toString(obj.getVolume()));
             sosanh(tmp,obj);
             level(tmp,obj);
 
@@ -150,7 +150,7 @@ public class RulePersonal extends Rules {
             demo.add(filterByName(data,"VJC"));
             DataInput obj= randomOBJ(demo);
             map.put("nameSS",obj.getName()+"thuộc cùng nhóm hàng không");
-            map.put("volume2",Integer.toString(obj.getVolume()));
+            map.put("volume2",Double.toString(obj.getVolume()));
             sosanh(tmp,obj);
             level(tmp,obj);
 
@@ -167,7 +167,7 @@ public class RulePersonal extends Rules {
             demo.add(filterByName(data,"CSM"));
             DataInput obj= randomOBJ(demo);
             map.put("nameSS",obj.getName()+"thuộc cùng nhóm cao su");
-            map.put("volume2",Integer.toString(obj.getVolume()));
+            map.put("volume2",Double.toString(obj.getVolume()));
             sosanh(tmp,obj);
             level(tmp,obj);
 
@@ -187,7 +187,7 @@ public class RulePersonal extends Rules {
             demo.add(filterByName(data,"SMC"));
             DataInput obj= randomOBJ(demo);
             map.put("nameSS",obj.getName()+"thuộc cùng nhóm thép");
-            map.put("volume2",Integer.toString(obj.getVolume()));
+            map.put("volume2",Double.toString(obj.getVolume()));
             sosanh(tmp,obj);
             level(tmp,obj);
 
@@ -200,7 +200,7 @@ public class RulePersonal extends Rules {
             demo.add(filterByName(data,"VRE"));
             DataInput obj= randomOBJ(demo);
             map.put("nameSS",obj.getName()+"thuộc cùng nhóm họ Vin ");
-            map.put("volume2",Integer.toString(obj.getVolume()));
+            map.put("volume2",Double.toString(obj.getVolume()));
             sosanh(tmp,obj);
             level(tmp,obj);
 
@@ -247,7 +247,7 @@ public class RulePersonal extends Rules {
             }
             DataInput obj= filterByName(demo,name);
             map.put("nameSS",obj.getName());
-            map.put("volume2",Integer.toString(obj.getVolume()));
+            map.put("volume2",Double.toString(obj.getVolume()));
             sosanh(tmp,obj);
             level(tmp,obj);
 

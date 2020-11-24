@@ -42,7 +42,7 @@ public class Rule8 extends Rules {
         Collections.sort(array,new DataSortByVolumeValue());
         for(int i=0;i<array.size();i++) {
             map.put("CVname" + (i + 1),array.get(i).getName());
-            map.put("CVnum"+(i+1),Integer.toString(array.get(i).getVolume()));
+            map.put("CVnum"+(i+1),Double.toString(array.get(i).getVolume()));
         }
         map.put("totalC",Integer.toString(filterByName(data,"^CAOSU").getVolume()));
         for(int i=0;i<array.size();i++) {

@@ -36,7 +36,7 @@ class SortByReversePercent implements Comparator<Rules> {
 class SortByVolume implements Comparator<Rules> {
     @Override
     public int compare(Rules o1, Rules o2) {
-        return ((Integer)o1.getVolume()).compareTo(o2.getVolume());
+        return ((Double)o1.getVolume()).compareTo(o2.getVolume());
     }
 }
 
@@ -50,7 +50,7 @@ class SortByVolumeValue implements Comparator<Rules> {
 class DataSortByVolumeValue implements Comparator<DataInput> {
     @Override
     public int compare(DataInput o1, DataInput o2) {
-        return ((Integer)o1.getVolume()).compareTo(o2.getVolume());
+        return ((Double)o1.getVolume()).compareTo(o2.getVolume());
     }
 }
 

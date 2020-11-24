@@ -41,7 +41,7 @@ public class Rule5 extends Rules {
         Collections.sort(array,new DataSortByVolumeValue());
         for(int i=0;i<array.size();i++) {
             map.put("PVname" + (i + 1),array.get(i).getName());
-            map.put("PVnum"+(i+1),Integer.toString(array.get(i).getVolume()));
+            map.put("PVnum"+(i+1),Double.toString(array.get(i).getVolume()));
         }
         map.put("totalP",Integer.toString(filterByName(data,"^DAUKHI").getVolume()));
         for(int i=0;i<array.size();i++) {

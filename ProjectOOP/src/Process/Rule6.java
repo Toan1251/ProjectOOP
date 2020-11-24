@@ -38,7 +38,7 @@ public class Rule6 extends Rules {
         Collections.sort(array,new DataSortByVolumeValue());
         for(int i=0;i<array.size();i++) {
             map.put("FVname" + (i + 1),array.get(i).getName());
-            map.put("FVnum"+(i+1),Integer.toString(array.get(i).getVolume()));
+            map.put("FVnum"+(i+1),Double.toString(array.get(i).getVolume()));
         }
         map.put("totalF",Integer.toString(filterByName(data,"^THUYSAN").getVolume()));
         for(int i=0;i<array.size();i++) {

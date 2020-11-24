@@ -12,7 +12,7 @@ public class Rules {
     private double PercentChange;
     private int index;
     protected Map<String,String> map;
-    private int Volume;
+    private double Volume;
     private double volumeValue;
 
     //.//
@@ -40,7 +40,7 @@ public class Rules {
         setPercentChange(PercentChange);
     }
 
-    public Rules (int index, int Volume,double volumeValue){
+    public Rules (int index, double Volume,double volumeValue){
         setIndex(index);
         setVolume(Volume);
         setVolumeValue(volumeValue);
@@ -73,11 +73,11 @@ public class Rules {
         PercentChange = percentChange;
     }
 
-    public int getVolume() {
+    public double getVolume() {
         return Volume;
     }
 
-    public void setVolume(int volume) {
+    public void setVolume(double volume) {
         Volume = volume;
     }
 

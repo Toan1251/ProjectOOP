@@ -36,7 +36,7 @@ public class Rule7 extends Rules {
         Collections.sort(array,new DataSortByVolumeValue());
         for(int i=0;i<array.size();i++) {
             map.put("AVname" + (i + 1),array.get(i).getName());
-            map.put("AVnum"+(i+1),Integer.toString(array.get(i).getVolume()));
+            map.put("AVnum"+(i+1),Double.toString(array.get(i).getVolume()));
         }
 
         return map;
