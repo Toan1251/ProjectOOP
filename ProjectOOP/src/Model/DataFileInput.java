@@ -1,4 +1,4 @@
-package Model;
+package inout;
 
 public class DataFileInput {
 	public CsvParser data;
@@ -14,5 +14,4 @@ public class DataFileInput {
         this.data = data;
     }
 }
-
 
