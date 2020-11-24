@@ -1,21 +1,20 @@
-package Model;
+package inout;
 
 //class used for reading csv file
 //Lớp được dùng cho đọc tệp xê ét vê
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
 public class CsvParser {
- private final ArrayList<String[]> lines = new ArrayList<>();
+ public final ArrayList<String[]> lines = new ArrayList<>();
 
  // danh sách bao gồm các thuộc tính
- private final ArrayList<DataInput> data = new ArrayList<>();
+ public final ArrayList<DataInput> data = new ArrayList<>();
 
  // đọc file csv
  public CsvParser(String Csv) {
@@ -42,15 +41,15 @@ public class CsvParser {
 
  // đưa Strings vào thuộc tính tương ứng 
  public void feed() throws Exception {
-     for (String[] line : lines) {
-    	 String Name = line[0];
-    	 String strDate = line[1];
+     for (int i = 1; i < lines.size(); i++) {
+    	 String Name = lines.get(i)[0];
+    	 String strDate = lines.get(i)[1];
     	 Date date = new SimpleDateFormat("yyyyMMdd").parse(strDate);
-    	 double Open = Double.parseDouble(line[2]);
-    	 double High = Double.parseDouble(line[3]);
-    	 double Low = Double.parseDouble(line[4]);
-    	 double Close = Double.parseDouble(line[5]);
-    	 int Volume = Integer.parseInt(line[6]);
+    	 double Open = Double.parseDouble(lines.get(i)[2]);
+    	 double High = Double.parseDouble(lines.get(i)[3]);
+    	 double Low = Double.parseDouble(lines.get(i)[4]);
+    	 double Close = Double.parseDouble(lines.get(i)[5]);
+    	 double Volume = Double.parseDouble(lines.get(i)[6]);
          DataInput parsedData = new DataInput(Name, date, Open, High, Low, Close, Volume);
          data.add(parsedData);
      }

@@ -1,16 +1,15 @@
-package Model;
-
+package inout;
 import java.util.Date;
 
 public class DataInput {
 	public String Name;
 	public Date Date;
 	public double Open, High, Low, Close;
-	public int Volume ;
+	public double Volume ;
 	
 	public DataInput(String Name, java.util.Date Date , 
 					double Open, double High, double Low, 
-					double Close, int Volume) {
+					double Close, double Volume) {
 		this.Name = Name;
 		this.Date = Date;
 		this.Open = Open;
