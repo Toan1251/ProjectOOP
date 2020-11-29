@@ -1,17 +1,24 @@
-package inout;
+package Model;
 
 public class DataFileInput {
-	public CsvParser data;
-	public DataFileInput() {
-		
-	}
-	public DataFileInput(String filename) throws Exception{
-		data = new CsvParser(filename);
-		data.feed();
-	} 
-	public void setData(CsvParser data) throws Exception {
-		data.feed();
+    private CsvParser data;
+    public DataFileInput() {
+        this.data = new CsvParser();
+    }
+    public DataFileInput(String filename) throws Exception{
+        this.data = new CsvParser(filename);
+    }
+    public void setData(CsvParser data) throws Exception {
         this.data = data;
+    }
+
+    public CsvParser getData() {
+        return data;
+    }
+
+    //Debug
+    public void Debug(){
+        data.Debug();
     }
 }
 
