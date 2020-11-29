@@ -1,8 +1,8 @@
 package Model;
 
 public class Tag {
-    private String tagName; // tên của Tag
-    private String tagType; // kiểu của Tag
+    private String tagName;
+    private String tagType;
 
     public Tag() {
 
@@ -33,6 +33,7 @@ public class Tag {
         this.tagType = tagType;
     }
 
+    //Hàm so sánh hỗ trợ tìm kiếm tag bằng 1 string
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -44,7 +45,13 @@ public class Tag {
     }
 
     @Override
+    //HashCode của Tag
     public int hashCode() {
         return getTagName().hashCode();
+    }
+
+    //Debug
+    public void Debug(){
+        System.out.println(tagName+" : "+tagType);
     }
 }

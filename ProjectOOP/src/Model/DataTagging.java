@@ -1,18 +1,19 @@
 package Model;
 
-public class DataTagging {
+public class DataTagging{
     private DataInput data;
     private TagManager tags;
     /*
     Todo: Thêm các hàm hoặc các lớp cần thiết tự động bổ sung các tag cần thiết cho 1 đơn vị dữ liệu
     */
     public DataTagging() {
-
+        this.data = new DataInput();
+        this.tags = new TagManager();
     }
-
 
     public DataTagging(DataInput data) {
         this.data = data;
+        this.tags = new TagManager();
     }
 
     public DataTagging(DataInput data, TagManager tags) {
@@ -37,24 +38,29 @@ public class DataTagging {
     }
 
     //tự động điền các tag kiểu change và name vào bộ quản lý tag
-    public void autoAddTagChange() {
+    public void autoAddTag() {
         // thêm change Tag
         String name;
-        if(data.Close - data.Open > 0) {
+        if(data.getClose() - data.getOpen() > 0) {
             name = "up";
         }
-        else if(data.Close - data.Open < 0) {
+        else if(data.getClose() - data.getOpen() < 0) {
             name = "down";
         }
         else {
             name = "stand";
         }
         Tag tagChange = new Tag(name, "change");
-        tags.addTag(tagChange);
+        this.tags.addTag(tagChange);
         // thêm name Tag
         Tag tagName = new Tag(data.getName(),"name");
-        tags.addTag(tagName);
+        this.tags.addTag(tagName);
     }
 
+    //Debug
+    public void Debug(){
+        data.Debug();
+        tags.Debug();
+    }
 
 }

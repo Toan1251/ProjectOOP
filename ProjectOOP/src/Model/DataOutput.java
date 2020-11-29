@@ -1,52 +1,52 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class DataOutput extends DataTagging{
-    private ArrayList<String> sentences;
+    private List<String> sentences;
     // Todo: Thêm các hàm hoặc các lớp cần thiết để tạo, thêm, xóa, trả về câu thích hợp vào arraylist
+
     public DataOutput() {
-        super();
+        this.sentences = new ArrayList<String>();
     }
 
     public DataOutput(DataInput data) {
         super(data);
+        this.sentences = new ArrayList<String>();
     }
 
     public DataOutput(DataInput data, TagManager tags) {
         super(data, tags);
+        this.sentences = new ArrayList<String>();
     }
 
-    public DataOutput(DataInput data, ArrayList<String> sentences) {
+    public DataOutput(DataInput data, List<String> sentences) {
         super(data);
         this.sentences = sentences;
     }
 
-    public DataOutput(DataInput data, TagManager tags, ArrayList<String> sentences) {
+    public DataOutput(DataInput data, TagManager tags, List<String> sentences) {
         super(data, tags);
         this.sentences = sentences;
     }
 
-    public ArrayList<String> getSentences() {
+    public List<String> getSentences() {
         return sentences;
     }
 
-    public void setSentences(ArrayList<String> sentences) {
+    public void setSentences(List<String> sentences) {
         this.sentences = sentences;
     }
 
-    //Hàm thêm câu vào ArrayList sentences
-    //Ý tưởng: Khi đã lấy được các câu từ các group cần thiết, thì ta cho chúng vào cùng một arraylist chung để phục vụ
-    //cho việc tạo paragraph sau này.
-    public void addSentences(String stc){
-        this.sentences.add(stc);
+    //Debug
+    public void Debug(){
+        getData().Debug();
+        getTags().Debug();
+        Iterator<String> itr = sentences.listIterator();
+        while (itr.hasNext()){
+            System.out.println(itr.next());
+        }
     }
-
-    //Ham xoa cau theo index trong Arraylist
-    public void removeSenteces(String stc){
-
-    }
-
 }
-
-
