@@ -26,16 +26,27 @@ public class DataFileHandle {
             dFO.addData(output);
         }
         autoAddTag(dFO);
+        autoAddSentences(dFO);
         return dFO;
     }
 
     //Tự động thêm Tag cho từng Input
     public void autoAddTag(DataFileOutput dFO){
         Iterator<DataOutput> itr = dFO.getData().iterator();
-        while (itr.hasNext()){
+        while(itr.hasNext()){
             DataOutput output = itr.next();
             output.autoAddTag();
         }
-        // Todo: Thêm các Tag kiểu ranking vào tập input
+        //Todo: Thêm các tag kiểu ranking cho data
+        addRankingTag(dFO);
+    }
+
+    public void addRankingTag(DataFileOutput dFO){
+        //Thực hiện các hàm thêm các tag kiểu ranking cho data
+    }
+
+    //Tự động thêm câu cho từng Input
+    public void autoAddSentences(DataFileOutput dF0){
+        //Todo: Thêm các mẫu câu cho tập input
     }
 }
