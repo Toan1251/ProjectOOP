@@ -1,7 +1,6 @@
-package Model;
+package ProjectOOP.src.Model;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class DataFileOutput {
@@ -48,9 +47,8 @@ public class DataFileOutput {
 
     //Debug
     public void Debug(){
-        Iterator<DataOutput> itr = data.listIterator();
-        while (itr.hasNext()){
-            itr.next().Debug();
+        for (DataOutput datum : data) {
+            datum.Debug();
         }
         tagManager.Debug();
     }

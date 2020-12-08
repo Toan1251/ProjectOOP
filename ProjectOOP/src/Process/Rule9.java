@@ -1,6 +1,6 @@
-package Process;
+package ProjectOOP.src.Process;
 
-import Model.DataInput;
+import ProjectOOP.src.Model.DataInput;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Map;
@@ -33,7 +33,7 @@ public class Rule9 extends Rules {
             arr.add(new Rules(i,tmp,0));
         }
 
-        Collections.sort(arr,new SortByChange());
+        arr.sort(new SortByChange());
         for(int i=0;i<arr.size();i++) {
             map.put("nameT" +(i+1), array.get(arr.get(i).getIndex()).getName());
             map.put("numT"+(i+1),Double.toString(Math.abs(arr.get(i).getValueChange())*1000));
@@ -42,7 +42,7 @@ public class Rule9 extends Rules {
             map.put("level"+(i+1),level(arr.get(i).getValueChange()));
         }
 
-        Collections.sort(array,new DataSortByVolumeValue());
+        array.sort(new DataSortByVolumeValue());
         for(int i=0;i<array.size();i++) {
             map.put("TVname" + (i + 1),array.get(i).getName());
             map.put("TVnum"+(i+1),Double.toString(array.get(i).getVolume()));

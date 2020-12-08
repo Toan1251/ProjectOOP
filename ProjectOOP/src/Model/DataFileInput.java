@@ -1,4 +1,4 @@
-package Model;
+package ProjectOOP.src.Model;
 
 public class DataFileInput {
     private CsvParser data;
@@ -8,7 +8,7 @@ public class DataFileInput {
     public DataFileInput(String filename) throws Exception{
         this.data = new CsvParser(filename);
     }
-    public void setData(CsvParser data) throws Exception {
+    public void setData(CsvParser data){
         this.data = data;
     }
 

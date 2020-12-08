@@ -1,8 +1,7 @@
-package Process;
+package ProjectOOP.src.Process;
 
-import Model.DataInput;
+import ProjectOOP.src.Model.DataInput;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Map;
 
 public class Rule3 extends Rules {
@@ -20,14 +19,14 @@ public class Rule3 extends Rules {
         }
 
         //sắp xếp theo Volume và đưa các cặp key-value cần thiết vào map
-        Collections.sort(arr,new SortByVolume());
+        arr.sort(new SortByVolume());
         for(int i=0;i<3;i++) {
             map.put("vol" + (i + 1), data.get(arr.get(i).getIndex()).getName());
             map.put("v"+(i+1), Double.toString(arr.get(i).getVolume()));
         }
 
         //sắp xếp theo VolumeValue và đưa các cặp key-value cần thiết vào map
-        Collections.sort(arr,new SortByVolumeValue());
+        arr.sort(new SortByVolumeValue());
         map.put("rvol",data.get(arr.get(0).getIndex()).getName());
         map.put("rv",Double.toString(arr.get(0).getVolumeValue()));
 

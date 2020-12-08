@@ -1,8 +1,6 @@
-package Process;
+package ProjectOOP.src.Process;
 
-import Model.DataInput;
-
-import java.lang.reflect.Array;
+import ProjectOOP.src.Model.DataInput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,10 +45,6 @@ public class GroupPersonal extends Group {
 
         //đưa tất cả câu đã chọn thành 1 đoạn văn và đưa vào dữ liệu chung
         addSentences(done.get(0)+done.get(1)+done.get(2));
-
-
-
-
     }
 
 

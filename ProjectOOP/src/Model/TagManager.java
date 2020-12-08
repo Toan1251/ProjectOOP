@@ -1,4 +1,4 @@
-package Model;
+package ProjectOOP.src.Model;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -67,9 +67,8 @@ public class TagManager {
     }
     //Debug
     public void Debug(){
-        Iterator<Tag> itr = this.tagSet.iterator();
-        while(itr.hasNext()){
-            itr.next().Debug();
+        for (Tag tag : this.tagSet) {
+            tag.Debug();
         }
     }
 }

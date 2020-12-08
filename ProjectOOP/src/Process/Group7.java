@@ -1,7 +1,6 @@
-package Process;
+package ProjectOOP.src.Process;
 
-import Model.DataInput;
-
+import ProjectOOP.src.Model.DataInput;
 import java.util.ArrayList;
 
 public class Group7 extends Group {
@@ -24,7 +23,6 @@ public class Group7 extends Group {
 
         //phương thức xử lí và đưa câu đã lựa chọn vào list chung để phục vụ việc tạo đoạn văn sau này
         addSentences(getOutput());
-
 
     }
 }

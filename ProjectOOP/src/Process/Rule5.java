@@ -1,8 +1,7 @@
-package Process;
+package ProjectOOP.src.Process;
 
-import Model.DataInput;
+import ProjectOOP.src.Model.DataInput;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Map;
 
 //nhóm top các cổ phiếu dầu khí
@@ -29,7 +28,7 @@ public class Rule5 extends Rules {
             arr.add(new Rules(i,tmp,0));
         }
 
-        Collections.sort(arr,new SortByChange());
+        arr.sort(new SortByChange());
         for(int i=0;i<arr.size();i++) {
             map.put("namePetro" +(i+1), array.get(arr.get(i).getIndex()).getName());
             map.put("numPetro"+(i+1),Double.toString(Math.abs(arr.get(i).getValueChange())*1000));
@@ -38,7 +37,7 @@ public class Rule5 extends Rules {
             map.put("level"+(i+1),level(arr.get(i).getValueChange()));
         }
 
-        Collections.sort(array,new DataSortByVolumeValue());
+        array.sort(new DataSortByVolumeValue());
         for(int i=0;i<array.size();i++) {
             map.put("PVname" + (i + 1),array.get(i).getName());
             map.put("PVnum"+(i+1),Double.toString(array.get(i).getVolume()));

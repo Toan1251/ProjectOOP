@@ -1,10 +1,8 @@
-package Process;
+package ProjectOOP.src.Process;
 
-import Model.CsvParser;
-import Model.DataInput;
+import ProjectOOP.src.Model.DataInput;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Map;
 
 public class Rule2 extends Rules {
@@ -18,14 +16,14 @@ public class Rule2 extends Rules {
             arr.add(new Rules(i,temp));
         }
 
-        Collections.sort(arr,new SortByPercent());
+        arr.sort(new SortByPercent());
         map.put("tong",Integer.toString(arr.size()));
         map.put("name",data.get(arr.get(0).getIndex()).getName());
         map.put("percent",Double.toString(arr.get(0).getPercentChange()));
         map.put("begin",Double.toString(data.get(0).getOpen()));
         map.put("end",Double.toString(data.get(0).getClose()));
 
-        Collections.sort(arr,new SortByReversePercent());
+        arr.sort(new SortByReversePercent());
         map.put("rname",data.get(arr.get(0).getIndex()).getName());
         map.put("rpercent",Double.toString(Math.abs(arr.get(0).getPercentChange())));
         map.put("rbegin",Double.toString(data.get(0).getOpen()*1000));

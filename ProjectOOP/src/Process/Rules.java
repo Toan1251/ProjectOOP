@@ -1,8 +1,8 @@
-package Process;
+package ProjectOOP.src.Process;
 
 import java.util.ArrayList;
 import java.util.Map;
-import Model.*;
+import ProjectOOP.src.Model.*;
 import java.util.stream.*;
 
 //change là số thay đổi, dùng để so sánh độ tăng hay giảm của số liệu.
@@ -18,7 +18,7 @@ public class Rules {
     //.//
     public Map<String,String> PushInMap(ArrayList<DataInput> data){
         return null;
-    };
+    }
 
 
 

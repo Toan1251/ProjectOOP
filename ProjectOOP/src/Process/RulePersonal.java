@@ -1,6 +1,7 @@
-package Process;
+package ProjectOOP.src.Process;
 
-import Model.DataInput;
+import ProjectOOP.src.Model.DataFileInput;
+import ProjectOOP.src.Model.DataInput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
@@ -11,7 +12,7 @@ import java.util.Random;
 public class RulePersonal extends Rules {
 
     //phương thức dùng để tìm ra đối tượng ngẫu nhiên sẽ dùng để so sánh.
-    private Random random = new Random();
+    private final Random random = new Random();
 
     private DataInput randomOBJ(ArrayList<DataInput> data){
         int index = random.nextInt(data.size());

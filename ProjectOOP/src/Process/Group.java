@@ -1,6 +1,6 @@
-package Process;
+package ProjectOOP.src.Process;
 import java.util.*;
-import Model.*;
+import ProjectOOP.src.Model.*;
 
 
 public abstract class Group extends DataOutput {
@@ -11,7 +11,6 @@ public abstract class Group extends DataOutput {
 
 
     public Group() {
-        sentences = new ArrayList<String>();
         random = new Random();
         eachMap = new HashMap<String,String>();
     }
@@ -21,6 +20,11 @@ public abstract class Group extends DataOutput {
     protected void addGroupSentences(String stc) {
         this.sentences.add(stc);
     }
+
+    protected void adddGroupSentences(Collection<String> groupSentences){
+        this.sentences.addAll(groupSentences);
+    }
+
     public String replaceVariable(String key) {
         return null;
 

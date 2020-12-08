@@ -1,8 +1,7 @@
-package Process;
+package ProjectOOP.src.Process;
 
-import Model.DataInput;
+import ProjectOOP.src.Model.DataInput;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Map;
 //
 public class Rule1 extends Rules {
@@ -27,21 +26,22 @@ public class Rule1 extends Rules {
         int TangTran=0;
         int GiamSan=0;
         //sắp xếp các đối tượng trong String arr theo thứ tự giảm dần về change
-        Collections.sort(arr,new SortByChange());
+        arr.sort(new SortByChange());
         //Cứ mỗi vòng lặp thì sẽ đếm được số tăng, giảm,không đổi.
-        for (int j=0;j< arr.size();j++){
-            if (arr.get(j).getValueChange()>0){
+        for (Rules rules : arr) {
+            if (rules.getValueChange() > 0) {
                 Tang++;
-            }
-            else if(arr.get(j).getValueChange()<0){
+            } else if (rules.getValueChange() < 0) {
                 Giam++;
-            }
-            else {
+            } else {
                 KhongDoi++;
             }
 
-            if (Math.round(arr.get(j).getPercentChange()) ==7 ){ TangTran++;}
-            else if (Math.round(arr.get(j).getPercentChange()) ==-7){GiamSan++;}
+            if (Math.round(rules.getPercentChange()) == 7) {
+                TangTran++;
+            } else if (Math.round(rules.getPercentChange()) == -7) {
+                GiamSan++;
+            }
 
 
         }
@@ -80,7 +80,7 @@ public class Rule1 extends Rules {
             map.put("num"+(i+1), Double.toString(arr.get(0).getValueChange() * 1000));
         }
 
-        Collections.sort(arr,new SortByReverseChange());
+        arr.sort(new SortByReverseChange());
         //điền tên và lượng thay đổi trong top giảm 5
         for(int i=0;i<arr.size();i++) {
             map.put("rname"+(i+1), data.get(arr.get(i).getIndex()).getName());

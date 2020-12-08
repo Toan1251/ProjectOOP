@@ -1,4 +1,4 @@
-package Model;
+package ProjectOOP.src.Model;
 
 public class DataTagging{
     private DataInput data;

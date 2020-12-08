@@ -1,4 +1,4 @@
-package Model;
+package ProjectOOP.src.Model;
 
 import java.util.Iterator;
 
@@ -32,9 +32,7 @@ public class DataFileHandle {
 
     //Tự động thêm Tag cho từng Input
     public void autoAddTag(DataFileOutput dFO){
-        Iterator<DataOutput> itr = dFO.getData().iterator();
-        while(itr.hasNext()){
-            DataOutput output = itr.next();
+        for (DataOutput output : dFO.getData()) {
             output.autoAddTag();
         }
         //Todo: Thêm các tag kiểu ranking cho data

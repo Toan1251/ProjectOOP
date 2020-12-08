@@ -1,6 +1,6 @@
-package Process;
+package ProjectOOP.src.Process;
 
-import Model.DataInput;
+import ProjectOOP.src.Model.DataInput;
 
 import java.util.Comparator;
 

@@ -1,7 +1,6 @@
-package Model;
+package ProjectOOP.src.Model;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class DataOutput extends DataTagging{
@@ -40,13 +39,20 @@ public class DataOutput extends DataTagging{
         this.sentences = sentences;
     }
 
+    public void addSentences(String sentence){
+        this.sentences.add(sentence);
+    }
+
+    public void addSentences(List<String> sentences){
+        this.sentences.addAll(sentences);
+    }
+
     //Debug
     public void Debug(){
         getData().Debug();
         getTags().Debug();
-        Iterator<String> itr = sentences.listIterator();
-        while (itr.hasNext()){
-            System.out.println(itr.next());
+        for (String sentence : sentences) {
+            System.out.println(sentence);
         }
     }
 }

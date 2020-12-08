@@ -1,4 +1,4 @@
-package inout;
+package ProjectOOP.src.inout;
 
 public class DataFileInput {
 	public DataFileInput(String filename){

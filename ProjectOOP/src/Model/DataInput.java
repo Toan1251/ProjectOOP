@@ -1,4 +1,4 @@
-package Model;
+package ProjectOOP.src.Model;
 
 import java.util.Date;
 import java.util.Comparator;

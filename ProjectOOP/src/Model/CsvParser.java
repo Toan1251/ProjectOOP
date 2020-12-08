@@ -1,4 +1,4 @@
-package Model;
+package ProjectOOP.src.Model;
 
 //class used for reading csv file
 //Lớp được dùng cho đọc tệp xê ét vê
@@ -9,10 +9,10 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class CsvParser {
-    private List<String[]> lines = new ArrayList<>();
+    private final List<String[]> lines;
 
     // danh sách bao gồm các thuộc tính
-    private List<DataInput> data = new ArrayList<>();
+    private List<DataInput> data;
 
     public CsvParser() {
         this.lines = new ArrayList<String[]>();
@@ -20,7 +20,7 @@ public class CsvParser {
     }
 
     // đọc file csv
-    public CsvParser(String Csv) {
+    public CsvParser(String Csv) throws Exception{
         this.lines = new ArrayList<String[]>();
         this.data = new ArrayList<DataInput>();
         final String fileName;
@@ -42,11 +42,7 @@ public class CsvParser {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        try{
-            feed();
-        }catch (Exception e){
-            System.out.println(e);
-        }
+        feed();
     }
 
     // đưa Strings vào thuộc tính tương ứng
@@ -77,9 +73,8 @@ public class CsvParser {
 
     //Debug
     public void Debug(){
-        Iterator<DataInput> itr = data.listIterator();
-        while (itr.hasNext()){
-            itr.next().Debug();
+        for (DataInput datum : data) {
+            datum.Debug();
         }
     }
 }
