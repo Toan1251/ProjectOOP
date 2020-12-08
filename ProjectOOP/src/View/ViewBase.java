@@ -1,4 +1,7 @@
-package View;
+package ProjectOOP.src.View;
+
+import java.awt.Color;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.AdjustmentEvent;
@@ -6,6 +9,7 @@ import java.awt.event.AdjustmentListener;
 import java.io.File;
 
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
@@ -18,120 +22,145 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.filechooser.FileSystemView;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JScrollPane;
 import javax.swing.JScrollBar;
 import javax.swing.JCheckBox;
-
+import javax.swing.JColorChooser;
 public class ViewBase {
-	
-private static  JLabel getInput = new JLabel("Search: ");
-private static	JComboBox listMenuBox = new JComboBox(new String[] {"Chon Tag","Xu li","Chon File"});
-private static	JLabel resultLabel = new JLabel("Result ");
-private static JPanel createPanel;
-private static JCheckBox hottag1 = new JCheckBox("Hot tag 1", false);
-private static JCheckBox hottag2 = new JCheckBox("Hot tag 2", false);
-private static JCheckBox hottag3 = new JCheckBox("Hot tag 3", false);
-private static	JButton chooseButton = new JButton("Chon Tag");
-private static	JButton caculateButton = new JButton("Xu li");
-private static	JButton openButton = new JButton("Chon File");
-private static	JTextField inputTextField = new JTextField(1);
-private static	JTextArea outputTextField = new JTextArea(10,1);
-static List<String> dataTag= new ArrayList<String>();
-static  int setIDtag;
-static JScrollPane scrollBar;
-public static void main(String[] args)
-{
-	setBound();
-	CreateMainFrame(1280, 680,"PROJECT OOP",createPanel);
-
-}
-private static void CreateMainComponent(JPanel panel)
-{ 
-	panel.setLayout(null);	
-	//Add to panel
-	panel.add(listMenuBox);
-	panel.add(resultLabel);
-	panel.add(getInput);
-	panel.add(inputTextField);
-	panel.add(outputTextField);
-	panel.add(chooseButton);
-	panel.add(caculateButton);
-	panel.add(openButton);
-	panel.add(hottag1);
-	panel.add(hottag2);
-	panel.add(hottag3);
-	setAction(chooseButton, "", 1);
-	setAction(caculateButton, "", 2);
-	setAction(openButton, "", 3);
+	private static JPanel createPanel;
+	public List<String> dataTag = new ArrayList<String>();
+	static Color setPanelColor;
+	static Color buttonColor;
+	public static String userInputString;
+	static JTextField inputTextField = new JTextField(1);
+    public static JColorChooser backGroundColorChooser = new JColorChooser(Color.green);
+    public static JColorChooser buttonColorChooser = new JColorChooser(Color.blue);
+    
+	public static void main(String[] args) {
+		 backGroundColorChooser.setColor(0, 153, 76);
+		 setPanelColor=backGroundColorChooser.getColor();
+		 buttonColorChooser.setColor(102,178,255);
+		 buttonColor=buttonColorChooser.getColor();
+		 ViewBase viewBase = new ViewBase(); 
+		 viewBase.CreateMainFrame(1280, 680, "PROJECT OOP", createPanel);
 	}
-public static void CreateMainFrame(int width,int height,String nameFrame, JPanel panel)
-{
-	JFrame createFrame = new JFrame(nameFrame); 
-	createFrame.setSize(width, height);
-	createFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	panel = new JPanel();
-	createFrame.add(panel);
-	CreateMainComponent(panel);
-	createFrame.setVisible(true);
-
-}
-
-private static void setAction(JButton nameButton,String printString,int ID) {
-	nameButton.addActionListener(new ActionListener() {
+	 //#Đặt vị trí các button, text label vào trong Panel 
+	private void CreateMainComponent(JPanel panel) {
+		JCheckBox hottag1 = new JCheckBox("Hot tag 1", false);
+		JCheckBox hottag2 = new JCheckBox("Hot tag 2", false);
+		JCheckBox hottag3 = new JCheckBox("Hot tag 3", false);
+		JButton chooseButton = new JButton("Chon Tag");
+		JButton caculateButton = new JButton("Xu li");
+		JButton openButton = new JButton("Chon File");
+		JLabel lb = new JLabel();
 		
-		@Override
-		public void actionPerformed(ActionEvent event) {		
-			outputTextField.setText(printString);
-			System.out.println(ID);
-		  setViewWindow(ID);
-		  if(ID==1)
-		  { 
-		 
-		  }
-		  else if (ID==2) {
-			 
-		  }	
-		}	
-	});
-}
-private static void setViewWindow(int ID) {
-	switch (ID) {
-	case 1: {	
-		 TagView chooseTagView = new TagView();
-		 break;
-	}
-	case 2:{
+		JTextArea outputTextField = new JTextArea(10, 1);
+		JLabel getInput = new JLabel("Search: ");
+		JLabel nameProject = new JLabel("NAME PROJECT");
+		nameProject.setForeground(Color.white);
+		JComboBox listMenuBox = new JComboBox(new String[] { "Chon Tag", "Xu li", "Chon File" });
+		JLabel resultLabel = new JLabel("Result ");
+		int setIDtag;
+		JScrollPane scrollBar;
+		hottag1.setBounds(80, 500, 120, 20);
+		hottag2.setBounds(230, 500, 120, 20);
+		hottag3.setBounds(380, 500, 120, 20);
+		hottag1.setBackground(buttonColor);
+		hottag2.setBackground(buttonColor);
+		hottag3.setBackground(buttonColor);
+		inputTextField.setBounds(80, 100, 300, 30);
+		outputTextField.setBounds(80, 220, 600, 220);
+		listMenuBox.setBounds(700, 90, 420, 25);
+		chooseButton.setBounds(80, 170, 100, 25);
+		chooseButton.setBackground(buttonColor);
+		caculateButton.setBounds(400, 100, 100, 30);
+		caculateButton.setBackground(buttonColor);
+		openButton.setBounds(200, 170, 100, 25);
+		openButton.setBackground(buttonColor);
+		getInput.setBounds(20, 79, 50, 70);
+		getInput.setForeground(Color.white);
+		resultLabel.setBounds(20, 270, 100, 100);
+		resultLabel.setForeground(Color.white);
+		nameProject.setFont(nameProject.getFont().deriveFont(30f));
+		nameProject.setBounds(500, 0, 400, 80);
 
-				  		  
-		break;
+		panel.setLayout(null);
+		panel.setBackground(setPanelColor);
+
+		lb.setBounds(900, 100, 500, 400);
+		panel.add(lb);
+		lb.setIcon(new ImageIcon("workshop.png"));
+		
+		panel.add(resultLabel);
+		panel.add(getInput);
+		panel.add(inputTextField);
+		panel.add(outputTextField);
+		panel.add(chooseButton);
+		panel.add(caculateButton);
+		caculateButton.setIcon(new ImageIcon("search.png"));
+		panel.add(openButton);
+		panel.add(hottag1);
+		panel.add(hottag2);
+		panel.add(hottag3);
+		panel.add(lb);
+		panel.add(nameProject);
+		setAction(chooseButton, 1);
+		setAction(caculateButton, 2);
+		setAction(openButton, 3);
 	}
-	case 3:
-	{
-		OpenFile chooseFile = new OpenFile();
-		break;
+//#Tạo Frame trong đó có panel
+	public  void CreateMainFrame(int width, int height, String nameFrame, JPanel panel) {
+		JFrame createFrame = new JFrame(nameFrame);
+		createFrame.setSize(width, height);
+		createFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		panel = new JPanel();
+		createFrame.add(panel);	
+		CreateMainComponent(panel);
+		createFrame.setVisible(true);
+
 	}
-	default:
-		throw new IllegalArgumentException("Unexpected value: " + ID);
+//#Tạo action cho Button, mỗi ID ứng với 1 hoạt động  
+	private static void setAction(JButton nameButton, int ID) {
+		nameButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				setViewWindow(ID);
+				if (ID == 1) 
+				{
+					
+				} 
+				else if (ID == 2)
+				{ 
+					userInputString =ViewBase.inputTextField.getText();
+					System.out.println(userInputString);
+				}
+			}
+		});
 	}
-	 
-}
-private static void setBound()
-{
-	hottag1.setBounds(80, 300, 120, 20);
-	hottag2.setBounds(230, 300, 120, 20);
-	hottag3.setBounds(380, 300, 120, 20);
-	inputTextField.setBounds(80, 85, 300, 25);
-	outputTextField.setBounds(80, 200, 600, 100);	
-	listMenuBox.setBounds(700,90, 400, 25);
-	chooseButton.setBounds(80, 150, 100,25);
-	caculateButton.setBounds(190, 150, 100, 25);
-	openButton.setBounds(300, 150, 100, 25);
-	getInput.setBounds(20, 75, 50, 50);
-	resultLabel.setBounds(20, 190, 100, 50);
-}
+//# Mở cửa sổ mới tùy thuộc vào ID 
+	private static void setViewWindow(int ID) {
+		switch (ID) {
+		case 1: {
+			TagView chooseTagView = new TagView();
+			break;
+		}
+		case 2: {
+
+			break;
+		}
+		case 3: {
+			OpenFile chooseFile = new OpenFile();
+			break;
+		}
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + ID);
+		}
+
+	}
 
 }
-
