@@ -53,7 +53,4 @@ public class DataFileOutput {
         tagManager.Debug();
     }
 
-    public String respond(Object Request){
-        return (Object) Respond;
-    }
 }
