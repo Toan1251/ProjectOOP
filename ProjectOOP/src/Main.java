@@ -8,9 +8,9 @@ import java.net.UnknownHostException;
 public class Main {
 
     public static void main(String[] args) {
-        ExtractData now;
+        //Cập nhật dữ liệu chứng khoán mới nhất
         try{
-            now = new ExtractData();
+            new ExtractData();
         }catch (UnknownHostException e){
             e.printStackTrace();
             System.out.println("No internet Connection");

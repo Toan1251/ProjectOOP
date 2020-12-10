@@ -4,13 +4,13 @@ import java.io.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-
+/* Khởi tạo lớp này sẽ khởi tạo lớp CrawlData, đồng thời giải nén tệp .zip thành bộ dữ liệu csv
+* */
 public class ExtractData extends CrawlData {
     private static final int BUFFER_SIZE=4096;
 
-    public ExtractData() throws IOException {
+    public ExtractData() throws IOException{
         unzip(getZipPath(), getDirectory());
-
     }
 
     private void unzip(String zipFilePath, String destDirectory) throws IOException {

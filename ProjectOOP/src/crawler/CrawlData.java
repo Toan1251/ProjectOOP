@@ -1,7 +1,5 @@
 package ProjectOOP.src.crawler;
 
-
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
@@ -9,6 +7,9 @@ import java.nio.channels.Channels;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+
+/* Khởi tạo lớp này sẽ cập nhật dữ liệu mới nhất từ web
+* */
 public class CrawlData {
     private final Calendar yesterday;
     private static final SimpleDateFormat SDF1 = new SimpleDateFormat("yyyyMMdd");
@@ -21,7 +22,6 @@ public class CrawlData {
         calendar.add(Calendar.DATE, -1);
         this.yesterday = calendar;
         crawl();
-
     }
 
     private void crawl() throws IOException{
