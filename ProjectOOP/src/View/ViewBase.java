@@ -36,6 +36,7 @@ public class ViewBase {
 	static Color setPanelColor;
 	static Color buttonColor;
 	public static String userInputString;
+	public static JTextArea outputTextField = new JTextArea(1, 1);
 	static JTextField inputTextField = new JTextField(1);
     public static JColorChooser backGroundColorChooser = new JColorChooser(Color.green);
     public static JColorChooser buttonColorChooser = new JColorChooser(Color.blue);
@@ -47,41 +48,47 @@ public class ViewBase {
 		 buttonColor=buttonColorChooser.getColor();
 		 ViewBase viewBase = new ViewBase(); 
 		 viewBase.CreateMainFrame(1280, 680, "PROJECT OOP", createPanel);
+		 outputTextField.setText("main \n");
+		 
 	}
+	
 	 //#Đặt vị trí các button, text label vào trong Panel 
 	private void CreateMainComponent(JPanel panel) {
 		JCheckBox hottag1 = new JCheckBox("Hot tag 1", false);
 		JCheckBox hottag2 = new JCheckBox("Hot tag 2", false);
 		JCheckBox hottag3 = new JCheckBox("Hot tag 3", false);
+		
 		JButton chooseButton = new JButton("Chon Tag");
 		JButton caculateButton = new JButton("Xu li");
 		JButton openButton = new JButton("Chon File");
+		
 		JLabel lb = new JLabel();
 		
-		JTextArea outputTextField = new JTextArea(10, 1);
+		
+		JScrollPane scrollPane = new JScrollPane(outputTextField);
+		scrollPane.setBounds(80, 220, 600, 220);
 		JLabel getInput = new JLabel("Search: ");
 		JLabel nameProject = new JLabel("NAME PROJECT");
 		nameProject.setForeground(Color.white);
 		JComboBox listMenuBox = new JComboBox(new String[] { "Chon Tag", "Xu li", "Chon File" });
 		JLabel resultLabel = new JLabel("Result ");
-		int setIDtag;
-		JScrollPane scrollBar;
+		
 		hottag1.setBounds(80, 500, 120, 20);
 		hottag2.setBounds(230, 500, 120, 20);
 		hottag3.setBounds(380, 500, 120, 20);
 		hottag1.setBackground(buttonColor);
 		hottag2.setBackground(buttonColor);
 		hottag3.setBackground(buttonColor);
-		inputTextField.setBounds(80, 100, 300, 30);
-		outputTextField.setBounds(80, 220, 600, 220);
+		inputTextField.setBounds(80, 100, 450, 30);
+	
 		listMenuBox.setBounds(700, 90, 420, 25);
 		chooseButton.setBounds(80, 170, 100, 25);
 		chooseButton.setBackground(buttonColor);
-		caculateButton.setBounds(400, 100, 100, 30);
+		caculateButton.setBounds(550, 100, 100, 30);
 		caculateButton.setBackground(buttonColor);
 		openButton.setBounds(200, 170, 100, 25);
 		openButton.setBackground(buttonColor);
-		getInput.setBounds(20, 79, 50, 70);
+		getInput.setBounds(20, 79, 150, 70);
 		getInput.setForeground(Color.white);
 		resultLabel.setBounds(20, 270, 100, 100);
 		resultLabel.setForeground(Color.white);
@@ -98,7 +105,7 @@ public class ViewBase {
 		panel.add(resultLabel);
 		panel.add(getInput);
 		panel.add(inputTextField);
-		panel.add(outputTextField);
+		//panel.add(outputTextField);
 		panel.add(chooseButton);
 		panel.add(caculateButton);
 		caculateButton.setIcon(new ImageIcon("search.png"));
@@ -108,12 +115,14 @@ public class ViewBase {
 		panel.add(hottag3);
 		panel.add(lb);
 		panel.add(nameProject);
+        panel.add(scrollPane);
 		setAction(chooseButton, 1);
 		setAction(caculateButton, 2);
 		setAction(openButton, 3);
 	}
+	
 //#Tạo Frame trong đó có panel
-	public  void CreateMainFrame(int width, int height, String nameFrame, JPanel panel) {
+	public void CreateMainFrame(int width, int height, String nameFrame, JPanel panel) {
 		JFrame createFrame = new JFrame(nameFrame);
 		createFrame.setSize(width, height);
 		createFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -123,8 +132,9 @@ public class ViewBase {
 		createFrame.setVisible(true);
 
 	}
+	
 //#Tạo action cho Button, mỗi ID ứng với 1 hoạt động  
-	private static void setAction(JButton nameButton, int ID) {
+	private void setAction(JButton nameButton, int ID) {
 		nameButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -142,6 +152,7 @@ public class ViewBase {
 			}
 		});
 	}
+	
 //# Mở cửa sổ mới tùy thuộc vào ID 
 	private static void setViewWindow(int ID) {
 		switch (ID) {
@@ -158,9 +169,13 @@ public class ViewBase {
 			break;
 		}
 		default:
-			throw new IllegalArgumentException("Unexpected value: " + ID);
+			throw new RuntimeException("Unexpected value: " + ID);
 		}
 
 	}
-
+	
+//# Hàm hiển thị kết quả	
+	public static void showData(String outputData) {
+		outputTextField.setText(outputData);
+	}
 }
