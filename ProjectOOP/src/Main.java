@@ -1,5 +1,6 @@
 package ProjectOOP.src;
 
+import ProjectOOP.src.Model.DataOutput;
 import ProjectOOP.src.crawler.ExtractData;
 
 import java.io.IOException;

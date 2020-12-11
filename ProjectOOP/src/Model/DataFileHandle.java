@@ -1,6 +1,8 @@
 package ProjectOOP.src.Model;
 
-import java.util.Iterator;
+import jdk.jfr.Unsigned;
+
+import java.util.*;
 
 public class DataFileHandle {
     /*
@@ -12,7 +14,8 @@ public class DataFileHandle {
     ...
     Todo: Thêm hàm để xử lý DataFileInput -> DataFileOutput
     */
-
+    private static final int TOP_DATA = 10;
+    
     public DataFileHandle() {
 
     }
@@ -40,7 +43,40 @@ public class DataFileHandle {
     }
 
     public void addRankingTag(DataFileOutput dFO){
-        //Thực hiện các hàm thêm các tag kiểu ranking cho data
+        SortData sorting = new SortData();
+
+        // sorting.sort trả về 1 linkedList gồm TOP_DATA phần tử
+        for(int i = 1; i <= sorting.MAX_FIELD; i++){
+            String tagName = "Top 10 ";
+            String tagType = "ranking";
+            if(i==sorting.VOLUME){
+                tagName += "Volume";
+            }else if(i==sorting.OPEN){
+                tagName += "Open";
+            }else if(i==sorting.CLOSE){
+                tagName += "Close";
+            }else if(i==sorting.HIGH){
+                tagName += "High";
+            }else if(i==sorting.LOW){
+                tagName += "Low";
+            }else if(i==sorting.CHANGE){
+                tagName += "Change";
+            }else if(i==sorting.CHANGE_PERCENT){
+                tagName += "Up Speed";
+            }
+            List<DataOutput> top10Desc = sorting.sort(dFO.getData(), i, TOP_DATA, false);
+            List<DataOutput> top10Asc = sorting.sort(dFO.getData(), i, TOP_DATA, true);
+            for(DataOutput output: top10Desc){
+                int index = dFO.getData().indexOf(output);
+                dFO.getData().get(index).getTags().addTag(new Tag(tagName+" Desc", tagType));
+            }
+            for(DataOutput output: top10Asc){
+                int index = dFO.getData().indexOf(output);
+                dFO.getData().get(index).getTags().addTag(new Tag(tagName+" Asc", tagType));
+            }
+        }
+        //Sapxep Dataoutput theo Volume giam dan va add 10phan tu dau vao top10Valume
+
     }
 
     //Tự động thêm câu cho từng Input

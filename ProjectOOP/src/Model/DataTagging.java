@@ -57,6 +57,21 @@ public class DataTagging{
         this.tags.addTag(tagName);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof DataTagging)) return false;
+
+        DataTagging that = (DataTagging) o;
+
+        return getData() != null ? getData().equals(that.getData()) : that.getData() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return getData() != null ? getData().hashCode() : 0;
+    }
+
     //Debug
     public void Debug(){
         data.Debug();

@@ -15,14 +15,14 @@ public class CsvParser {
     private List<DataInput> data;
 
     public CsvParser() {
-        this.lines = new ArrayList<String[]>();
-        this.data = new ArrayList<DataInput>();
+        this.lines = new LinkedList<String[]>();
+        this.data = new LinkedList<DataInput>();
     }
 
     // đọc file csv
     public CsvParser(String Csv) throws Exception{
-        this.lines = new ArrayList<String[]>();
-        this.data = new ArrayList<DataInput>();
+        this.lines = new LinkedList<String[]>();
+        this.data = new LinkedList<DataInput>();
         final String fileName;
         final File file;
         Scanner inputStream;
@@ -30,7 +30,6 @@ public class CsvParser {
         file = new File(fileName);
         try {
             inputStream = new Scanner(file);
-
             while (inputStream.hasNext()) {
                 String line = inputStream.next();
                 String[] values = line.split(",");

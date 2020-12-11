@@ -1,6 +1,6 @@
 package ProjectOOP.src.Model;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class DataFileOutput {
@@ -10,7 +10,7 @@ public class DataFileOutput {
     // Todo: Thêm các hàm phục vụ mục tra cứu, tìm kiểm cho Controller
 
     public DataFileOutput() {
-        data = new ArrayList<DataOutput>();
+        data = new LinkedList<DataOutput>();
         tagManager = new TagManager();
     }
 
@@ -19,7 +19,7 @@ public class DataFileOutput {
         tagManager = new TagManager();
     }
 
-    public DataFileOutput(ArrayList<DataOutput> data, TagManager tagManager) {
+    public DataFileOutput(List<DataOutput> data, TagManager tagManager) {
         this.data = data;
         this.tagManager = tagManager;
     }
@@ -44,6 +44,40 @@ public class DataFileOutput {
     public void addData(DataOutput dO){
         data.add(dO);
     }
+
+    //Nhận 1 request từ Controler và trả về 1 List Output phù hợp
+    public List<DataOutput> find(String request){
+        if(!getTagManager().isHaveThisTag(request)){
+            return null;
+            //respond to View: Không tìm thấy dữ liệu
+        }
+        List<DataOutput> respond = new LinkedList<DataOutput>();
+        for(DataOutput output: data){
+            if(output.getTags().isHaveThisTag(request)){
+                respond.add(output);
+            }
+        }
+        return respond;
+    }
+    // trả về đoạn văn phù hợp lên View
+    public String respond(String request){
+        List<DataOutput> dataOutputs = find(request);
+        Tag tag = getTagManager().findTag(request);
+        String respondParagrahp="";
+        switch (tag.getTagType()) {
+            case "name":
+                //
+                break;
+            case "change":
+                //
+                break;
+            case "ranking":
+                //
+                break;
+        }
+        return respondParagrahp;
+    }
+
 
     //Debug
     public void Debug(){

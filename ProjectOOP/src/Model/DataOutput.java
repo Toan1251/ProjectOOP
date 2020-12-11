@@ -1,24 +1,24 @@
 package ProjectOOP.src.Model;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class DataOutput extends DataTagging{
     private List<String> sentences;
-    // Todo: Thêm các hàm hoặc các lớp cần thiết để tạo, thêm, xóa, trả về câu thích hợp vào arraylist
+    // Todo: Thêm các hàm hoặc các lớp cần thiết để tạo, thêm, xóa, trả về câu thích hợp vào LinkedList
 
     public DataOutput() {
-        this.sentences = new ArrayList<String>();
+        this.sentences = new LinkedList<String>();
     }
 
     public DataOutput(DataInput data) {
         super(data);
-        this.sentences = new ArrayList<String>();
+        this.sentences = new LinkedList<String>();
     }
 
     public DataOutput(DataInput data, TagManager tags) {
         super(data, tags);
-        this.sentences = new ArrayList<String>();
+        this.sentences = new LinkedList<String>();
     }
 
     public DataOutput(DataInput data, List<String> sentences) {
@@ -55,4 +55,5 @@ public class DataOutput extends DataTagging{
             System.out.println(sentence);
         }
     }
+
 }

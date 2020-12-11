@@ -41,14 +41,16 @@ public class Tag {
 
         Tag tag = (Tag) o;
 
-        return getTagName().equals(tag.getTagName());
+        return getTagName() != null ? getTagName().equals(tag.getTagName()) : tag.getTagName() == null;
     }
 
     @Override
-    //HashCode của Tag
     public int hashCode() {
-        return getTagName().hashCode();
+        return getTagName() != null ? getTagName().hashCode() : 0;
     }
+
+
+
 
     //Debug
     public void Debug(){

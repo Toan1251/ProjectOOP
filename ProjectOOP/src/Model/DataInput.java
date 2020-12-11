@@ -1,7 +1,6 @@
 package ProjectOOP.src.Model;
 
 import java.util.Date;
-import java.util.Comparator;
 
 public class DataInput{
     /*
@@ -87,10 +86,37 @@ public class DataInput{
         Volume = volume;
     }
 
+    public double getChange(){
+        return getClose()-getOpen();
+    }
+
+    public double getChangePercent(){
+        double cp = getChange()/getOpen();
+        if(cp==Double.POSITIVE_INFINITY || cp==Double.NaN){
+            return 0;
+        }
+        return cp;
+    }
     //Debug
     public void Debug(){
         System.out.println(Name+", "+Date+", "+Open+", "+High+", "+Low+", "+Close+", "+Volume);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof DataInput)) return false;
 
+        DataInput dataInput = (DataInput) o;
+
+        if (getName() != null ? !getName().equals(dataInput.getName()) : dataInput.getName() != null) return false;
+        return getDate() != null ? getDate().equals(dataInput.getDate()) : dataInput.getDate() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getName() != null ? getName().hashCode() : 0;
+        result = 31 * result + (getDate() != null ? getDate().hashCode() : 0);
+        return result;
+    }
 }
