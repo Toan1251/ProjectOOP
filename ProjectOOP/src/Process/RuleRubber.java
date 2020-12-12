@@ -2,10 +2,11 @@ package ProjectOOP.src.Process;
 
 import ProjectOOP.src.Model.DataInput;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Map;
 
 //nhóm top các cổ phiếu cao su
-public class Rule8 extends Rules {
+public class RuleRubber extends Rules {
 
 
     @Override
@@ -43,9 +44,9 @@ public class Rule8 extends Rules {
             map.put("CVname" + (i + 1),array.get(i).getName());
             map.put("CVnum"+(i+1),Double.toString(array.get(i).getVolume()));
         }
-        map.put("totalC",Integer.toString(filterByName(data,"^CAOSU").getVolume()));
+        map.put("totalC",Double.toString(filterByName(data,"^CAOSU").getVolume()));
         for(int i=0;i<array.size();i++) {
-            map.put("timeC"+(i+1), Float.toString((float) (array.get(i).getVolume()) / (filterByName(data, "^CAOSU").getVolume())));
+            map.put("timeC"+(i+1), Float.toString((float) ((array.get(i).getVolume()) / (filterByName(data, "^CAOSU").getVolume()))));
         }
 
         return map;

@@ -1,6 +1,8 @@
 package ProjectOOP.src.Process;
 
 import ProjectOOP.src.Model.DataInput;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,9 +22,12 @@ public class GroupPersonal extends Group {
     List<String> done= new ArrayList<String>();
 
     @Override
-    public void begin(ArrayList<DataInput> data) {}
+    public String begin(ArrayList<DataInput> data) {//xem lai
+        return null;
+    }
 
-    public void Process(ArrayList<DataInput> data,String name){
+    //trả về 1 list chứa các câu cần thiết
+    public List<String> Process(ArrayList<DataInput> data,String name){
 
         List<String> temp1 = new ArrayList<String>();
         temp1.add("Trong phiên giao dịch ngày hôm nay, <date> , cổ phiếu của <name> có dấu hiệu <link> <level>.");
@@ -44,7 +49,11 @@ public class GroupPersonal extends Group {
         done.add(getOutput(temp3));
 
         //đưa tất cả câu đã chọn thành 1 đoạn văn và đưa vào dữ liệu chung
-        addSentences(done.get(0)+done.get(1)+done.get(2));
+        return done;
+
+
+
+
     }
 
 

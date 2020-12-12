@@ -2,10 +2,11 @@ package ProjectOOP.src.Process;
 
 import ProjectOOP.src.Model.DataInput;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Map;
 
 //nhóm top các cổ phiếu họ Vingroup
-public class Rule10 extends Rules {
+public class RuleVin extends Rules {
 
 
     @Override

@@ -2,10 +2,11 @@ package ProjectOOP.src.Process;
 
 import ProjectOOP.src.Model.DataInput;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Map;
 
 //nhóm top các cổ phiếu hàng không
-public class Rule7 extends Rules {
+public class RuleAirline extends Rules {
 
 
     @Override

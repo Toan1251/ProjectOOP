@@ -2,11 +2,12 @@ package ProjectOOP.src.Process;
 
 import ProjectOOP.src.Model.DataInput;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Map;
 
 //nhóm top
 // các ngân hàng
-public class Rule4 extends Rules {
+public class RuleBank extends Rules {
 
 
     @Override
@@ -44,7 +45,7 @@ public class Rule4 extends Rules {
             map.put("BVnum"+(i+1),Double.toString(array.get(i).getVolume()));
         }
 
-        map.put("totalB",Integer.toString(filterByName(data,"^NGANHANG").getVolume()));
+        map.put("totalB",Double.toString(filterByName(data,"^NGANHANG").getVolume()));
 
 
         return map;

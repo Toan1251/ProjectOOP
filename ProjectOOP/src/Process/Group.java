@@ -3,7 +3,7 @@ import java.util.*;
 import ProjectOOP.src.Model.*;
 
 
-public abstract class Group extends DataOutput {
+public abstract class Group {
     private List<String> sentences;
     private Random random;
     private String output;
@@ -11,26 +11,22 @@ public abstract class Group extends DataOutput {
 
 
     public Group() {
+        sentences = new ArrayList<String>();
         random = new Random();
         eachMap = new HashMap<String,String>();
     }
 
 
-    //->Hàm này dùng để đưa các mẫu câu của cùng 1 nhóm (chưa xử lí) vào 1 list để lúc sau random câu để xử lí.
+    //->Phương thức này dùng để đưa các mẫu câu của cùng 1 nhóm (chưa xử lí) vào 1 list để lúc sau random câu để xử lí.
     protected void addGroupSentences(String stc) {
         this.sentences.add(stc);
     }
-
-    protected void adddGroupSentences(Collection<String> groupSentences){
-        this.sentences.addAll(groupSentences);
-    }
-
     public String replaceVariable(String key) {
         return null;
 
     }
 
-    //->Hàm này với ý tưởng là thay thế biến trong dấu ngoặc (ví dụ: <abc>) thành giá trị phù hợp.
+    //->Phương thức này với ý tưởng là thay thế biến trong dấu ngoặc (ví dụ: <abc>) thành giá trị phù hợp.
     //tách phần tử ra 3 phần (trước "<", sau ">" và giá trị ở giữa).
     private String swapWord(String word){
         int first = word.indexOf("<");
@@ -72,7 +68,8 @@ public abstract class Group extends DataOutput {
     }
 
     //hàm này để override lại
-    public abstract void begin(ArrayList<DataInput> data);
+    public abstract String begin(ArrayList<DataInput> data);
+    //public abstract List<String> begin(ArrayList<DataInput> data,String name);
 
 
 

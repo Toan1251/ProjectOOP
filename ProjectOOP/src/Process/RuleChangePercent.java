@@ -1,11 +1,13 @@
 package ProjectOOP.src.Process;
 
+import ProjectOOP.src.Model.CsvParser;
 import ProjectOOP.src.Model.DataInput;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Map;
 
-public class Rule2 extends Rules {
+public class RuleChangePercent extends Rules {
 
     @Override
     public Map<String, String> PushInMap(ArrayList<DataInput> data) {

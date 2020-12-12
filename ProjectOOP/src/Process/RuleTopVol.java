@@ -2,9 +2,10 @@ package ProjectOOP.src.Process;
 
 import ProjectOOP.src.Model.DataInput;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Map;
 
-public class Rule3 extends Rules {
+public class RuleTopVol extends Rules {
 
     @Override
     public Map<String, String> PushInMap(ArrayList<DataInput> data) {
@@ -15,7 +16,11 @@ public class Rule3 extends Rules {
         for (int i=0;i<(data.size());i++){
             double tmp= data.get(i).getVolume();
             double temp=data.get(i).getVolume()*((data.get(i).getHigh())-(data.get(i).getLow()))/2*1000;
-            arr.add(new Rules(i,tmp,temp));
+            Rules obj= new Rules();
+            obj.setIndex(i);
+            obj.setVolume(tmp);
+            obj.setVolumeValue(temp);
+            arr.add(obj);
         }
 
         //sắp xếp theo Volume và đưa các cặp key-value cần thiết vào map

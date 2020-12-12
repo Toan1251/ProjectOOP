@@ -2,9 +2,10 @@ package ProjectOOP.src.Process;
 
 import ProjectOOP.src.Model.DataInput;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Map;
 //
-public class Rule1 extends Rules {
+public class RuleChange extends Rules {
     @Override
     public Map<String, String> PushInMap(ArrayList<DataInput> data) {
         //ArrayList này để chứa các đối tương Rules được tạo ra
@@ -12,13 +13,13 @@ public class Rule1 extends Rules {
 
         //hàm này dùng để tạo ra các đối tượng Rules và thêm nó vào trong ArrayList của lớp Rules
 
-            //phương thức dùng để truyền giá trị cho thuộc tính của đối tượng và đưa đối tượng vào list.
-            for (int i=0;i<(data.size());i++){
-                double tmp = data.get(i).getClose()-data.get(i).getOpen();
-                double temp=(double) Math.round(((data.get(i).getClose())/(data.get(i).getOpen())-1)*10000)/100;
-                arr.add(new Rules(i,tmp,temp));
-            }
-    //Hàm này dùng để sắp xếp lại list và sau đó truyền các thông số vào map
+        //phương thức dùng để truyền giá trị cho thuộc tính của đối tượng và đưa đối tượng vào list.
+        for (int i=0;i<(data.size());i++){
+            double tmp = data.get(i).getClose()-data.get(i).getOpen();
+            double temp=(double) Math.round(((data.get(i).getClose())/(data.get(i).getOpen())-1)*10000)/100;
+            arr.add(new Rules(i,tmp,temp));
+        }
+        //Hàm này dùng để sắp xếp lại list và sau đó truyền các thông số vào map
 
         int Tang=0;
         int Giam=0;
@@ -28,20 +29,19 @@ public class Rule1 extends Rules {
         //sắp xếp các đối tượng trong String arr theo thứ tự giảm dần về change
         arr.sort(new SortByChange());
         //Cứ mỗi vòng lặp thì sẽ đếm được số tăng, giảm,không đổi.
-        for (Rules rules : arr) {
-            if (rules.getValueChange() > 0) {
+        for (int j=0;j< arr.size();j++){
+            if (arr.get(j).getValueChange()>0){
                 Tang++;
-            } else if (rules.getValueChange() < 0) {
+            }
+            else if(arr.get(j).getValueChange()<0){
                 Giam++;
-            } else {
+            }
+            else {
                 KhongDoi++;
             }
 
-            if (Math.round(rules.getPercentChange()) == 7) {
-                TangTran++;
-            } else if (Math.round(rules.getPercentChange()) == -7) {
-                GiamSan++;
-            }
+            if (Math.round(arr.get(j).getPercentChange()) ==7 ){ TangTran++;}
+            else if (Math.round(arr.get(j).getPercentChange()) ==-7){GiamSan++;}
 
 
         }

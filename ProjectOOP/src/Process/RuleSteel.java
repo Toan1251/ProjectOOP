@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.Map;
 
 //nhóm top các cổ phiếu thép
-public class Rule9 extends Rules {
+public class RuleSteel extends Rules {
 
 
     @Override
@@ -47,9 +47,9 @@ public class Rule9 extends Rules {
             map.put("TVname" + (i + 1),array.get(i).getName());
             map.put("TVnum"+(i+1),Double.toString(array.get(i).getVolume()));
         }
-        map.put("totalT",Integer.toString(filterByName(data,"^THEP").getVolume()));
+        map.put("totalT",Double.toString(filterByName(data,"^THEP").getVolume()));
         for(int i=0;i<array.size();i++) {
-            map.put("timeT"+(i+1), Float.toString((float) (array.get(i).getVolume()) / (filterByName(data, "^THEP").getVolume())));
+            map.put("timeT"+(i+1), Float.toString((float) ((array.get(i).getVolume()) / (filterByName(data, "^THEP").getVolume()))));
         }
 
         return map;

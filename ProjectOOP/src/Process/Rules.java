@@ -18,7 +18,7 @@ public class Rules {
     //.//
     public Map<String,String> PushInMap(ArrayList<DataInput> data){
         return null;
-    }
+    };
 
 
 
@@ -40,11 +40,11 @@ public class Rules {
         setPercentChange(PercentChange);
     }
 
-    public Rules (int index, double Volume,double volumeValue){
-        setIndex(index);
-        setVolume(Volume);
-        setVolumeValue(volumeValue);
-    }
+//    public Rules (int index, double Volume,double volumeValue){
+//        setIndex(index);
+//        setVolume(Volume);
+//        setVolumeValue(volumeValue);
+//    }
 
 
 //Map này dùng để chứa các cặp key,value dùng để thay thế biến cho câu.
