@@ -2,7 +2,7 @@
 
     import java.util.LinkedList;
     import java.util.List;
-    import Process.*;
+    import ProjectOOP.src.Process.*;
     import java.util.ArrayList;
     public class DataOutput extends DataTagging {
         private List<String> sentences;

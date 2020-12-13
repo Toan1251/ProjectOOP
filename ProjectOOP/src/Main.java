@@ -14,9 +14,11 @@ public class Main {
             new ExtractData();
         }catch (UnknownHostException e){
             System.out.println("No internet Connection");
+            e.printStackTrace();
             //todo: View cần hiển thị 1 thông báo không có kết nối Internet
         }catch (IOException e){
             System.out.println("No file in the Directory");
+            e.printStackTrace();
             //todo: View hiển thị missing file cho người dùng
         }
 

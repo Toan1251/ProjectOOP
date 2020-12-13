@@ -11,7 +11,7 @@ import java.util.Calendar;
 /* Khởi tạo lớp này sẽ cập nhật dữ liệu mới nhất từ web
 * */
 public class CrawlData {
-    private final Calendar yesterday;
+    private final Calendar lastDay;
     private static final SimpleDateFormat SDF1 = new SimpleDateFormat("yyyyMMdd");
     private static final SimpleDateFormat SDF2 = new SimpleDateFormat("ddMMyyyy");
     private static final String ZIP_DIRECTORY = "ProjectOOP/StockDataEOD/";
@@ -19,8 +19,12 @@ public class CrawlData {
 
     public CrawlData() throws IOException {
         Calendar calendar = Calendar.getInstance();
+        int i = calendar.get(Calendar.DAY_OF_WEEK);
+        if(i == 1 || i ==2){
+            calendar.add(Calendar.DATE, -i);
+        }
         calendar.add(Calendar.DATE, -1);
-        this.yesterday = calendar;
+        this.lastDay = calendar;
         crawl();
     }
 
@@ -30,11 +34,11 @@ public class CrawlData {
     }
 
     private String getZipName(){
-        return SDF2.format(yesterday.getTime()) + ".zip";
+        return SDF2.format(lastDay.getTime()) + ".zip";
     }
 
     private String getDayToString(){
-        return SDF1.format(yesterday.getTime());
+        return SDF1.format(lastDay.getTime());
     }
 
     public String getZipPath(){
