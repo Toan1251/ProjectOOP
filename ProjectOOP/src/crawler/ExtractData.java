@@ -9,7 +9,7 @@ import java.util.zip.ZipInputStream;
 public class ExtractData extends CrawlData {
     private static final int BUFFER_SIZE=4096;
 
-    public ExtractData() throws IOException{
+    public ExtractData() throws IOException {
         unzip(getZipPath(), getDirectory());
     }
 

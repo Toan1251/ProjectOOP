@@ -28,7 +28,7 @@ public class CrawlData {
         crawl();
     }
 
-    private void crawl() throws IOException{
+    protected void crawl() throws IOException{
         String url = URL_TEMPLATE.replace("ddMMyyyy.zip", getZipName()).replace("yyyyMMdd", getDayToString());
         new FileOutputStream(getZipPath()).getChannel().transferFrom(Channels.newChannel(new URL(url).openStream()), 0, Long.MAX_VALUE);
     }

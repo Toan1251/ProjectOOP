@@ -45,6 +45,7 @@ public class DataFileOutput {
     //Thêm 1 Output vào List
     public void addData(DataOutput dO){
         data.add(dO);
+        tagManager.addTag(dO.getTags().getTagSet());
     }
 
     //Nhận 1 request từ Controler và trả về 1 List Output phù hợp
