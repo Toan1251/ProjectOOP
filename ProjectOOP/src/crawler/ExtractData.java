@@ -1,16 +1,18 @@
 package ProjectOOP.src.crawler;
 
 import java.io.*;
+import java.net.UnknownHostException;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 /* Khởi tạo lớp này sẽ khởi tạo lớp CrawlData, đồng thời giải nén tệp .zip thành bộ dữ liệu csv
 * */
-public class ExtractData extends CrawlData {
+//todo: maybe add Interface Runable
+public class ExtractData extends CrawlData implements Runnable{
     private static final int BUFFER_SIZE=4096;
 
-    public ExtractData() throws IOException {
-        unzip(getZipPath(), getDirectory());
+    public ExtractData(){
+
     }
 
     private void unzip(String zipFilePath, String destDirectory) throws IOException {
@@ -45,5 +47,20 @@ public class ExtractData extends CrawlData {
             bos.write(bytesIn, 0, read);
         }
         bos.close();
+    }
+
+    public void run(){
+        try {
+            crawl();
+            unzip(getZipPath(), getDirectory());
+        }
+        catch (UnknownHostException e){
+            e.printStackTrace();
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
     }
 }

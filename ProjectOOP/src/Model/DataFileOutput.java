@@ -100,7 +100,7 @@ public class DataFileOutput {
             temp.makeOutput(tag,data);
             result.add(temp);
         }
-        return result;
+        return result;  
     }
 
     //tương tự hàm paragraph riêng cho việc xuất đoạn văn của 1 đối tượng cụ thể

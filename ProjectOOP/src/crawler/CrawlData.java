@@ -10,14 +10,15 @@ import java.util.Calendar;
 
 /* Khởi tạo lớp này sẽ cập nhật dữ liệu mới nhất từ web
 * */
-public class CrawlData {
+//todo: maybe add Interface Runable
+public class CrawlData{
     private final Calendar lastDay;
     private static final SimpleDateFormat SDF1 = new SimpleDateFormat("yyyyMMdd");
     private static final SimpleDateFormat SDF2 = new SimpleDateFormat("ddMMyyyy");
     private static final String ZIP_DIRECTORY = "ProjectOOP/StockDataEOD/";
     private static final String URL_TEMPLATE = "http://images1.cafef.vn/data/yyyyMMdd/CafeF.SolieuGD.ddMMyyyy.zip";
 
-    public CrawlData() throws IOException {
+    public CrawlData(){
         Calendar calendar = Calendar.getInstance();
         int i = calendar.get(Calendar.DAY_OF_WEEK);
         if(i == 1 || i ==2){
@@ -25,7 +26,6 @@ public class CrawlData {
         }
         calendar.add(Calendar.DATE, -1);
         this.lastDay = calendar;
-        crawl();
     }
 
     protected void crawl() throws IOException{
@@ -48,5 +48,7 @@ public class CrawlData {
     public String getDirectory(){
         return ZIP_DIRECTORY + getDayToString();
     }
+
+
 
 }
