@@ -13,10 +13,12 @@ public class Main {
         try{
             new ExtractData();
         }catch (UnknownHostException e){
-            //todo: No internet cconnection
+            //todo: No internet connection
+
             e.printStackTrace();
         }catch (IOException e){
             //todo: Missing file
+
             e.printStackTrace();
         }
 
