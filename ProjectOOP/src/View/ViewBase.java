@@ -22,7 +22,6 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.filechooser.FileSystemView;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JComboBox;
@@ -30,6 +29,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JScrollBar;
 import javax.swing.JCheckBox;
 import javax.swing.JColorChooser;
+
 public class ViewBase {
 	private static JPanel createPanel;
 	public List<String> dataTag = new ArrayList<String>();
@@ -38,33 +38,21 @@ public class ViewBase {
 	public static String userInputString;
 	public static JTextArea outputTextField = new JTextArea(1, 1);
 	static JTextField inputTextField = new JTextField(1);
-    public static JColorChooser backGroundColorChooser = new JColorChooser(Color.green);
-    public static JColorChooser buttonColorChooser = new JColorChooser(Color.blue);
-    
-	public static void main(String[] args) {
-		 backGroundColorChooser.setColor(0, 153, 76);
-		 setPanelColor=backGroundColorChooser.getColor();
-		 buttonColorChooser.setColor(102,178,255);
-		 buttonColor=buttonColorChooser.getColor();
-		 ViewBase viewBase = new ViewBase(); 
-		 viewBase.CreateMainFrame(1280, 680, "PROJECT OOP", createPanel);
-		 outputTextField.setText("main \n");
-		 
-	}
-	
-	 //#Đặt vị trí các button, text label vào trong Panel 
+	public static JColorChooser backGroundColorChooser = new JColorChooser(Color.green);
+	public static JColorChooser buttonColorChooser = new JColorChooser(Color.blue);
+
+	// #Đặt vị trí các button, text label vào trong Panel
 	private void CreateMainComponent(JPanel panel) {
 		JCheckBox hottag1 = new JCheckBox("Hot tag 1", false);
 		JCheckBox hottag2 = new JCheckBox("Hot tag 2", false);
 		JCheckBox hottag3 = new JCheckBox("Hot tag 3", false);
-		
+
 		JButton chooseButton = new JButton("Chon Tag");
 		JButton caculateButton = new JButton("Xu li");
 		JButton openButton = new JButton("Chon File");
-		
+
 		JLabel lb = new JLabel();
-		
-		
+
 		JScrollPane scrollPane = new JScrollPane(outputTextField);
 		scrollPane.setBounds(80, 220, 600, 220);
 		JLabel getInput = new JLabel("Search: ");
@@ -72,7 +60,7 @@ public class ViewBase {
 		nameProject.setForeground(Color.white);
 		JComboBox listMenuBox = new JComboBox(new String[] { "Chon Tag", "Xu li", "Chon File" });
 		JLabel resultLabel = new JLabel("Result ");
-		
+
 		hottag1.setBounds(80, 500, 120, 20);
 		hottag2.setBounds(230, 500, 120, 20);
 		hottag3.setBounds(380, 500, 120, 20);
@@ -80,7 +68,7 @@ public class ViewBase {
 		hottag2.setBackground(buttonColor);
 		hottag3.setBackground(buttonColor);
 		inputTextField.setBounds(80, 100, 450, 30);
-	
+
 		listMenuBox.setBounds(700, 90, 420, 25);
 		chooseButton.setBounds(80, 170, 100, 25);
 		chooseButton.setBackground(buttonColor);
@@ -101,11 +89,11 @@ public class ViewBase {
 		lb.setBounds(900, 100, 500, 400);
 		panel.add(lb);
 		lb.setIcon(new ImageIcon("workshop.png"));
-		
+
 		panel.add(resultLabel);
 		panel.add(getInput);
 		panel.add(inputTextField);
-		//panel.add(outputTextField);
+		// panel.add(outputTextField);
 		panel.add(chooseButton);
 		panel.add(caculateButton);
 		caculateButton.setIcon(new ImageIcon("search.png"));
@@ -115,67 +103,76 @@ public class ViewBase {
 		panel.add(hottag3);
 		panel.add(lb);
 		panel.add(nameProject);
-        panel.add(scrollPane);
+		panel.add(scrollPane);
 		setAction(chooseButton, 1);
 		setAction(caculateButton, 2);
 		setAction(openButton, 3);
 	}
-	
-//#Tạo Frame trong đó có panel
+
+	//#Tạo Frame trong đó có panel
 	public void CreateMainFrame(int width, int height, String nameFrame, JPanel panel) {
 		JFrame createFrame = new JFrame(nameFrame);
 		createFrame.setSize(width, height);
 		createFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		panel = new JPanel();
-		createFrame.add(panel);	
+		createFrame.add(panel);
 		CreateMainComponent(panel);
 		createFrame.setVisible(true);
 
 	}
-	
-//#Tạo action cho Button, mỗi ID ứng với 1 hoạt động  
+
+	//#Tạo action cho Button, mỗi ID ứng với 1 hoạt động
 	private void setAction(JButton nameButton, int ID) {
 		nameButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent event) {
 				setViewWindow(ID);
-				if (ID == 1) 
-				{
-					
-				} 
-				else if (ID == 2)
-				{ 
-					userInputString =ViewBase.inputTextField.getText();
+				if (ID == 1) {
+
+				} else if (ID == 2) {
+					userInputString = ViewBase.inputTextField.getText();
 					System.out.println(userInputString);
 				}
 			}
 		});
 	}
-	
-//# Mở cửa sổ mới tùy thuộc vào ID 
+
+	//# Mở cửa sổ mới tùy thuộc vào ID
 	private static void setViewWindow(int ID) {
 		switch (ID) {
-		case 1: {
-			TagView chooseTagView = new TagView();
-			break;
-		}
-		case 2: {
+			case 1: {
+				TagView chooseTagView = new TagView();
+				break;
+			}
+			case 2: {
 
-			break;
-		}
-		case 3: {
-			OpenFile chooseFile = new OpenFile();
-			break;
-		}
-		default:
-			throw new RuntimeException("Unexpected value: " + ID);
+				break;
+			}
+			case 3: {
+				OpenFile chooseFile = new OpenFile();
+				break;
+			}
+			default:
+				throw new RuntimeException("Unexpected value: " + ID);
 		}
 
 	}
-	
-//# Hàm hiển thị kết quả	
+
+	// # Ham hien thi giao dien App
+	public static void main(String args[]) {
+//	public void showFrame() {
+		backGroundColorChooser.setColor(0, 153, 76);
+		setPanelColor = backGroundColorChooser.getColor();
+		buttonColorChooser.setColor(102, 178, 255);
+		buttonColor = buttonColorChooser.getColor();
+		ViewBase viewBase = new ViewBase();
+		viewBase.CreateMainFrame(1280, 680, "PROJECT OOP", createPanel);
+	}
+
+	//# Hàm hiển thị kết quả
 	public static void showData(String outputData) {
 		outputTextField.setText(outputData);
 	}
+
 }
