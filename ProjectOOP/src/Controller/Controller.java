@@ -1,6 +1,6 @@
 package ProjectOOP.src.Controller;
 
-import ProjectOOP.src.Model.DataFileOutput;
+import ProjectOOP.src.Model.Handle.DataFileOutput;
 import ProjectOOP.src.View.*;
 
 public class Controller {
