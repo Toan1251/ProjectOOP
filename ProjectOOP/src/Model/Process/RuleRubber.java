@@ -1,4 +1,5 @@
 package ProjectOOP.src.Model.Process;
+import ProjectOOP.src.Model.Handle.DataInput;
 import ProjectOOP.src.Model.Handle.DataOutput;
 import ProjectOOP.src.Model.Handle.SortData;
 
@@ -29,10 +30,26 @@ public class RuleRubber extends Rules {
             double temp=sortedListChange.get(i).getData().getClose()-sortedListChange.get(i).getData().getOpen();
 
             map.put("nameC" +(i+1), sortedListChange.get(i).getData().getName());
-            map.put("numC"+(i+1),Double.toString(Math.abs(temp)*1000));
-            if(temp>=0){map.put("Clink"+(i+1),"tăng");}
-            if(temp<0){map.put("Clink"+(i+1),"giảm");}
-            map.put("level"+(i+1),level(temp));
+            if(temp>0){
+                map.put("Clink"+(i+1),"tăng");
+                map.put("numC"+(i+1),Integer.toString((int)Math.abs(temp)*1000000));
+                map.put("level"+(i+1),level(temp));
+
+
+            }
+            if(temp<0){
+                map.put("Clink"+(i+1),"giảm");
+                map.put("numC"+(i+1),Integer.toString((int)Math.abs(temp)*1000000));
+                map.put("level"+(i+1),level(temp));
+
+
+            }else{
+                map.put("Clink"+(i+1),"đứng giá");
+                map.put("numC"+(i+1),"");
+                map.put("level"+(i+1),"");
+
+
+            }
         }
 
         //sắp xếp theo volume value

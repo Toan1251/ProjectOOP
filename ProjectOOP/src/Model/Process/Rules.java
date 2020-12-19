@@ -84,11 +84,21 @@ public class Rules {
     //phương thức nói về mức độ
     public String level(double valueChange) {
         double tmp = Math.abs(valueChange);
-        if(tmp >= 1000)  {
+        if(tmp >= 1000.0)  {
             return "mạnh";
         }
-        else if(tmp >= 500) {
+        else if(tmp >= 500.0 && tmp<1000.0) {
             return "khá mạnh";
+        }
+        else return "nhẹ";
+    }
+
+    public String levelPc(double temp){
+        if(temp>=10.0){
+            return "rất mạnh";
+        }
+        else if(temp>=5.0 && temp<10.0){
+            return "mạnh";
         }
         else return "nhẹ";
     }

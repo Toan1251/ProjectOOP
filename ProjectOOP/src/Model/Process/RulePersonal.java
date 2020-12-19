@@ -1,5 +1,4 @@
 package ProjectOOP.src.Model.Process;
-import ProjectOOP.src.Model.Handle.DataInput;
 import ProjectOOP.src.Model.Handle.DataOutput;
 
 import java.util.List;
@@ -21,7 +20,7 @@ public class RulePersonal extends Rules {
 
     //đây chính là volume value
     private double dauhieu(DataOutput obj){
-        return (obj.getData().getHigh()+obj.getData().getLow())/2*(obj.getData().getVolume());
+        return (1000000*obj.getData().getHigh()+obj.getData().getLow())/2*(obj.getData().getVolume());
     }
 
     //thay thế cho compare (so sánh)
@@ -64,7 +63,8 @@ public class RulePersonal extends Rules {
 
         //change có giá trị bằng độ chênh lệch của giá trị cổ phiếu.
         double change=tmp.getData().getClose()-tmp.getData().getOpen();
-        double percent=Math.abs ((double) Math.round((((tmp.getData().getClose())*1000)/((tmp.getData().getOpen())*1000)-1)*10000)/100);
+//        double percent=Math.abs ((double) Math.round((((tmp.getData().getClose())*1000)/((tmp.getData().getOpen())*1000)-1)*10000)/100);
+        double percent=tmp.getData().getChangePercent();
 
         //lấy tỉ lệ % tăng hoặc giảm
 
@@ -80,9 +80,9 @@ public class RulePersonal extends Rules {
         map.put("gtgd",Double.toString(dauhieu(tmp)/1000000));//tỉ đồng
 
         //thay thế chỗ dấu hiệu dựa vào lượng gtgd.
-        if(dauhieu(tmp)>=8000000){map.put("dau hieu","rất khả quan");}// đã chia 1000, giá trị thực phải *1000;
+        if(dauhieu(tmp)>=8000000){map.put("dauhieu","rất khả quan");}// đã chia 1000, giá trị thực phải *1000;
         else if(5000000<dauhieu(tmp) &&dauhieu(tmp)<8000000){map.put("dau hieu","khá khả quan");}
-        else {map.put("dau hieu","không mấy khả quan");}
+        else {map.put("dauhieu","không mấy khả quan");}
 
 
         //nói về tình trạng cổ phiếu
@@ -93,6 +93,7 @@ public class RulePersonal extends Rules {
 
         //nói về mức độ
         map.put("level",level(change));
+        map.put("levelPC",levelPc(tmp.getData().getChangePercent()));
 
         //nếu obj cần tìm thuộc nhóm ngân hàng
         switch (name) {
@@ -102,7 +103,9 @@ public class RulePersonal extends Rules {
             case "MBB":
             case "TCB":
             case "VCB":
-            case "VPB": {
+            case "VPB":
+            case "NVB":
+            case "SHB": {
                 List<DataOutput> demo = new LinkedList<>();//list chứa các đối tượng để random
 
                 demo.add(filterByName(data, "BID"));
@@ -112,6 +115,9 @@ public class RulePersonal extends Rules {
                 demo.add(filterByName(data, "TCB"));
                 demo.add(filterByName(data, "VCB"));
                 demo.add(filterByName(data, "VPB"));
+                demo.add(filterByName(data, "NVB"));
+                demo.add(filterByName(data, "SHB"));
+
                 DataOutput obj = randomOBJ(demo);
                 map.put("nameSS", obj.getData().getName() + "thuộc cùng nhóm ngân hàng");
                 map.put("volume2", Double.toString(obj.getData().getVolume()));
@@ -136,6 +142,14 @@ public class RulePersonal extends Rules {
                 demo.add(filterByName(data, "PVD"));
                 demo.add(filterByName(data, "PVT"));
                 demo.add(filterByName(data, "PXS"));
+                demo.add(filterByName(data,"APP"));
+                demo.add(filterByName(data,"PCT"));
+                demo.add(filterByName(data,"PGS"));
+                demo.add(filterByName(data,"PLC"));
+                demo.add(filterByName(data,"PVB"));
+                demo.add(filterByName(data,"PVC"));
+                demo.add(filterByName(data,"PVG"));
+                demo.add(filterByName(data,"PVS"));
                 DataOutput obj = randomOBJ(demo);
                 map.put("nameSS", obj.getData().getName() + "thuộc cùng nhóm dầu khí");
                 map.put("volume2", Double.toString(obj.getData().getVolume()));
@@ -163,11 +177,18 @@ public class RulePersonal extends Rules {
                 break;
             }
             case "HVN":
-            case "VJC": {
+            case "VJC":
+            case "CIA":
+            case "MAS": {
                 LinkedList<DataOutput> demo = new LinkedList<>();//list chứa các đối tượng để random
 
                 demo.add(filterByName(data, "HVN"));
                 demo.add(filterByName(data, "VJC"));
+                demo.add(filterByName(data, "ARM"));
+                demo.add(filterByName(data, "CIA"));
+                demo.add(filterByName(data, "MAS"));
+
+
                 DataOutput obj = randomOBJ(demo);
                 map.put("nameSS", obj.getData().getName() + "thuộc cùng nhóm hàng không");
                 map.put("volume2", Double.toString(obj.getData().getVolume()));
@@ -277,7 +298,10 @@ public class RulePersonal extends Rules {
                             || datum.getData().getName().equals("^THUCPHAM") || datum.getData().getName().equals("^THUONGMAI") || datum.getData().getName().equals("^THUYSAN")
                             || datum.getData().getName().equals("^TWII") || datum.getData().getName().equals("^UPCOM") || datum.getData().getName().equals("^VANTAI")
                             || datum.getData().getName().equals("^VLXD") || datum.getData().getName().equals("^VN30") || datum.getData().getName().equals("^VNINDEX")
-                            || datum.getData().getName().equals("^XAYDUNG"))) {
+                            || datum.getData().getName().equals("^XAYDUNG")|| datum.getData().getName().equals("APP")|| datum.getData().getName().equals("PCT")
+                            || datum.getData().getName().equals("PGS")|| datum.getData().getName().equals("PLC")|| datum.getData().getName().equals("PVB")
+                            || datum.getData().getName().equals("PVC")|| datum.getData().getName().equals("PVG")|| datum.getData().getName().equals("PVS")
+                            || datum.getData().getName().equals("ARM")|| datum.getData().getName().equals("CIA")|| datum.getData().getName().equals("MAS"))) {
                         demo.add(datum);
                     }
                 }

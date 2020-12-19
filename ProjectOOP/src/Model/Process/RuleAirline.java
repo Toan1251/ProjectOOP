@@ -1,4 +1,5 @@
 package ProjectOOP.src.Model.Process;
+import ProjectOOP.src.Model.Handle.DataInput;
 import ProjectOOP.src.Model.Handle.DataOutput;
 import ProjectOOP.src.Model.Handle.SortData;
 
@@ -18,6 +19,11 @@ public class RuleAirline extends Rules {
         List<DataOutput> myList = new LinkedList<>();
         myList.add(filterByName(data, "HVN"));
         myList.add(filterByName(data, "VJC"));
+        myList.add(filterByName(data, "ARM"));
+        myList.add(filterByName(data, "CIA"));
+        myList.add(filterByName(data, "MAS"));
+
+
 
         //sắp xếp theo change
         List<DataOutput> sortedListChange = sorting.sort(myList, 6);
@@ -25,14 +31,20 @@ public class RuleAirline extends Rules {
             double temp = sortedListChange.get(i).getData().getClose() - sortedListChange.get(i).getData().getOpen();
 
             map.put("nameA" + (i + 1), sortedListChange.get(i).getData().getName());
-            map.put("numA" + (i + 1), Double.toString(Math.abs(temp) * 1000));
-            if (temp >= 0) {
+            if (temp > 0) {
                 map.put("Alink" + (i + 1), "tăng");
+                map.put("numA" + (i + 1), Integer.toString((int)Math.abs(temp) * 1000000));
+                map.put("level" + (i + 1), level(temp));
             }
             if (temp < 0) {
                 map.put("Alink" + (i + 1), "giảm");
+                map.put("numA" + (i + 1), Integer.toString((int)Math.abs(temp) * 1000000));
+                map.put("level" + (i + 1), level(temp));
+            }else{
+                map.put("Alink" + (i + 1), "không đổi");
+                map.put("numA" + (i + 1), "");
+                map.put("level" + (i + 1), "");
             }
-            map.put("level" + (i + 1), level(temp));
         }
 
         //sắp xếp theo volume value

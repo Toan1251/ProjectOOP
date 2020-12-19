@@ -1,4 +1,5 @@
 package ProjectOOP.src.Model.Process;
+import ProjectOOP.src.Model.Handle.DataInput;
 import ProjectOOP.src.Model.Handle.DataOutput;
 import ProjectOOP.src.Model.Handle.SortData;
 
@@ -24,21 +25,33 @@ public class RuleVin extends Rules {
             double temp= myList.get(i).getData().getClose()-myList.get(i).getData().getOpen();
             double temp1=myList.get(i+1).getData().getClose()-myList.get(i+1).getData().getOpen();
             map.put("nameV" +(i+1), myList.get(i).getData().getName());
-            map.put("numV"+(i+1),Double.toString(Math.abs(temp)*1000));
-
-            if(temp>=0){
+            if(temp>0){
                 map.put("Vlink"+(i+1),"tăng");
                 map.put("upV"+(i+1),"lên");
-            }
+                map.put("levelV"+(i+1),level(temp));
+                map.put("openV"+(i+1),Double.toString(myList.get(i).getData().getOpen()*1000));
+                map.put("closeV"+(i+1),Double.toString(myList.get(i).getData().getClose()*1000));
+                map.put("numV"+(i+1),Integer.toString((int)Math.abs(temp)*1000000));}
+
 
             else if(temp<0){
                 map.put("Vlink"+(i+1),"giảm");
                 map.put("upV"+(i+1),"xuống");
+                map.put("levelV"+(i+1),level(temp));
+                map.put("openV"+(i+1),Double.toString(myList.get(i).getData().getOpen()*1000));
+                map.put("closeV"+(i+1),Double.toString(myList.get(i).getData().getClose()*1000));
+                map.put("numV"+(i+1),Integer.toString((int)Math.abs(temp)*1000000));}
+            else {
+                map.put("Vlink"+(i+1),"đứng giá");
+                map.put("upV"+(i+1),"");
+                map.put("levelV"+(i+1),"");
+                map.put("openV"+(i+1),"");
+                map.put("closeV"+(i+1),"");
+                map.put("numV"+(i+1),"");
             }
 
-            map.put("levelV"+(i+1),level(temp));
-            map.put("openV"+(i+1),Double.toString(myList.get(i).getData().getOpen()));
-            map.put("closeV"+(i+1),Double.toString(myList.get(i).getData().getClose()));
+
+
 
             if(temp>=0 && temp1>=0){ map.put("statement","đang trên đà tăng"); }
             else if(temp>=0 && temp1<0){ map.put("statement","đang biến động"); }
@@ -52,20 +65,30 @@ public class RuleVin extends Rules {
             double temp = sortedListChange.get(i).getData().getClose()-sortedListChange.get(i).getData().getOpen();
 
             map.put("name" +(i+1), sortedListChange.get(i).getData().getName());
-            map.put("num"+(i+1),Double.toString(Math.abs(temp)*1000));
-            if(temp>=0){
+            if(temp>0){
                 map.put("link"+(i+1),"tăng");
                 map.put("up"+(i+1),"lên");
+                map.put("num"+(i+1),Integer.toString((int)Math.abs(temp)*1000000));
+                map.put("level"+(i+1),level(temp));
+                map.put("open"+(i+1),Double.toString(sortedListChange.get(i).getData().getOpen()));
+                map.put("close"+(i+1),Double.toString(sortedListChange.get(i).getData().getClose()));
             }
-            if(temp<0){
+            else if(temp<0){
                 map.put("link"+(i+1),"giảm");
                 map.put("up"+(i+1),"xuống");
+                map.put("num"+(i+1),Integer.toString((int)Math.abs(temp)*1000000));
+                map.put("level"+(i+1),level(temp));
+                map.put("open"+(i+1),Double.toString(sortedListChange.get(i).getData().getOpen()));
+                map.put("close"+(i+1),Double.toString(sortedListChange.get(i).getData().getClose()));
 
+            }else{
+                map.put("link"+(i+1),"đứng giá");
+                map.put("up"+(i+1),"");
+                map.put("num"+(i+1),"");
+                map.put("level"+(i+1),"");
+                map.put("open"+(i+1),"");
+                map.put("close"+(i+1),"");
             }
-            map.put("level"+(i+1),level(temp));
-            map.put("open"+(i+1),Double.toString(sortedListChange.get(i).getData().getOpen()));
-            map.put("close"+(i+1),Double.toString(sortedListChange.get(i).getData().getClose()));
-
         }
         return map;
     }

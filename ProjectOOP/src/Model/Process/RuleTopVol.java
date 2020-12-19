@@ -1,4 +1,5 @@
 package ProjectOOP.src.Model.Process;
+import ProjectOOP.src.Model.Handle.DataInput;
 import ProjectOOP.src.Model.Handle.DataOutput;
 import ProjectOOP.src.Model.Handle.SortData;
 

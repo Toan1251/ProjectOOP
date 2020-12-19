@@ -1,33 +1,40 @@
 package ProjectOOP.src.Model.Handle;
 
 import java.util.LinkedList;
-    import java.util.List;
+import java.util.List;
 import ProjectOOP.src.Model.Process.*;
     public class DataOutput extends DataTagging {
         private List<String> sentence_name;
         private List<String> sentence_ranking;
         private List<String> sentence_nganh;
+        private List<String> sentence_count;
         // Todo: Thêm các hàm hoặc các lớp cần thiết để tạo, thêm, xóa, trả về câu thích hợp vào LinkedList
 
         public DataOutput() {
 
-            this.sentence_name = new LinkedList<String>();
-            this.sentence_ranking = new LinkedList<String>();
-            this.sentence_nganh = new LinkedList<String>();
+            this.sentence_name = new LinkedList<>();
+            this.sentence_ranking = new LinkedList<>();
+            this.sentence_nganh = new LinkedList<>();
+            this.sentence_count = new LinkedList<>();
+
         }
 
         public DataOutput(DataInput data) {
             super(data);
-            this.sentence_name = new LinkedList<String>();
-            this.sentence_ranking = new LinkedList<String>();
-            this.sentence_nganh = new LinkedList<String>();
+            this.sentence_name = new LinkedList<>();
+            this.sentence_ranking = new LinkedList<>();
+            this.sentence_nganh = new LinkedList<>();
+            this.sentence_count = new LinkedList<>();
+
         }
 
         public DataOutput(DataInput data, TagManager tags) {
             super(data, tags);
-            this.sentence_name = new LinkedList<String>();
-            this.sentence_ranking = new LinkedList<String>();
-            this.sentence_nganh = new LinkedList<String>();
+            this.sentence_name = new LinkedList<>();
+            this.sentence_ranking = new LinkedList<>();
+            this.sentence_nganh = new LinkedList<>();
+            this.sentence_count = new LinkedList<>();
+
         }
 
 //        public DataOutput(DataInput data, List<String> sentences) {
@@ -51,6 +58,8 @@ import ProjectOOP.src.Model.Process.*;
         public List<String> getSentence_nganh() {
             return sentence_nganh;
         }
+
+        public List<String> getSentence_count(){return sentence_count;}
 
         public void addSentence_name(String sentence) {
             this.sentence_name.add(sentence);
@@ -76,20 +85,22 @@ import ProjectOOP.src.Model.Process.*;
             this.sentence_nganh.addAll(sentences);
         }
 
-
-          //Debug
-        public void Debug() {
-            getData().Debug();
-            getTags().Debug();
-            for (String sentence : sentence_name) {
-                System.out.println(sentence);
-            }
-            for (String sentence : sentence_nganh) {
-                System.out.println(sentence);
-            }
-            for (String sentence : sentence_ranking){
-                System.out.println(sentence);
-            }
+        public void addSentence_count(String sentence) {
+            this.sentence_count.add(sentence);
         }
+
+        public void addSentences_count(List<String> sentences) {
+            this.sentence_count.addAll(sentences);
+        }
+
+
+//        //Debug
+//        public void Debug() {
+//            getData().Debug();
+//            getTags().Debug();
+//            for (String sentence : sentences) {
+//                System.out.println(sentence);
+//            }
+//        }
 
     }

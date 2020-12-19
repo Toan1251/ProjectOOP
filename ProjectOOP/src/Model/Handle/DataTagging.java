@@ -1,5 +1,7 @@
 package ProjectOOP.src.Model.Handle;
 
+import ProjectOOP.src.Model.Process.GroupTopAirline;
+
 public class DataTagging{
     private DataInput data;
     private TagManager tags;
@@ -40,21 +42,14 @@ public class DataTagging{
     //tự động điền các tag kiểu change và name vào bộ quản lý tag
     public void autoAddTag() {
         // Todo: thêm tag Ranking và group, bo tag kieu change
-        String name;
-        if(data.getClose() - data.getOpen() > 0) {
-            name = "up";
-        }
-        else if(data.getClose() - data.getOpen() < 0) {
-            name = "down";
-        }
-        else {
-            name = "stand";
-        }
-        Tag tagChange = new Tag(name, "change");
-        this.tags.addTag(tagChange);
+//        String name;
         // thêm name Tag
         Tag tagName = new Tag(data.getName(),"name");
+
+        //thêm vào tag count tính số tăng giảm cho tất cả các dataoutput
+        Tag tagCount=new Tag("GroupChangeNumber","count");
         this.tags.addTag(tagName);
+        this.tags.addTag(tagCount);
     }
 
 
