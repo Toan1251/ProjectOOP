@@ -4,9 +4,12 @@ import ProjectOOP.src.Model.Crawler.ExtractData;
 import ProjectOOP.src.Model.Handle.DataFileHandle;
 import ProjectOOP.src.Model.Handle.DataFileOutput;
 import ProjectOOP.src.Model.Handle.DataOutput;
+import ProjectOOP.src.Model.Handle.SortData;
 import ProjectOOP.src.Model.Parser.DataFileInput;
 
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Main {
 
@@ -22,7 +25,6 @@ public class Main {
         }
         DataFileOutput dfo = new DataFileHandle().handleFile(dfi);
         dfo.getData().get(1).Debug();
-
 
         //todo: Xây dựng luồng hđ cho dữ liệu
     }

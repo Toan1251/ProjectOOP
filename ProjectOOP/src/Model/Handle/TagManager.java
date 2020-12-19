@@ -72,10 +72,6 @@ public class TagManager {
     public void Debug() {
         for (Tag tag : this.tagSet) {
             tag.Debug();
-            Iterator<Tag> itr = this.tagSet.iterator();
-            while (itr.hasNext()) {
-                itr.next().Debug();
-            }
         }
     }
 }

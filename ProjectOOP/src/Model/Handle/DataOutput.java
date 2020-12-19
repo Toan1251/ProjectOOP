@@ -77,13 +77,19 @@ import ProjectOOP.src.Model.Process.*;
         }
 
 
-//        //Debug
-//        public void Debug() {
-//            getData().Debug();
-//            getTags().Debug();
-//            for (String sentence : sentences) {
-//                System.out.println(sentence);
-//            }
-//        }
+          //Debug
+        public void Debug() {
+            getData().Debug();
+            getTags().Debug();
+            for (String sentence : sentence_name) {
+                System.out.println(sentence);
+            }
+            for (String sentence : sentence_nganh) {
+                System.out.println(sentence);
+            }
+            for (String sentence : sentence_ranking){
+                System.out.println(sentence);
+            }
+        }
 
     }

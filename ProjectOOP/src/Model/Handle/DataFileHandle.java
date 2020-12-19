@@ -1,7 +1,6 @@
 package ProjectOOP.src.Model.Handle;
 
 import ProjectOOP.src.Model.Parser.DataFileInput;
-import jdk.jfr.Unsigned;
 import ProjectOOP.src.Model.Process.*;
 import java.util.*;
 public class DataFileHandle {
@@ -46,25 +45,23 @@ public class DataFileHandle {
         SortData sorting = new SortData();
 
         // sorting.sort trả về 1 linkedList gồm TOP_DATA phần tử
-        for(int i = 1; i <= sorting.MAX_FIELD; i++){
+        for(int i = 1; i <= SortData.MAX_FIELD; i++){
             String tagName = "Top 10 ";
             String tagType = "ranking";
-            if(i==sorting.VOLUME){
+            if(i==SortData.VOLUME){
                 tagName += "Volume";
-            }else if(i==sorting.OPEN){
+            }else if(i==SortData.OPEN){
                 tagName += "Open";
-            }else if(i==sorting.CLOSE){
+            }else if(i==SortData.CLOSE){
                 tagName += "Close";
-            }else if(i==sorting.HIGH){
+            }else if(i==SortData.HIGH){
                 tagName += "High";
-            }else if(i==sorting.LOW){
+            }else if(i==SortData.LOW){
                 tagName += "Low";
-            }else if(i==sorting.CHANGE){
+            }else if(i==SortData.CHANGE){
                 tagName += "Change";
-            }else if(i==sorting.CHANGE_PERCENT){
+            }else if(i==SortData.CHANGE_PERCENT){
                 tagName += "Up Speed";
-            }else if(i==sorting.VOLUME_VALUE){
-                tagName += "Volume Value";
             }
             List<DataOutput> top10Desc = sorting.sort(dFO.getData(), i, TOP_DATA, false);
             List<DataOutput> top10Asc = sorting.sort(dFO.getData(), i, TOP_DATA, true);
