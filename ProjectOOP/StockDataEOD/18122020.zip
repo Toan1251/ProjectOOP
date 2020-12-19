@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <title>Free Wi-Fi | AWING</title>
+    
+    
+        <link rel="shortcut icon" href="/images/awicon.ico">
+        <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/css/captive-1.0.min.css?20200709" rel="stylesheet" />
+        <script src="/lib/jquery/jquery-3.2.1.min.js"></script>
+        <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/scripts/imagesloaded.pkgd.min.js"></script>
+        <script src="/scripts/captive-1.0.min.js?20200709"></script>
+    
+</head>
+<body>
+    
+<div id="layoutHeader" class="header" style="height: 60px;"></div>
+<script>
+    $("#layoutHeader").load('/static/Files/layout/5197905656409960384/5538742900884010760/Header.html');
+</script>
+    <div class="popup-container awing-popup" style="display:none"></div>
+    <div id="agreement-container" class="awing-popup" style="display:none"></div>
+    <div class="loginpage-container">
+        <div id="wa_loading"></div>
+        <form name="extreme" target="loginFrame" id="frmLogin" action="/cgi-bin/hslogin.cgi" method="POST">
+    <input class="control" name="f_user" id="f_user" type="hidden" value="awing120">
+    <input class="control" name="f_pass" id="f_pass" type="hidden" value="Awing120@2018">
+    <input size="64" name="f_hs_server" id="f_hs_server" type="hidden">
+    <input name="f_curr_time" id="f_curr_time" type="hidden">
+    <input name="f_Qv" id="f_Qv" type="hidden">
+</form>
+<script>
+    var hs_server = "NONE";   
+    hs_server = getQueryVariable("hs_server");
+    Qv = getQueryVariable("Qv");
+    document.forms['frmLogin'].elements['f_hs_server'].value = hs_server;
+    document.forms['frmLogin'].elements['f_Qv'].value = Qv;
+    document.getElementById('frmLogin').elements['f_curr_time'].value = Math.floor(new Date().getTime() / 1000);
+    document.getElementById("frmLogin").action = "http://" + hs_server + ":880/cgi-bin/hslogin.cgi";
+    // function to get the query parameter value from URL query string.
+    function getQueryVariable(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split(/[?&]/);
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            if (pair[0] == variable) {
+                if (pair[0] == "Qv") {
+                    return vars[i].substr(3, vars[i].length);
+                }
+                return pair[1];
+            }
+        }
+        return "";
+    }
+   var authenticationProfileOptionals = [];
+    function bindOptionalProfileByIndex(idx) {
+        if (authenticationProfileOptionals.length > 0) {
+            var extremeRadius = JSON.parse(authenticationProfileOptionals[idx].Params);
+            $("#f_user").val(extremeRadius.Username);
+            $("#f_pass").val(extremeRadius.Password);
+        }
+    }
+    function bindOptionalProfileByName(name) {
+        if (authenticationProfileOptionals.length > 0) {
+            authenticationProfileOptionals.forEach(function (el) {
+                if (el.Name.toLowerCase() == name.toLowerCase()) {
+                    var extremeRadius = JSON.parse(profileOptional.Params);
+                    $("#f_user").val(extremeRadius.Username);
+                    $("#f_pass").val(extremeRadius.Password);
+                }
+            });
+        }
+    }
+    function doPostForm() {
+        // Xác thực ngầm theo kiểu iframe
+        login();
+    }
+</script>
+
+<script>
+    console.log("check internet connected.");
+    var checkInternetLink = "";
+    if (checkInternetLink)
+        checkInternetConnected(checkInternetLink);
+    console.log("start load login page");
+    var interval_obj = setInterval(function () {
+        /* - Nếu đã kết thúc 2s loading, đặt cờ layoutAnimationLoadingFlag=1 thì chờ đến khi có 1 trong các
+            sự kiện đặt cờ customerCollectionPopupLoadingFlag =1 hoac campaignLoadingFlag=1 thì mới tắt
+            hiệu ứng loading, đặt cờ layoutAnimationLoadingFlag=2 để tiếp tục (nghĩa là đã tắt hiệu ứng loading)
+            - Khi customerCollectionPopupLoadingFlag= 1, nghĩa là popup đã load xong, thì hiển thị nó. Đặt lại
+            giá trị = 2, nghĩa là đang chờ người dùng tương tác
+            - Khi campaignLoadingFlag=1, nghĩa là view 1 đã load xong, hiển thị view và đặt cờ campaignLoadingFlag =2
+            - Khi tất cả các tiến trình đã hoàn thành (các cờ về giá trị cuối cùng) thì xóa vòng lặp,
+            bắt đầu gọi hàm để startAnimation của view 1.
+        */
+        if (isCampaignOrCustomerPopupLoaded()) {
+            layoutAnimationLoadingFlag = LAYOUT_ANIMATION_STATE.END;
+            endLayoutLoadingAnimation();
+            console.log("End running animation");
+        }
+        if (isCustomerPopupLoaded()) {
+            customerCollectionPopupLoadingFlag = CUSTOMER_POPUP_STATE.DISPLAYED;
+            $(".popup-container").css("display", "block");
+            console.log("Show customer collection popup");
+        }
+        if (isCampaignLoaded()) {
+            campaignLoadingFlag = CAMPAIGN_STATE.DISPLAYED;
+            startView();
+            console.log("Start view");
+        }
+        if (isAllLoadingCompleted()) {
+            startViewAnimation();
+            clearInterval(interval_obj);
+            console.log("layoutAnimationLoadingFlag: " + layoutAnimationLoadingFlag + "; customerCollectionPopupLoadingFlag: " + customerCollectionPopupLoadingFlag + "; campaignLoadingFlag: " + campaignLoadingFlag);
+        }
+    }, 100);
+    displayLoadingMessage('lgn');
+    if (!checkCookieEnabled()) {
+        var url = '/FailCookie';
+        window.location.replace(url);
+    }
+    campaignData = {
+        preview: 0,
+        placeId: "5140473270218926072",
+        domainId: "5538742900884010760",
+        clientMac: "00-21-6B-DF-E5-F8",
+        apMac: "B8-50-01-32-AD-8F",
+        sessionId: "ebf0194d-06e4-4e18-9f1d-bc926b967a3c",
+        gaCodes: "true",
+        token: '337266d86e1681233c1d19bf43576852'
+    };
+    console.log("start load ads.");
+    $.ajax({
+        url: '/Content/GetContent',
+        type: 'GET',
+        data: {
+            sessionId: "ebf0194d-06e4-4e18-9f1d-bc926b967a3c",
+            placeId: '5140473270218926072',
+            macAddress: '00-21-6B-DF-E5-F8',
+            token: '337266d86e1681233c1d19bf43576852'
+        },
+        success: function (result) {
+            console.log("load ads success.");
+            if (result != null) {
+                renderContentCampaign(result.CampaignId, result.IsNetworkCampaign);
+                let reqFields = result.RequiredCustomerFields;
+                var contentCustomerModel = {
+                    macAddress: '00-21-6B-DF-E5-F8',
+                    requiredFields: reqFields,
+                    deviceInfo: detectDeviceInfo()
+                };
+                // Khi render content customer thì gửi kèm cả deviceinfo
+                // Để tự động update lại deviceinfo mới nếu update os
+                renderContentCustomer(contentCustomerModel);
+            }
+            else {
+                renderContentCampaign(-1);
+                renderContentCustomer(null);
+            }
+        },
+        error: function (result) {
+            console.log("load ads error.");
+            renderContentCampaign(-1);
+            renderContentCustomer(null);
+        }
+    });
+    function renderContentCampaign(campaignId, isNetwork) {
+        $.get('/Content/ContentCampaign?campaignId=' + campaignId + '&domainId=5538742900884010760&isNetworkCampaign=' + isNetwork, function (result) {
+            $(".loginpage-container").append(result);
+            $(".loginpage-container").append('<div style="clear: both"></div>');
+            startLoadingCampaign();
+        });
+    }
+    function renderContentCustomer(contentCustomerModel) {
+        if (contentCustomerModel != null) {
+            let checkIOS14 = 'true' === 'true';
+            $.post('/Content/ContentCustomer',
+                { model: contentCustomerModel, checkIOS14: checkIOS14 },
+                function (result) {
+                    if (result != "") {
+                        console.log("load ads customer success.");
+                        $(".popup-container").html(result);
+                        customerCollectionPopupLoadingFlag = CUSTOMER_POPUP_STATE.LOADED;
+                    }
+                    else
+                        customerCollectionPopupLoadingFlag = CUSTOMER_POPUP_STATE.END;
+                });
+        }
+        else
+            customerCollectionPopupLoadingFlag = CUSTOMER_POPUP_STATE.END;
+    }
+</script>
+        <div style="clear: both"></div>
+    </div>
+    
+<div id="layoutFooter"></div>
+<script>
+    $("#layoutFooter").load('/static/Files/layout/5197905656409960384/5538742900884010760/Footer.html');
+</script>
+    <div style="clear:both"></div>
+    
+</body>
+</html>

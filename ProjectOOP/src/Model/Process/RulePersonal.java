@@ -1,5 +1,7 @@
 package ProjectOOP.src.Model.Process;
 import ProjectOOP.src.Model.Handle.DataInput;
+import ProjectOOP.src.Model.Handle.DataOutput;
+
 import java.util.List;
 import java.util.LinkedList;
 import java.util.Map;
@@ -18,7 +20,7 @@ public class RulePersonal extends Rules {
     }
 
     //đây chính là volume value
-    private double dauhieu(DataOutput obj ){
+    private double dauhieu(DataOutput obj){
         return (obj.getData().getHigh()+obj.getData().getLow())/2*(obj.getData().getVolume());
     }
 
@@ -244,7 +246,7 @@ public class RulePersonal extends Rules {
                 LinkedList<DataOutput> demo = new LinkedList<>();//list chứa các đối tượng để random
 
                 for (DataOutput datum : data) {
-                    if (!(datum.getData().getName().equals("BID") || datum.getData().getName().equals("CTG") || datum.getData().getName().equals("HDB")
+                    if (!(datum.getData().getName().equals("BID") || datum.getData().getName().equals("HDB")
                             || datum.getData().getName().equals("MBB") || datum.getData().getName().equals("TCB") || datum.getData().getName().equals("VCB")
                             || datum.getData().getName().equals("VPB") || datum.getData().getName().equals("CTG") || datum.getData().getName().equals("ASP")
                             || datum.getData().getName().equals("PGC") || datum.getData().getName().equals("PJT") || datum.getData().getName().equals("PLX")
@@ -252,7 +254,7 @@ public class RulePersonal extends Rules {
                             || datum.getData().getName().equals("ANV") || datum.getData().getName().equals("IDI") || datum.getData().getName().equals("VHC")
                             || datum.getData().getName().equals("TS4") || datum.getData().getName().equals("HVN") || datum.getData().getName().equals("VJC")
                             || datum.getData().getName().equals("DRC") || datum.getData().getName().equals("DPR") || datum.getData().getName().equals("TRC")
-                            || datum.getData().getName().equals("HRC") || datum.getData().getName().equals("TRC") || datum.getData().getName().equals("CSM")
+                            || datum.getData().getName().equals("HRC") || datum.getData().getName().equals("CSM")
                             || datum.getData().getName().equals("NKG") || datum.getData().getName().equals("TLH") || datum.getData().getName().equals("POM")
                             || datum.getData().getName().equals("MWG") || datum.getData().getName().equals("PET") || datum.getData().getName().equals("BVG")
                             || datum.getData().getName().equals("HPG") || datum.getData().getName().equals("HSG") || datum.getData().getName().equals("SMC")

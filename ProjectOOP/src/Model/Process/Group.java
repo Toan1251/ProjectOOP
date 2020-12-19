@@ -1,6 +1,7 @@
 package ProjectOOP.src.Model.Process;
 import java.util.*;
 import ProjectOOP.src.Model.Handle.DataInput;
+import ProjectOOP.src.Model.Handle.DataOutput;
 
 
 public abstract class Group {

@@ -21,7 +21,7 @@ public class SortData {
 
     }
 
-    //isAscending: Thứ tự giảm dần
+    //isAscending: Thứ tự tăng dần
 
     public List<DataOutput> sort(List<DataOutput> data, int attribute){
         List<DataOutput> sortedList = new LinkedList<>(data);

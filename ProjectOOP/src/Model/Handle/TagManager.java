@@ -14,11 +14,12 @@ public class TagManager {
     public TagManager() {
         tagSet = new HashSet<Tag>();
     }
+
     public TagManager(Set<Tag> tagSet) {
-        this.tagSet= tagSet;
+        this.tagSet = tagSet;
     }
 
-    public Set<Tag> getTagSet(){
+    public Set<Tag> getTagSet() {
         return tagSet;
     }
 
@@ -32,7 +33,7 @@ public class TagManager {
     }
 
     //Thêm 1 collection Tag vào Set
-    public void addTag(Collection<Tag> tags){
+    public void addTag(Collection<Tag> tags) {
         tagSet.addAll(tags);
     }
 
@@ -42,18 +43,18 @@ public class TagManager {
     }
 
     //Xóa 1 Collection khỏi Set
-    public void removeTag(Collection<Tag> tags){
+    public void removeTag(Collection<Tag> tags) {
         tagSet.removeAll(tags);
     }
 
     //Tìm 1 Tag dựa vào tên
     public Tag findTag(String tag) {
-        if(isHaveThisTag(tag)){
+        if (isHaveThisTag(tag)) {
             Iterator<Tag> itr = this.tagSet.iterator();
             Tag find = new Tag(tag);
-            while(itr.hasNext()){
+            while (itr.hasNext()) {
                 Tag nowTag = itr.next();
-                if(nowTag.equals(find)){
+                if (nowTag.equals(find)) {
                     return nowTag;
                 }
             }
@@ -66,13 +67,15 @@ public class TagManager {
         Tag temp = new Tag(tag);
         return tagSet.contains(temp);
     }
+
     //Debug
-    public void Debug(){
+    public void Debug() {
         for (Tag tag : this.tagSet) {
             tag.Debug();
             Iterator<Tag> itr = this.tagSet.iterator();
-            while(itr.hasNext()){
+            while (itr.hasNext()) {
                 itr.next().Debug();
             }
         }
     }
+}

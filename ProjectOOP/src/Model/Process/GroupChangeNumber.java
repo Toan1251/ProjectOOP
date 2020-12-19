@@ -1,6 +1,9 @@
 package ProjectOOP.src.Model.Process;
 import ProjectOOP.src.Model.Handle.DataInput;
+import ProjectOOP.src.Model.Handle.DataOutput;
+
 import java.util.List;
+
 
 
 public class GroupChangeNumber extends Group {

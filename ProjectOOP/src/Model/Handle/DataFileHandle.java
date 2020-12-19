@@ -89,7 +89,7 @@ public class DataFileHandle {
             Iterator<Tag> itr = obj.iterator();
             while (itr.hasNext()){
                 Tag value= itr.next();
-                processSentences(value, dF0.getData(),output);
+                processSentences(value, dF0.getData(), output);
             }
         }
     }

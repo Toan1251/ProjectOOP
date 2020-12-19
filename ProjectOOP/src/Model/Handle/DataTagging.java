@@ -39,7 +39,7 @@ public class DataTagging{
 
     //tự động điền các tag kiểu change và name vào bộ quản lý tag
     public void autoAddTag() {
-        // thêm change Tag
+        // Todo: thêm tag Ranking và group, bo tag kieu change
         String name;
         if(data.getClose() - data.getOpen() > 0) {
             name = "up";
@@ -56,6 +56,8 @@ public class DataTagging{
         Tag tagName = new Tag(data.getName(),"name");
         this.tags.addTag(tagName);
     }
+
+
 
     @Override
     public boolean equals(Object o) {
