@@ -8,7 +8,6 @@ public class ComparatorByChangePercent implements Comparator<DataOutput> {
 
 	@Override
 	public int compare(DataOutput d1, DataOutput d2) {
-
 		return Double.compare(d2.getData().getChangePercent(), d1.getData().getChangePercent());
 	}
 }

@@ -1,5 +1,7 @@
 package ProjectOOP.src.Model.Handle;
 
+import ProjectOOP.src.Model.Handle.Sorted.*;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -27,28 +29,28 @@ public class SortData {
         List<DataOutput> sortedList = new LinkedList<>(data);
         //Sort Data theo thứ tự giảm dần dựa trên các thuộc tính
         if(attribute==VOLUME){
-            sortedList.sort((d1, d2) -> d1.getData().getVolume() < d2.getData().getVolume() ? 1 : -1);
+            sortedList.sort(new ComparatorByVolume());
         }
         else if(attribute==OPEN){
-            sortedList.sort((d1, d2) -> d1.getData().getOpen() < d2.getData().getOpen() ? 1 : -1);
+            sortedList.sort(new ComparatorByOpen());
         }
         else if(attribute==CLOSE){
-            sortedList.sort((d1, d2) -> d1.getData().getClose() < d2.getData().getClose() ? 1 : -1);
+            sortedList.sort(new ComparatorByClose());
         }
         else if(attribute==HIGH){
-            sortedList.sort((d1, d2) -> d1.getData().getHigh() < d2.getData().getHigh() ? 1 : -1);
+            sortedList.sort(new ComparatorByHigh());
         }
         else if(attribute==LOW){
-            sortedList.sort((d1, d2) -> d1.getData().getLow() < d2.getData().getLow() ? 1 : -1);
+            sortedList.sort(new ComparatorByLow());
         }
         else if(attribute==CHANGE){
-            sortedList.sort((d1, d2) -> d1.getData().getChange() < d2.getData().getChange() ? 1 : -1);
+            sortedList.sort(new ComparatorByChange());
         }
         else if(attribute==CHANGE_PERCENT){
-            sortedList.sort((d1, d2) -> d1.getData().getChangePercent() < d2.getData().getChangePercent() ? 1 : -1);
+            sortedList.sort(new ComparatorByChangePercent());
         }
         else if(attribute==VOLUME_VALUE){
-            sortedList.sort((d1, d2)->d1.getData().getVolumeValue() < d2.getData().getVolumeValue() ? 1:-1);
+            sortedList.sort(new ComparatorByVolumeValue());
         }
         return sortedList;
     }

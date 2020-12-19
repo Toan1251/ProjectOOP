@@ -24,7 +24,7 @@ public class Main {
             e.printStackTrace();
         }
         DataFileOutput dfo = new DataFileHandle().handleFile(dfi);
-        dfo.getData().get(1).Debug();
+        System.out.println(dfo.getData().get(1));
 
         //todo: Xây dựng luồng hđ cho dữ liệu
     }
