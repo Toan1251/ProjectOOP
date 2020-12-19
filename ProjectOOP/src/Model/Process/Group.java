@@ -1,6 +1,5 @@
 package ProjectOOP.src.Model.Process;
 import java.util.*;
-
 import ProjectOOP.src.Model.Handle.DataInput;
 
 
@@ -12,9 +11,9 @@ public abstract class Group {
 
 
     public Group() {
-        sentences = new ArrayList<String>();
+        sentences = new ArrayList<>();
         random = new Random();
-        eachMap = new HashMap<String,String>();
+        eachMap = new HashMap<>();
     }
 
 
@@ -61,7 +60,7 @@ public abstract class Group {
     //hàm này để lấy ra câu sau khi đã xử lí hoàn tất
     public String getOutput(){
         this.output= divideSentences(randomSentence(this.sentences));
-        return output.toString();
+        return output;
     }
 
     public String getOutput(List<String> list){
@@ -69,8 +68,9 @@ public abstract class Group {
     }
 
     //hàm này để override lại
-    public abstract String begin(ArrayList<DataInput> data);
+    public abstract String begin(List<DataOutput> data);
     //public abstract List<String> begin(ArrayList<DataInput> data,String name);
+
 
 
 

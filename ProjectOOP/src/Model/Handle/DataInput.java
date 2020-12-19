@@ -90,6 +90,16 @@ public class DataInput{
         return getClose()-getOpen();
     }
 
+    public double getVolumeValue(){
+        if(getHigh()==getLow()){
+            return getVolume()*getHigh();
+        }
+        else {
+
+            return getVolume() * ((getHigh() + getLow())/2);
+        }
+    }
+
     public double getChangePercent(){
         double cp = getChange()/getOpen();
         if(cp==Double.POSITIVE_INFINITY || cp==Double.NaN){

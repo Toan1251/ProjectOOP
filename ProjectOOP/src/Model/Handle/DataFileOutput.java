@@ -50,7 +50,6 @@ public class DataFileOutput {
     //Thêm 1 Output vào List
     public void addData(DataOutput dO){
         data.add(dO);
-        tagManager.addTag(dO.getTags().getTagSet());
     }
 
     //Nhận 1 request từ Controler và trả về 1 List Output phù hợp
@@ -76,7 +75,7 @@ public class DataFileOutput {
             case "name":
                 //
                 break;
-            case "change":
+            case "nganh":
                 //
                 break;
             case "ranking":
@@ -95,29 +94,30 @@ public class DataFileOutput {
         tagManager.Debug();
     }
 
-    //dựa vào các tag đã chọn, tạo ra các đối tương DataOutput tương ứng
-    //và trả về 1 List chứa các DataOutput đã chọn.
-    //*** tên các tag dùng làm điều kiện đang là tạm thời
-    public List<DataOutput> paragraph(Set<Tag> tags,ArrayList<DataInput>data){
-        List<DataOutput> result = new LinkedList<DataOutput>();
-        for (Tag tag : tags) {
-            DataOutput temp=new DataOutput();
-            temp.makeOutput(tag,data);
-            result.add(temp);
-        }
-        return result;  
-    }
-
-    //tương tự hàm paragraph riêng cho việc xuất đoạn văn của 1 đối tượng cụ thể
-    public List<DataOutput> paragraph(Set<Tag> tags,ArrayList<DataInput>data,String name){
-        List<DataOutput> result = new LinkedList<DataOutput>();
-        for (Tag tag : tags) {
-            DataOutput temp=new DataOutput();
-            temp.makeOutputPersonal(tag,data,name);
-            result.add(temp);
-        }
-        return result;
-    }
+//    //dựa vào các tag đã chọn, tạo ra các đối tương DataOutput tương ứng
+//    //và trả về 1 List chứa các DataOutput đã chọn.
+//    //*** tên các tag dùng làm điều kiện đang là tạm thời
+//    public List<DataOutput> paragraph(Tag tag,ArrayList<DataInput>data){
+//
+//        List<DataOutput> result = new LinkedList<DataOutput>();
+//
+//            DataOutput temp=new DataOutput();
+//            temp.makeOutput(tag,data);
+//            result.add(temp);
+//
+//        return result;
+//    }
+//
+//    //tương tự hàm paragraph riêng cho việc xuất đoạn văn của 1 đối tượng cụ thể
+//    public List<DataOutput> paragraph(Set<Tag> tags,ArrayList<DataInput>data,String name){
+//        List<DataOutput> result = new LinkedList<DataOutput>();
+//        for (Tag tag : tags) {
+//            DataOutput temp=new DataOutput();
+//            temp.makeOutputPersonal(tag,data,name);
+//            result.add(temp);
+//        }
+//        return result;
+//    }
 
 
 

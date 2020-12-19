@@ -1,7 +1,6 @@
 package ProjectOOP.src.Model.Handle;
 
 import ProjectOOP.src.Model.Handle.Tag;
-
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -71,6 +70,9 @@ public class TagManager {
     public void Debug(){
         for (Tag tag : this.tagSet) {
             tag.Debug();
+            Iterator<Tag> itr = this.tagSet.iterator();
+            while(itr.hasNext()){
+                itr.next().Debug();
+            }
         }
     }
-}

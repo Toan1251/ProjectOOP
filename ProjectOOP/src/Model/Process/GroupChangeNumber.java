@@ -1,9 +1,7 @@
 package ProjectOOP.src.Model.Process;
-
-
 import ProjectOOP.src.Model.Handle.DataInput;
+import java.util.List;
 
-import java.util.ArrayList;
 
 public class GroupChangeNumber extends Group {
     //override lại phương thức để lấy value ứng với key
@@ -13,7 +11,7 @@ public class GroupChangeNumber extends Group {
     }
 
     @Override
-    public String begin(ArrayList<DataInput> data) {
+    public String begin(List<DataOutput> data) {
         //thêm câu vào list sentences chung chờ xử lí
         addGroupSentences("Tại thời điểm đóng cửa, toàn thị trường có <soLuongTang> mã tăng giá, <soLuongGiam> mã giảm giá và <soLuongKhongDoi> mã đứng giá,trong đó có <tangtran> mã tăng trần và <giamsan> mã giảm sàn. ");
         addGroupSentences("Trong phiên hôm nay,số mã <code1> hiện lên tới <soLuong1> mã, bằng <solan> lần số mã <code2> với <soLuong2> mã.");

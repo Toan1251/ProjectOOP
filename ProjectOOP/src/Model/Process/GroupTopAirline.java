@@ -1,8 +1,6 @@
 package ProjectOOP.src.Model.Process;
-
 import ProjectOOP.src.Model.Handle.DataInput;
-
-import java.util.ArrayList;
+import java.util.List;
 
 public class GroupTopAirline extends Group {
     //override lại phương thức để lấy value ứng với key
@@ -12,7 +10,7 @@ public class GroupTopAirline extends Group {
     }
 
     @Override
-    public String begin(ArrayList<DataInput> data) {
+    public String begin(List<DataOutput> data) {
         //thêm câu vào list sentences chung chờ xử lí
         addGroupSentences("Ở nhóm hàng không, <nameA1> đang dẫn đầu khi <Alink1> <level1> <numA1> đồng, ngay sau đó là <nameA2> <Alink2> <level2> <numA2> đồng.");
         addGroupSentences("Riêng nhóm hàng không, <nameA1> đang dẫn đầu khi <Alink1> <level1> <numA1> đồng, ngay sau đó là <nameA2> <Alink2> <level2> <numA2> đồng.");

@@ -1,8 +1,6 @@
 package ProjectOOP.src.Model.Process;
-
 import ProjectOOP.src.Model.Handle.DataInput;
-
-import java.util.ArrayList;
+import java.util.List;
 
 public class GroupTopRubber extends Group {
     //override lại phương thức để lấy value ứng với key
@@ -12,7 +10,7 @@ public class GroupTopRubber extends Group {
     }
 
     @Override
-    public String begin(ArrayList<DataInput> data) {
+    public String begin(List<DataOutput> data) {
         //thêm câu vào list sentences chung chờ xử lí
         addGroupSentences("Ở nhóm ngành cao su, <nameC1> đang dẫn đầu với việc <Clink1> <level1> <numC1> đồng, ngay sau đó là <nameC2> khi <Clink2> <level2> <numC2> đồng.");
         addGroupSentences("Về nhóm cao su thì <nameC1> đang dẫn đầu khi <Clink1> <level1> <numC1> đồng, ngay sau đó là <nameC2> <Clink2> <level2> <numC2> đồng.");

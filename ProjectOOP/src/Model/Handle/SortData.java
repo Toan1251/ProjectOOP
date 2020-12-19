@@ -14,7 +14,8 @@ public class SortData {
     public static final int LOW=5;
     public static final int CHANGE=6;
     public static final int CHANGE_PERCENT=7;
-    public static final int MAX_FIELD = 7;
+    public static final int VOLUME_VALUE=8;
+    public static final int MAX_FIELD = 8;
 
     public SortData() {
 
@@ -23,7 +24,7 @@ public class SortData {
     //isAscending: Thứ tự giảm dần
 
     public List<DataOutput> sort(List<DataOutput> data, int attribute){
-        List<DataOutput> sortedList = new ArrayList<>(data);
+        List<DataOutput> sortedList = new LinkedList<>(data);
         //Sort Data theo thứ tự giảm dần dựa trên các thuộc tính
         if(attribute==VOLUME){
             sortedList.sort((d1, d2) -> d1.getData().getVolume() < d2.getData().getVolume() ? 1 : -1);
@@ -45,6 +46,9 @@ public class SortData {
         }
         else if(attribute==CHANGE_PERCENT){
             sortedList.sort((d1, d2) -> d1.getData().getChangePercent() < d2.getData().getChangePercent() ? 1 : -1);
+        }
+        else if(attribute==VOLUME_VALUE){
+            sortedList.sort((d1, d2)->d1.getData().getVolumeValue() < d2.getData().getVolumeValue() ? 1:-1);
         }
         return sortedList;
     }

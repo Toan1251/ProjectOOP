@@ -1,9 +1,6 @@
 package ProjectOOP.src.Model.Process;
-
-
 import ProjectOOP.src.Model.Handle.DataInput;
-
-import java.util.ArrayList;
+import java.util.List;
 
 public class GroupDecreasePercent extends Group {
     //override lại phương thức để lấy value ứng với key
@@ -13,7 +10,7 @@ public class GroupDecreasePercent extends Group {
     }
 
     @Override
-    public String begin(ArrayList<DataInput> data) {
+    public String begin(List<DataOutput> data) {
         //thêm câu vào list sentences chung chờ xử lí
         addGroupSentences("Ngược lại,<rname> là mã cổ phiếu có mức giảm mạnh nhất sàn là <rpercent>%, tương ứng giảm từ <rbegin> đồng xuống <rend> đồng.  ");
         addGroupSentences("Trong khi đó dẫn đầu danh sách giảm giá sàn HOSE là <rname> của <corp> với mức giảm <rpercent>%, tương ứng giảm từ <rbegin> đồng/CP xuống còn <rend> đồng/CP.");

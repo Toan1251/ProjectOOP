@@ -1,22 +1,13 @@
 package ProjectOOP.src.Model.Process;
-
-import java.util.ArrayList;
-import java.util.Map;
-
 import ProjectOOP.src.Model.Handle.DataInput;
 
-//change là số thay đổi, dùng để so sánh độ tăng hay giảm của số liệu.
-//index là index của ArrayList trong DataInput
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 public class Rules {
-    private double valueChange;
-    private double PercentChange;
-    private int index;
     protected Map<String,String> map;
-    private double Volume;
-    private double volumeValue;
-
-    //.//
-    public Map<String,String> PushInMap(ArrayList<DataInput> data){
+    public Map<String,String> PushInMap(List<DataOutput> data){
         return null;
     };
 
@@ -24,21 +15,21 @@ public class Rules {
 
 
     public Rules(){
-        //Map dùng để chứa các cặp key,value dùng để thay thế biến cho câu.
-        //Map map = new HashMap<String,String>();
-    }
-
-    public Rules (int index,double valueChange,double PercentChange){
-        setIndex(index);
-        setValueChange(valueChange);
-        setPercentChange(PercentChange);
+        map = new HashMap<>();
 
     }
 
-    public Rules (int index,double PercentChange){
-        setIndex(index);
-        setPercentChange(PercentChange);
-    }
+//    public Rules (int index,double valueChange,double PercentChange){
+//        setIndex(index);
+//        setValueChange(valueChange);
+//        setPercentChange(PercentChange);
+//
+//    }
+
+//    public Rules (int index,double PercentChange){
+//        setIndex(index);
+//        setPercentChange(PercentChange);
+//    }
 
 //    public Rules (int index, double Volume,double volumeValue){
 //        setIndex(index);
@@ -50,44 +41,44 @@ public class Rules {
 //Map này dùng để chứa các cặp key,value dùng để thay thế biến cho câu.
 
 
-    public int getIndex() {
-        return index;
-    }
-
-    public void setIndex(int index) {
-        this.index = index;
-    }
-
-    public double getValueChange() {
-        return valueChange;
-    }
-
-    public void setValueChange(double valueChange) {
-        this.valueChange = valueChange;
-    }
-    public double getPercentChange() {
-        return PercentChange;
-    }
-
-    public void setPercentChange(double percentChange) {
-        PercentChange = percentChange;
-    }
-
-    public double getVolume() {
-        return Volume;
-    }
-
-    public void setVolume(double volume) {
-        Volume = volume;
-    }
-
-    public double getVolumeValue() {
-        return volumeValue;
-    }
-
-    public void setVolumeValue(double volumeValue) {
-        this.volumeValue = volumeValue;
-    }
+//    public int getIndex() {
+//        return index;
+//    }
+//
+//    public void setIndex(int index) {
+//        this.index = index;
+//    }
+//
+//    public double getValueChange() {
+//        return valueChange;
+//    }
+//
+//    public void setValueChange(double valueChange) {
+//        this.valueChange = valueChange;
+//    }
+//    public double getPercentChange() {
+//        return PercentChange;
+//    }
+//
+//    public void setPercentChange(double percentChange) {
+//        PercentChange = percentChange;
+//    }
+//
+//    public double getVolume() {
+//        return Volume;
+//    }
+//
+//    public void setVolume(double volume) {
+//        Volume = volume;
+//    }
+//
+//    public double getVolumeValue() {
+//        return volumeValue;
+//    }
+//
+//    public void setVolumeValue(double volumeValue) {
+//        this.volumeValue = volumeValue;
+//    }
 
     //phương thức nói về mức độ
     public String level(double valueChange) {
@@ -104,8 +95,8 @@ public class Rules {
 
     //phương thức tìm đối tượng trong list data có tên cụ thể
     //trả về 1 đối tượng
-    public DataInput filterByName(ArrayList<DataInput> data,String name){
-        return data.stream().filter(x->x.getName().equals(name)).findAny().orElse(null);
+    public DataOutput filterByName(List<DataOutput> data,String name){
+        return data.stream().filter(x->x.getData().getName().equals(name)).findAny().orElse(null);
     }
 
     //phương thức tìm đối tượng trong list data có tên cụ thể

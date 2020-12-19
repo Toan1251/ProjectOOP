@@ -1,8 +1,6 @@
 package ProjectOOP.src.Model.Process;
-
 import ProjectOOP.src.Model.Handle.DataInput;
-
-import java.util.ArrayList;
+import java.util.List;
 
 public class GroupTopVolume extends Group {
     //override lại phương thức để lấy value ứng với key
@@ -12,7 +10,7 @@ public class GroupTopVolume extends Group {
     }
 
     @Override
-    public String begin(ArrayList<DataInput> data) {
+    public String begin(List<DataOutput> data) {
         //thêm câu vào list sentences chung chờ xử lí
         addGroupSentences("Về khối lượng khớp lệnh của từng mã trong phiên này, <vol1> vươn lên dẫn đầu với hơn <v1> cổ phiếu, <vol2> tiếp tục giao dịch sôi động với gần <v2> cổ phiếu được khớp lệnh và không còn dư bán, <vol3> cũng có giao dịch cao là hơn <v3> cổ phiếu.");
         addGroupSentences("Tính cho đến thời điểm này, <vol1> vẫn là cổ phiếu thanh khoản nhất thị trường với khối lượng giao dịch lớn và diễn biến rất sôi động, cụ thể là <v1> cổ phiếu được khớp lệnh, tiếp đến là <vol2> với <v2> đơn vị/mã và ngay sau đó là <vol3> với <v3> cổ phiếu được khớp.");
