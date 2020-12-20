@@ -112,6 +112,7 @@ public class DataFileHandle {
                 demo.add(filterByName(dFO.getData(), "VPB"));
                 demo.add(filterByName(dFO.getData(), "NCB"));
                 demo.add(filterByName(dFO.getData(), "SHB"));
+                sorting.removeNull(demo);
 
 
                 //sắp xếp theo change
@@ -155,6 +156,7 @@ public class DataFileHandle {
                 demo.add(filterByName(dFO.getData(),"PVC"));
                 demo.add(filterByName(dFO.getData(),"PVG"));
                 demo.add(filterByName(dFO.getData(),"PVS"));
+                sorting.removeNull(demo);
 
 
 
@@ -176,6 +178,7 @@ public class DataFileHandle {
                 demo.add(filterByName(dFO.getData(), "IDI"));
                 demo.add(filterByName(dFO.getData(), "VHC"));
                 demo.add(filterByName(dFO.getData(), "TS4"));
+                sorting.removeNull(demo);
 
 
 
@@ -199,10 +202,8 @@ public class DataFileHandle {
                 demo.add(filterByName(dFO.getData(), "ARM"));
                 demo.add(filterByName(dFO.getData(), "CIA"));
                 demo.add(filterByName(dFO.getData(), "MAS"));
+                sorting.removeNull(demo);
 
-                while(demo.remove((Object) null)){
-
-                }
                 //sắp xếp theo change
                 List<DataOutput> topChange = sorting.sort(demo,6);
                 //sắp xếp theo volume value
@@ -225,6 +226,7 @@ public class DataFileHandle {
                 demo.add(filterByName(dFO.getData(), "HRC"));
                 demo.add(filterByName(dFO.getData(), "TRC"));
                 demo.add(filterByName(dFO.getData(), "CSM"));
+                sorting.removeNull(demo);
 
 
 
@@ -256,6 +258,7 @@ public class DataFileHandle {
                 demo.add(filterByName(dFO.getData(), "HPG"));
                 demo.add(filterByName(dFO.getData(), "HSG"));
                 demo.add(filterByName(dFO.getData(), "SMC"));
+                sorting.removeNull(demo);
 
 
 
@@ -275,6 +278,7 @@ public class DataFileHandle {
                 demo.add(filterByName(dFO.getData(), "VIC"));
                 demo.add(filterByName(dFO.getData(), "VHM"));
                 demo.add(filterByName(dFO.getData(), "VRE"));
+                sorting.removeNull(demo);
 
 
 
