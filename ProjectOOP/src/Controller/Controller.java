@@ -16,7 +16,9 @@ public class Controller {
     private SimpleDateFormat SDF1 = new SimpleDateFormat("yyyyMMdd");
     private SimpleDateFormat SDF2 = new SimpleDateFormat("dd.MM.yyyy");
 
-    private String filePath = "ProjectOOP/StockDataEOD/20201218/CafeF.HNX.18.12.2020.csv";
+    private String filePathTemplate = "ProjectOOP/StockDataEOD/yyyyMMdd/CafeF.HNX.dd.MM.yyyy.csv";
+
+    //Todo:
 
 
     public Controller() {
@@ -26,8 +28,8 @@ public class Controller {
         DataFileInput hnx = null;
         DataFileInput hsx = null;
         try {
-            hnx = new DataFileInput("ProjectOOP/StockDataEOD/20201218/CafeF.HNX.18.12.2020.csv");
-            hsx = new DataFileInput("ProjectOOP/StockDataEOD/20201218/CafeF.HNX.18.12.2020.csv");
+            hnx = new DataFileInput(filePathTemplate.replace("yyyyMMdd", SDF1.format(ex.lastDay.getTime())).replace("dd.MM.yyyy", SDF2.format(ex.lastDay.getTime())));
+            hsx = new DataFileInput(filePathTemplate.replace("yyyyMMdd", SDF1.format(ex.lastDay.getTime())).replace("dd.MM.yyyy", SDF2.format(ex.lastDay.getTime())).replace("HNX", "HSX"));
         }catch (Exception e){
             e.printStackTrace();
         }
