@@ -34,7 +34,7 @@ public class GroupPersonal extends Group {
         temp1.add("Nói đến <name> thì đến cuối ngày <date> cổ phiếu đã <link> <level>.");
 
         List<String> temp2 = new LinkedList<>();
-        temp2.add("Mở đầu phiên giao dịch, <name> đạt <numOpen> đồng/ cổ phiếu, có thời điểm đạt tới <numHigh> đồng và kết thúc phiên, cổ phiếu <name> ổn định ở mức <numClose> đồng/cổ phiếu, <link> <level> <percent>% so với đầu phiên. ");
+        temp2.add("Mở đầu phiên giao dịch, <name> đạt <numOpen> đồng/ cổ phiếu, có thời điểm đạt tới <numHigh> đồng và kết thúc phiên, cổ phiếu <name> ổn định ở mức <numClose> đồng/cổ phiếu, <link> <levelPC> <percent>% so với đầu phiên. ");
         temp2.add("<name> mở đầu phiên giao dịch với <numOpen> đồng/CP và <link> <levelPC> <percent>% ở cuối phiên, cụ thể là <numClose> đồng/CP, có lúc cổ phiếu của <name> đã đạt đến <numHigh> đồng. ");
 
         List<String> temp3 = new LinkedList<>();
