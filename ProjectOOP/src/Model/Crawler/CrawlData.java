@@ -12,7 +12,7 @@ import java.util.Calendar;
 * */
 //todo: maybe add Interface Runable
 public class CrawlData{
-    private final Calendar lastDay;
+    public final Calendar lastDay;
     private static final SimpleDateFormat SDF1 = new SimpleDateFormat("yyyyMMdd");
     private static final SimpleDateFormat SDF2 = new SimpleDateFormat("ddMMyyyy");
     private static final String ZIP_DIRECTORY = "ProjectOOP/StockDataEOD/";

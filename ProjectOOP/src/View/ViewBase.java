@@ -1,4 +1,4 @@
-
+package ProjectOOP.src.View;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -24,8 +24,6 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.filechooser.FileSystemView;
 
-import com.sun.org.apache.bcel.internal.Const;
-import com.sun.org.apache.bcel.internal.generic.LoadInstruction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -127,8 +125,8 @@ public class ViewBase {
 
 		lb.setBounds(900, 100, 500, 400);
 				
-		lb.setIcon(new ImageIcon("workshop.png"));
-		caculateButton.setIcon(new ImageIcon("search.png"));
+		lb.setIcon(new ImageIcon("ProjectOOP/src/View/workshop.png"));
+		caculateButton.setIcon(new ImageIcon("ProjectOOP/src/View/search.png"));
 		
 		panel.add(lb);
 		panel.add(resultLabel);

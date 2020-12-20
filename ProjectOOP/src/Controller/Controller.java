@@ -1,14 +1,39 @@
 package ProjectOOP.src.Controller;
 
+import ProjectOOP.src.Model.Crawler.ExtractData;
+import ProjectOOP.src.Model.Handle.DataFileHandle;
 import ProjectOOP.src.Model.Handle.DataFileOutput;
+import ProjectOOP.src.Model.Parser.DataFileInput;
 import ProjectOOP.src.View.*;
 
-public class Controller {
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
-    // Khởi chạy Controller
-    public void start() {
-        ViewBase viewbase = new ViewBase();
-        //viewbase.showFrame();
+public class Controller {
+    public static ViewBase viewbase;
+    public static DataFileOutput HNX;
+    public static DataFileOutput HSX;
+    private SimpleDateFormat SDF1 = new SimpleDateFormat("yyyyMMdd");
+    private SimpleDateFormat SDF2 = new SimpleDateFormat("dd.MM.yyyy");
+
+    private String filePath = "ProjectOOP/StockDataEOD/20201218/CafeF.HNX.18.12.2020.csv";
+
+
+    public Controller() {
+        viewbase = new ViewBase();
+        ExtractData ex = new ExtractData();
+        ex.run();
+        DataFileInput hnx = null;
+        DataFileInput hsx = null;
+        try {
+            hnx = new DataFileInput("ProjectOOP/StockDataEOD/20201218/CafeF.HNX.18.12.2020.csv");
+            hsx = new DataFileInput("ProjectOOP/StockDataEOD/20201218/CafeF.HNX.18.12.2020.csv");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        DataFileHandle h = new DataFileHandle();
+        HNX = h.handleFile(hnx);
+        HSX = h.handleFile(hsx);
     }
 
     // Gửi Request về DataFileOutPut
@@ -39,8 +64,6 @@ public class Controller {
     }
 
 }
-
-
 
 
     //Todo: Đợi cho Model và View Hoàn thành khung cơ bản để xác định các lớp hoặc phương thức cần thiết
