@@ -6,6 +6,9 @@ import ProjectOOP.src.Model.Handle.DataFileOutput;
 import ProjectOOP.src.Model.Parser.DataFileInput;
 import ProjectOOP.src.View.*;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -18,13 +21,21 @@ public class Controller {
 
     private String filePathTemplate = "ProjectOOP/StockDataEOD/yyyyMMdd/CafeF.HNX.dd.MM.yyyy.csv";
 
-    //Todo:
-
 
     public Controller() {
         viewbase = new ViewBase();
         ExtractData ex = new ExtractData();
-        ex.run();
+        try {
+            ex.run();
+        }catch (UnknownHostException e){
+            e.printStackTrace();
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        }catch (IOException e){
+            e.printStackTrace();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         DataFileInput hnx = null;
         DataFileInput hsx = null;
         try {
@@ -37,6 +48,8 @@ public class Controller {
         HNX = h.handleFile(hnx);
         HSX = h.handleFile(hsx);
     }
+
+
 
     // Gửi Request về DataFileOutPut
     // request là String mà người dùng nhập ở Search, hoặc String ở TagView
