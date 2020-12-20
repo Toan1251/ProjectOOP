@@ -51,10 +51,9 @@ public class TagManager {
     public Tag findTag(String tag) {
         if (isHaveThisTag(tag)) {
             Iterator<Tag> itr = this.tagSet.iterator();
-            Tag find = new Tag(tag);
             while (itr.hasNext()) {
                 Tag nowTag = itr.next();
-                if (nowTag.equals(find)) {
+                if (nowTag.getTagName().equals(tag)) {
                     return nowTag;
                 }
             }
@@ -64,8 +63,12 @@ public class TagManager {
 
     //Kiểm tra Tag có tồn tại trong set không
     public boolean isHaveThisTag(String tag) {
-        Tag temp = new Tag(tag);
-        return tagSet.contains(temp);
+        for(Tag temp: tagSet){
+            if(temp.getTagName().equals(tag)){
+                return true;
+            }
+        }
+        return false;
     }
 
     //Debug

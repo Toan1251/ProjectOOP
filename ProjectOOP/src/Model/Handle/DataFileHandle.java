@@ -43,6 +43,9 @@ public class DataFileHandle {
         }
         //Todo: Thêm các tag kiểu ranking cho data
         addRankingTag(dFO);
+        for(DataOutput dO: dFO.getData()){
+            dFO.getTagManager().addTag(dO.getTags().getTagSet());
+        }
     }
 
     public void addRankingTag(DataFileOutput dFO) {

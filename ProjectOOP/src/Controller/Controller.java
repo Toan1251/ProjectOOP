@@ -13,86 +13,63 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class Controller {
-    public static ViewBase viewbase;
+    //    public static ViewBase viewbase;
     public static DataFileOutput HNX;
     public static DataFileOutput HSX;
-    private final SimpleDateFormat SDF1 = new SimpleDateFormat("yyyyMMdd");
-    private final SimpleDateFormat SDF2 = new SimpleDateFormat("dd.MM.yyyy");
+    public SpawmError error;
+    private SimpleDateFormat SDF1 = new SimpleDateFormat("yyyyMMdd");
+    private SimpleDateFormat SDF2 = new SimpleDateFormat("dd.MM.yyyy");
 
     private String filePathTemplate = "ProjectOOP/StockDataEOD/yyyyMMdd/CafeF.HNX.dd.MM.yyyy.csv";
 
 
     public Controller() {
-        viewbase = new ViewBase();
-        viewbase.ShowFrame();
-
+        ViewBase.ShowFrame();
         ExtractData ex = new ExtractData();
         try {
             ex.run();
         }catch (UnknownHostException e){
-            e.printStackTrace();
+            error = new SpawmError("Khong co mang","Error");
         }catch (FileNotFoundException e){
-            e.printStackTrace();
+            error = new SpawmError("Khong tim thay file", "Error");
         }catch (IOException e){
-            e.printStackTrace();
+            error = new SpawmError("Khong dung dinh dang ma co phieu", "Error");
         }catch (Exception e){
-            e.printStackTrace();
+            error = new SpawmError("Xay ra loi", "Error");
         }
-
         DataFileInput hnx = null;
         DataFileInput hsx = null;
         try {
             hnx = new DataFileInput(filePathTemplate.replace("yyyyMMdd", SDF1.format(ex.lastDay.getTime())).replace("dd.MM.yyyy", SDF2.format(ex.lastDay.getTime())));
             hsx = new DataFileInput(filePathTemplate.replace("yyyyMMdd", SDF1.format(ex.lastDay.getTime())).replace("dd.MM.yyyy", SDF2.format(ex.lastDay.getTime())).replace("HNX", "HSX"));
+        }catch(FileNotFoundException e) {
+            error = new SpawmError("Khong tim thay file", "Error");
         }catch (Exception e){
-            e.printStackTrace();
+            error = new SpawmError("Xay ra loi", "Error");
         }
         DataFileHandle h = new DataFileHandle();
         HNX = h.handleFile(hnx);
         HSX = h.handleFile(hsx);
     }
 
+
     public static void request(){
-        String request = viewbase.userInputString;
+        System.out.println(ViewBase.userInputString);
+        String request = ViewBase.userInputString;
         DataFileOutput dfo;
-        if(viewbase.sanChungKhoanHienTai==0){
+        if(ViewBase.sanChungKhoanHienTai==0){
             dfo = HNX;
         }else {
             dfo = HSX;
         }
         String respond = dfo.respond(request);
-        viewbase.ShowData(respond);
+        ViewBase.ShowData(respond);
     }
 
+    public static void main(String[] args){
+        Controller c = new Controller();
 
-    // Gửi Request về DataFileOutPut
-    // request là String mà người dùng nhập ở Search, hoặc String ở TagView
-    /*
-    public String sentRequest(DataFileOutput dfo, int id) {
-        String request;
-        if (id == 1) {
-            request = ProjectOOP.src.View.ViewBase.userInputString;
-        } else if (id == 2) {
-            request = TagView.tagString;
-        }
-        return request;
-    }
-
-    // Gửi trả dữ liệu về View
-    public String sentData(ProjectOOP.src.View.ViewBase viewbase, DataFileOutput dfo) {
-        //chua truyen request
-        String outputData = dfo.respond(request);
-        return outputData;
-    }
-    */
-    // Hiện kết quả lên Label Result
-    public void show(ViewBase viewbase) {
-        DataFileOutput dfo = new DataFileOutput();
-        //viewbase.showData(sentData(viewbase, dfo));
 
     }
 
 }
-
-
-    //Todo: Đợi cho Model và View Hoàn thành khung cơ bản để xác định các lớp hoặc phương thức cần thiết

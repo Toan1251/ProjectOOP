@@ -1,5 +1,6 @@
 package ProjectOOP.src;
 
+import ProjectOOP.src.Controller.Controller;
 import ProjectOOP.src.Model.Crawler.ExtractData;
 import ProjectOOP.src.Model.Handle.DataFileHandle;
 import ProjectOOP.src.Model.Handle.DataFileOutput;
@@ -15,16 +16,7 @@ public class Main {
 
     public static void main(String[] args) {
         //Cập nhật dữ liệu chứng khoán mới nhất
-        ExtractData ed = new ExtractData();
-        DataFileInput dfi = new DataFileInput();
-        try {
-            dfi = new DataFileInput("ProjectOOP/StockDataEOD/20201218/CafeF.HNX.18.12.2020.csv");
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        DataFileOutput dfo = new DataFileHandle().handleFile(dfi);
-        System.out.println(dfo.getData().get(1));
-
+        Controller c = new Controller();
         //todo: Xây dựng luồng hđ cho dữ liệu
     }
 }
