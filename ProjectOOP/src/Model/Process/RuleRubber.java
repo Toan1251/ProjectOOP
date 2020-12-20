@@ -33,14 +33,14 @@ public class RuleRubber extends Rules {
             map.put("nameC" +(i+1), sortedListChange.get(i).getData().getName());
             if(temp>0){
                 map.put("Clink"+(i+1),"tăng");
-                map.put("numC"+(i+1),Long.toString((long)(Math.abs(temp)*1000)));
+                map.put("numC"+(i+1),Long.toString((long)(Math.abs(temp)*1000000)));
                 map.put("level"+(i+1),level(temp));
 
 
             }
             if(temp<0){
                 map.put("Clink"+(i+1),"giảm");
-                map.put("numC"+(i+1),Long.toString((long)(Math.abs(temp)*1000)));
+                map.put("numC"+(i+1),Long.toString((long)(Math.abs(temp)*1000000)));
                 map.put("level"+(i+1),level(temp));
 
 
@@ -65,7 +65,8 @@ public class RuleRubber extends Rules {
 
         //số  lần từng cổ phiếu so với tổng
         for(int i=0;i<myList.size();i++) {
-            map.put("timeC"+(i+1), Double.toString(((myList.get(i).getData().getVolume()) / total)*100));
+            double temp=myList.get(i).getData().getVolume()/total*100;
+            map.put("timeC"+(i+1), Double.toString((double)Math.round(temp*1000)/1000));
         }
         return map;
     }

@@ -36,12 +36,12 @@ public class RuleSteel extends Rules {
             map.put("nameT" +(i+1), sortedListChange.get(i).getData().getName());
             if(temp>0){
                 map.put("Tlink"+(i+1),"tăng");
-                map.put("numT"+(i+1),Long.toString((long)(Math.abs(temp)*1000)));
+                map.put("numT"+(i+1),Long.toString((long)(Math.abs(temp)*1000000)));
                 map.put("level"+(i+1),level(temp));
             }
             if(temp<0){
                 map.put("Tlink"+(i+1),"giảm");
-                map.put("numT"+(i+1),Long.toString((long)(Math.abs(temp)*1000)));
+                map.put("numT"+(i+1),Long.toString((long)(Math.abs(temp)*1000000)));
                 map.put("level"+(i+1),level(temp));
             }else{
                 map.put("Tlink"+(i+1),"đứng giá");
@@ -63,7 +63,8 @@ public class RuleSteel extends Rules {
 
         //số  lần từng cổ phiếu so với tổng
         for(int i=0;i<myList.size();i++) {
-            map.put("timeT"+(i+1), Double.toString(((myList.get(i).getData().getVolume()) / total)*100));
+            double temp=myList.get(i).getData().getVolume()/total*100;
+            map.put("timeT"+(i+1), Double.toString((double)Math.round(temp*1000)/1000));
         }
         return map;
 

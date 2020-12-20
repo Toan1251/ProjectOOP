@@ -38,8 +38,8 @@ public class GroupPersonal extends Group {
         temp2.add("<name> mở đầu phiên giao dịch với <numOpen> đồng/CP và <link> <levelPC> <percent>% ở cuối phiên, cụ thể là <numClose> đồng/CP, có lúc cổ phiếu của <name> đã đạt đến <numHigh> đồng. ");
 
         List<String> temp3 = new LinkedList<>();
-        temp3.add("Bên cạnh đó, tổng khối lượng giao dịch của ngày hôm nay được thống kê là <volume1> cổ phiếu, đạt giá trị <gtgd> đồng , đây là một dấu hiệu <dauhieu> và khi ta đem so sánh với <nameSS> với <volume2> cổ phiếu thì nhận thấy rằng lượng cổ phiếu được bán ra <compare> <levelSS>. ");
-        temp3.add("Còn về khối lượng giao dịch trong ngày thì <name> đã bán được <volume1> cổ phiếu, tương ứng với <gtgd> đồng, so sánh với <nameSS> với <volume2> cổ phiếu được bán ra thì <name> <compare> <levelSS>, đây có thể coi là một dấu hiệu <dauhieu> đối với mã cổ phiếu này. ");
+        temp3.add("Bên cạnh đó, tổng khối lượng giao dịch của ngày hôm nay được thống kê là <volume1> cổ phiếu, đạt giá trị <gtgd> đồng , đây là một dấu hiệu <dauhieu>, khi ta đem so sánh với <nameSS> với <volume2> cổ phiếu thì nhận thấy rằng lượng cổ phiếu được bán ra <compare> <levelSS>. ");
+        temp3.add("Còn về khối lượng giao dịch trong ngày thì <name> đã bán được <volume1> cổ phiếu, tương ứng với <gtgd> đồng,đây có thể coi là một dấu hiệu <dauhieu>, so sánh với <nameSS> với <volume2> cổ phiếu được bán ra thì <name> <compare> <levelSS>. ");
 
         //thay thế key cho các câu đã được chọn và đưa vào list done.
         this.eachMap = (new RulePersonal()).PushInMap(data,name);

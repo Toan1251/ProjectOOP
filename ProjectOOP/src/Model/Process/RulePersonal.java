@@ -41,9 +41,9 @@ public class RulePersonal extends Rules {
     //thay thế cho levelSS (nói về mức độ chênh lệch)
     private void level(DataOutput a,DataOutput b){
 
-        if(dauhieu(a)-dauhieu(b)<=1000000){
+        if(a.getData().getVolume()-b.getData().getVolume()<=1000000){
             map.put("levelSS","một chút");}
-        else if ((dauhieu(a)-dauhieu(b))>1000000 && (dauhieu(a)-dauhieu(b))<4000000){
+        else if (a.getData().getVolume()-b.getData().getVolume()>1000000 && (a.getData().getVolume()-b.getData().getVolume())<4000000){
             map.put("levelSS","khá nhiều");
         }
         else {
@@ -66,7 +66,7 @@ public class RulePersonal extends Rules {
         //change có giá trị bằng độ chênh lệch của giá trị cổ phiếu.
         double change=tmp.getData().getClose()-tmp.getData().getOpen();
 //        double percent=Math.abs ((double) Math.round((((tmp.getData().getClose())*1000)/((tmp.getData().getOpen())*1000)-1)*10000)/100);
-        double percent=100*tmp.getData().getChangePercent();
+        double percent=Math.abs(tmp.getData().getChangePercent()*100);
 
         //lấy tỉ lệ % tăng hoặc giảm
 
@@ -77,13 +77,13 @@ public class RulePersonal extends Rules {
         map.put("numOpen",Long.toString((long)(tmp.getData().getOpen()*1000000)));
         map.put("numHigh",Long.toString((long)(tmp.getData().getHigh()*1000000)));
         map.put("numClose",Long.toString((long)(tmp.getData().getClose()*1000000)));
-        map.put("percent",Long.toString((long)Math.abs(percent)));
+        map.put("percent",Double.toString((double)Math.round(percent*1000)/1000));
         map.put("volume1",Long.toString((long)tmp.getData().getVolume()));
         map.put("gtgd",Long.toString((long)(dauhieu(tmp)*1000)));//tỉ đồng
 
         //thay thế chỗ dấu hiệu dựa vào lượng gtgd.
-        if(dauhieu(tmp)>=8000000){map.put("dauhieu","rất khả quan");}// đã chia 1000, giá trị thực phải *1000;
-        else if(5000000<dauhieu(tmp) &&dauhieu(tmp)<8000000){map.put("dau hieu","khá khả quan");}
+        if(dauhieu(tmp)/1000>=8000000){map.put("dauhieu","rất khả quan");}// đã chia 1000, giá trị thực phải *1000;
+        else if(5000000<dauhieu(tmp)/1000 &&dauhieu(tmp)/1000<8000000){map.put("dau hieu","khá khả quan");}
         else {map.put("dauhieu","không mấy khả quan");}
 
 

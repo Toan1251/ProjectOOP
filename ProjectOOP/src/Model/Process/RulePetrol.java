@@ -53,13 +53,13 @@ public class RulePetrol extends Rules {
             map.put("namePetro" +(i+1), sortedListChange.get(i).getData().getName());
             if(temp>0){
                 map.put("Plink"+(i+1),"tăng");
-                map.put("numPetro"+(i+1),Long.toString((long)(Math.abs(temp)*1000)));
+                map.put("numPetro"+(i+1),Long.toString((long)(Math.abs(temp)*1000000)));
                 map.put("level"+(i+1),level(temp));
 
             }
             if(temp<0){
                 map.put("Plink"+(i+1),"giảm");
-                map.put("numPetro"+(i+1),Long.toString(((long)Math.abs(temp)*1000)));
+                map.put("numPetro"+(i+1),Long.toString(((long)Math.abs(temp)*1000000)));
                 map.put("level"+(i+1),level(temp));
 
             }else{
@@ -82,7 +82,8 @@ public class RulePetrol extends Rules {
 
         //số  lần từng cổ phiếu so với tổng
         for(int i=0;i<myList.size();i++) {
-            map.put("timeP"+(i+1), Double.toString(((myList.get(i).getData().getVolume()) / total)*100));
+            double temp= myList.get(i).getData().getVolume()/total*100;
+            map.put("timeP"+(i+1), Double.toString((double)Math.round(temp*1000)/1000));
         }
         return map;
 
