@@ -16,14 +16,16 @@ public class Controller {
     public static ViewBase viewbase;
     public static DataFileOutput HNX;
     public static DataFileOutput HSX;
-    private SimpleDateFormat SDF1 = new SimpleDateFormat("yyyyMMdd");
-    private SimpleDateFormat SDF2 = new SimpleDateFormat("dd.MM.yyyy");
+    private final SimpleDateFormat SDF1 = new SimpleDateFormat("yyyyMMdd");
+    private final SimpleDateFormat SDF2 = new SimpleDateFormat("dd.MM.yyyy");
 
     private String filePathTemplate = "ProjectOOP/StockDataEOD/yyyyMMdd/CafeF.HNX.dd.MM.yyyy.csv";
 
 
     public Controller() {
         viewbase = new ViewBase();
+        viewbase.ShowFrame();
+
         ExtractData ex = new ExtractData();
         try {
             ex.run();
@@ -36,6 +38,7 @@ public class Controller {
         }catch (Exception e){
             e.printStackTrace();
         }
+
         DataFileInput hnx = null;
         DataFileInput hsx = null;
         try {
@@ -49,6 +52,17 @@ public class Controller {
         HSX = h.handleFile(hsx);
     }
 
+    public static void request(){
+        String request = viewbase.userInputString;
+        DataFileOutput dfo;
+        if(viewbase.sanChungKhoanHienTai==0){
+            dfo = HNX;
+        }else {
+            dfo = HSX;
+        }
+        String respond = dfo.respond(request);
+        viewbase.ShowData(respond);
+    }
 
 
     // Gửi Request về DataFileOutPut

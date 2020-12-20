@@ -44,7 +44,7 @@ public class ViewBase {
 	Font viewFont = new Font("SansSerif", Font.LAYOUT_LEFT_TO_RIGHT, 20);
 	
 	public static String userInputString;
-    static int sanChungKhoanHienTai;
+    public static int sanChungKhoanHienTai;
     
 	//TODO: Lưu DataFileOutput của sàn Hà Nội và Hồ Chí Minh. Khi Hàm SendRequest gọi sẽ lấy 1 DataFileOutput của 1 sàn.
 	//  static DataFileOutput SAN_HA_NOI;            
@@ -149,7 +149,7 @@ public class ViewBase {
 	}
 	
 
-	public  void CreateMainFrame(int width, int height, String nameFrame, JPanel panel) {
+	public void CreateMainFrame(int width, int height, String nameFrame, JPanel panel) {
 		JFrame createFrame = new JFrame(nameFrame);
 		createFrame.setSize(width, height);
 		createFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -199,7 +199,6 @@ public class ViewBase {
 	//# Ham hien thi giao dien App
 	public void ShowFrame()
 	{
-
 		 ViewBase viewBase = new ViewBase(); 
 		 viewBase.CreateMainFrame(1280, 680, "PROJECT OOP", createPanel);
 	}
