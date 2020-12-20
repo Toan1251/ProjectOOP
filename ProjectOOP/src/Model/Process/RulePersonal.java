@@ -22,7 +22,7 @@ public class RulePersonal extends Rules {
 
     //đây chính là volume value
     private double dauhieu(DataOutput obj){
-        return (1000000*obj.getData().getHigh()+obj.getData().getLow())/2*(obj.getData().getVolume());
+        return (obj.getData().getHigh()+obj.getData().getLow())/2*(obj.getData().getVolume());
     }
 
     //thay thế cho compare (so sánh)
@@ -43,7 +43,7 @@ public class RulePersonal extends Rules {
 
         if(dauhieu(a)-dauhieu(b)<=1000000){
             map.put("levelSS","một chút");}
-        else if ((dauhieu(a)-dauhieu(b))>1000000 && (dauhieu(a)-dauhieu(b))<5000000){
+        else if ((dauhieu(a)-dauhieu(b))>1000000 && (dauhieu(a)-dauhieu(b))<4000000){
             map.put("levelSS","khá nhiều");
         }
         else {
@@ -66,7 +66,7 @@ public class RulePersonal extends Rules {
         //change có giá trị bằng độ chênh lệch của giá trị cổ phiếu.
         double change=tmp.getData().getClose()-tmp.getData().getOpen();
 //        double percent=Math.abs ((double) Math.round((((tmp.getData().getClose())*1000)/((tmp.getData().getOpen())*1000)-1)*10000)/100);
-        double percent=tmp.getData().getChangePercent();
+        double percent=100*tmp.getData().getChangePercent();
 
         //lấy tỉ lệ % tăng hoặc giảm
 
@@ -74,12 +74,12 @@ public class RulePersonal extends Rules {
         //truyền vào các cặp key và value tương ứng.
         map.put("name",tmp.getData().getName());
         map.put("date",dateFormat.format(tmp.getData().getDate()));
-        map.put("numOpen",Double.toString(tmp.getData().getOpen()*1000));
-        map.put("numHigh",Double.toString(tmp.getData().getHigh()*1000));
-        map.put("numClose",Double.toString(tmp.getData().getClose()*1000));
-        map.put("percent",Double.toString(percent));
+        map.put("numOpen",Integer.toString((int)tmp.getData().getOpen()*1000));
+        map.put("numHigh",Integer.toString((int)tmp.getData().getHigh()*1000));
+        map.put("numClose",Integer.toString((int)tmp.getData().getClose()*1000));
+        map.put("percent",Integer.toString((int)Math.abs(percent)));
         map.put("volume1",Integer.toString((int)tmp.getData().getVolume()));
-        map.put("gtgd",Double.toString(dauhieu(tmp)/1000000));//tỉ đồng
+        map.put("gtgd",Double.toString(dauhieu(tmp)*1000000000));//tỉ đồng
 
         //thay thế chỗ dấu hiệu dựa vào lượng gtgd.
         if(dauhieu(tmp)>=8000000){map.put("dauhieu","rất khả quan");}// đã chia 1000, giá trị thực phải *1000;

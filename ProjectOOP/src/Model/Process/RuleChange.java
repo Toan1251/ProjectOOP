@@ -28,7 +28,7 @@ public class RuleChange extends Rules {
             if (dataOutput.getData().getChangePercent() >= 7) {
                 tangtran++;
             }
-            if (dataOutput.getData().getChangePercent() <7) {
+            if (dataOutput.getData().getChangePercent() <=-7) {
                 giamsan++;
             }
 
@@ -64,14 +64,14 @@ public class RuleChange extends Rules {
         for(int i=0;i<sortedList.size();i++) {
             double temp=sortedList.get(i).getData().getClose()-sortedList.get(i).getData().getOpen();
             map.put("name"+(i+1), sortedList.get(i).getData().getName());
-            map.put("num"+(i+1), Double.toString(temp* 1000));
+            map.put("num"+(i+1), Integer.toString((int)temp* 1000));
         }
 
         List<DataOutput> sortedReverseList = sorting.sort(data,6,sortedList.size(),true);
         for(int i=0;i<sortedReverseList.size();i++) {
             double temp=sortedReverseList.get(i).getData().getClose()-sortedReverseList.get(i).getData().getOpen();
             map.put("rname"+(i+1), sortedReverseList.get(i).getData().getName());
-            map.put("rnum1", Double.toString((Math.abs(temp)) * 1000));
+            map.put("rnum1", Integer.toString((int)(Math.abs(temp)) * 1000));
 
         }
 
