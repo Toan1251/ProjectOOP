@@ -31,6 +31,9 @@ public class RulePetrol extends Rules {
         myList.add(filterByName(data,"PVC"));
         myList.add(filterByName(data,"PVG"));
         myList.add(filterByName(data,"PVS"));
+        myList.add(filterByName(data,"CNG"));
+        myList.add(filterByName(data,"COM"));
+
         sorting.removeNull(myList);
 
 

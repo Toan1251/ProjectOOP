@@ -2,6 +2,7 @@ package ProjectOOP.src.Model.Process;
 import ProjectOOP.src.Model.Handle.DataOutput;
 import ProjectOOP.src.Model.Handle.SortData;
 
+import java.beans.DesignMode;
 import java.util.List;
 import java.util.LinkedList;
 import java.util.Map;
@@ -108,7 +109,13 @@ public class RulePersonal extends Rules {
             case "VCB":
             case "VPB":
             case "NVB":
-            case "SHB": {
+            case "SHB":
+            case "ACB":
+            case "STB":
+            case "LPB":
+            case "EIB":
+            case "TPB":
+            case "VIB":{
                 List<DataOutput> demo = new LinkedList<>();//list chứa các đối tượng để random
 
 //                List<DataOutput> nullList = new LinkedList<>();
@@ -123,6 +130,12 @@ public class RulePersonal extends Rules {
                 demo.add(filterByName(data, "VPB"));
                 demo.add(filterByName(data, "NVB"));
                 demo.add(filterByName(data, "SHB"));
+                demo.add(filterByName(data,"ACB"));
+                demo.add(filterByName(data,"STB"));
+                demo.add(filterByName(data,"LPB"));
+                demo.add(filterByName(data,"EIB"));
+                demo.add(filterByName(data,"TPB"));
+                demo.add(filterByName(data,"VIB"));
                 sorting.removeNull(demo);
 
 //                demo.removeAll(nullList);
@@ -141,7 +154,17 @@ public class RulePersonal extends Rules {
             case "PLX":
             case "PVD":
             case "PVT":
-            case "PXS": {
+            case "PXS":
+            case "APP":
+            case "PCT":
+            case "PGS":
+            case "PLC":
+            case "PVB":
+            case "PVC":
+            case "PVS":
+            case "CNG":
+            case "COM":
+            case "PVG":{
                 LinkedList<DataOutput> demo = new LinkedList<>();//list chứa các đối tượng để random
 
                 demo.add(filterByName(data, "ASP"));
@@ -159,6 +182,8 @@ public class RulePersonal extends Rules {
                 demo.add(filterByName(data,"PVC"));
                 demo.add(filterByName(data,"PVG"));
                 demo.add(filterByName(data,"PVS"));
+                demo.add(filterByName(data,"CNG"));
+                demo.add(filterByName(data,"COM"));
                 sorting.removeNull(demo);
 
                 DataOutput obj = randomOBJ(demo);
@@ -191,7 +216,8 @@ public class RulePersonal extends Rules {
             case "HVN":
             case "VJC":
             case "CIA":
-            case "MAS": {
+            case "MAS":
+            case "ARM":{
                 LinkedList<DataOutput> demo = new LinkedList<>();//list chứa các đối tượng để random
 
 
@@ -318,7 +344,10 @@ public class RulePersonal extends Rules {
                             || datum.getData().getName().equals("^XAYDUNG")|| datum.getData().getName().equals("APP")|| datum.getData().getName().equals("PCT")
                             || datum.getData().getName().equals("PGS")|| datum.getData().getName().equals("PLC")|| datum.getData().getName().equals("PVB")
                             || datum.getData().getName().equals("PVC")|| datum.getData().getName().equals("PVG")|| datum.getData().getName().equals("PVS")
-                            || datum.getData().getName().equals("ARM")|| datum.getData().getName().equals("CIA")|| datum.getData().getName().equals("MAS"))) {
+                            || datum.getData().getName().equals("ARM")|| datum.getData().getName().equals("CIA")|| datum.getData().getName().equals("MAS")
+                            || datum.getData().getName().equals("ACB")|| datum.getData().getName().equals("STB")|| datum.getData().getName().equals("LPB")
+                            || datum.getData().getName().equals("EIB")|| datum.getData().getName().equals("TPB")|| datum.getData().getName().equals("VIB")
+                            || datum.getData().getName().equals("CNG")|| datum.getData().getName().equals("COM"))) {
                         demo.add(datum);
                     }
                 }

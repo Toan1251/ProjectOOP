@@ -63,6 +63,7 @@ public class TagManager {
     }
 
     //Kiểm tra Tag có tồn tại trong set không
+    //ví dụ: truyền vào
     public boolean isHaveThisTag(String tag) {
         Tag temp = new Tag(tag);
         return tagSet.contains(temp);
