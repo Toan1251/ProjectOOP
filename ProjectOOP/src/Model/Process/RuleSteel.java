@@ -63,7 +63,7 @@ public class RuleSteel extends Rules {
 
         //số  lần từng cổ phiếu so với tổng
         for(int i=0;i<myList.size();i++) {
-            map.put("timeT"+(i+1), Float.toString((float) ((myList.get(i).getData().getVolume()) / total)));
+            map.put("timeT"+(i+1), Double.toString(((myList.get(i).getData().getVolume()) / total)*100));
         }
         return map;
 
