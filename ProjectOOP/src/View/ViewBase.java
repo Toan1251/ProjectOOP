@@ -1,5 +1,7 @@
 package ProjectOOP.src.View;
 
+import ProjectOOP.src.Controller.Controller;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -23,6 +25,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.filechooser.FileSystemView;
+import ProjectOOP.src.Controller.Controller;
 
 
 import java.util.ArrayList;
@@ -190,6 +193,9 @@ public class ViewBase {
 		}
 
 	}
+
+
+
 	//# Ham hien thi giao dien App
 	public void ShowFrame()
 	{
@@ -201,7 +207,7 @@ public class ViewBase {
 	public static void ShowData(String outputData) {
 		outputTextField.append(outputData);
 	}
-	private static void SendRequest(String data,int chonSanChungKhoan) {	
+	public static void SendRequest(String data, int chonSanChungKhoan) {
 		if(chonSanChungKhoan==0)
 		{
 		//	SAN_HA_NOI.find(data);
