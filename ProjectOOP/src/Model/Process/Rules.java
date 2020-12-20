@@ -94,10 +94,11 @@ public class Rules {
     }
 
     public String levelPc(double temp){
-        if(temp>=10.0){
+        double tmp=Math.abs(temp);
+        if(tmp>=10.0){
             return "rất mạnh";
         }
-        else if(temp>=5.0 && temp<10.0){
+        else if(tmp>=5.0 && tmp<10.0){
             return "mạnh";
         }
         else return "nhẹ";

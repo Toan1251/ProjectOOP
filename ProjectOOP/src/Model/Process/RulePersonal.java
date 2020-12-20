@@ -74,9 +74,9 @@ public class RulePersonal extends Rules {
         //truyền vào các cặp key và value tương ứng.
         map.put("name",tmp.getData().getName());
         map.put("date",dateFormat.format(tmp.getData().getDate()));
-        map.put("numOpen",Integer.toString((int)tmp.getData().getOpen()*1000));
-        map.put("numHigh",Integer.toString((int)tmp.getData().getHigh()*1000));
-        map.put("numClose",Integer.toString((int)tmp.getData().getClose()*1000));
+        map.put("numOpen",Integer.toString((int)tmp.getData().getOpen()*1000000));
+        map.put("numHigh",Integer.toString((int)tmp.getData().getHigh()*1000000));
+        map.put("numClose",Integer.toString((int)tmp.getData().getClose()*1000000));
         map.put("percent",Integer.toString((int)Math.abs(percent)));
         map.put("volume1",Integer.toString((int)tmp.getData().getVolume()));
         map.put("gtgd",Double.toString(dauhieu(tmp)*1000000000));//tỉ đồng

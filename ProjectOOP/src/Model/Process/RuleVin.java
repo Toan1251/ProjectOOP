@@ -29,8 +29,8 @@ public class RuleVin extends Rules {
                 map.put("Vlink"+(i+1),"tăng");
                 map.put("upV"+(i+1),"lên");
                 map.put("levelV"+(i+1),level(temp));
-                map.put("openV"+(i+1),Double.toString(myList.get(i).getData().getOpen()*1000));
-                map.put("closeV"+(i+1),Double.toString(myList.get(i).getData().getClose()*1000));
+                map.put("openV"+(i+1),Integer.toString((int)myList.get(i).getData().getOpen()*1000000));
+                map.put("closeV"+(i+1),Integer.toString((int)myList.get(i).getData().getClose()*1000000));
                 map.put("numV"+(i+1),Integer.toString((int)Math.abs(temp)*1000000));}
 
 
@@ -38,8 +38,8 @@ public class RuleVin extends Rules {
                 map.put("Vlink"+(i+1),"giảm");
                 map.put("upV"+(i+1),"xuống");
                 map.put("levelV"+(i+1),level(temp));
-                map.put("openV"+(i+1),Double.toString(myList.get(i).getData().getOpen()*1000));
-                map.put("closeV"+(i+1),Double.toString(myList.get(i).getData().getClose()*1000));
+                map.put("openV"+(i+1),Integer.toString((int)myList.get(i).getData().getOpen()*1000));
+                map.put("closeV"+(i+1),Integer.toString((int)myList.get(i).getData().getClose()*1000));
                 map.put("numV"+(i+1),Integer.toString((int)Math.abs(temp)*1000000));}
             else {
                 map.put("Vlink"+(i+1),"đứng giá");
@@ -69,16 +69,16 @@ public class RuleVin extends Rules {
                 map.put("up"+(i+1),"lên");
                 map.put("num"+(i+1),Integer.toString((int)Math.abs(temp)*1000000));
                 map.put("level"+(i+1),level(temp));
-                map.put("open"+(i+1),Double.toString(sortedListChange.get(i).getData().getOpen()));
-                map.put("close"+(i+1),Double.toString(sortedListChange.get(i).getData().getClose()));
+                map.put("open"+(i+1),Integer.toString((int)sortedListChange.get(i).getData().getOpen()));
+                map.put("close"+(i+1),Integer.toString((int)sortedListChange.get(i).getData().getClose()));
             }
             else if(temp<0){
                 map.put("link"+(i+1),"giảm");
                 map.put("up"+(i+1),"xuống");
                 map.put("num"+(i+1),Integer.toString((int)Math.abs(temp)*1000000));
                 map.put("level"+(i+1),level(temp));
-                map.put("open"+(i+1),Double.toString(sortedListChange.get(i).getData().getOpen()));
-                map.put("close"+(i+1),Double.toString(sortedListChange.get(i).getData().getClose()));
+                map.put("open"+(i+1),Integer.toString((int)sortedListChange.get(i).getData().getOpen()));
+                map.put("close"+(i+1),Integer.toString((int)sortedListChange.get(i).getData().getClose()));
 
             }else{
                 map.put("link"+(i+1),"đứng giá");

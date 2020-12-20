@@ -73,7 +73,7 @@ public class RuleBank extends Rules {
         }
 
         //tổng số cổ phiếu bán ra
-        map.put("totalB",Integer.toString((int)total));
+        map.put("totalB",Integer.toString((int)total*1000000));
 
 
         return map;
