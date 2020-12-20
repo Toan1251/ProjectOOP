@@ -90,7 +90,7 @@ public class ViewBase {
 		JLabel nameProject = new JLabel("TEAM CHỨNG KHOÁN");
 		nameProject.setForeground(Color.black);
 
-		JComboBox listMenuBox = new JComboBox(new String[] { "Tag 1", "Tag 2", "Tag 3" });
+		JComboBox listMenuBox = new JComboBox(new String[] { "ACM", "BLF", "BTS" });
 
 		inputTextField.setBounds(80, 100, 450, 30);
 		inputTextField.setFont(viewFont);

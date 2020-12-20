@@ -59,7 +59,7 @@ public class Controller {
         DataFileOutput dfo;
         if(ViewBase.sanChungKhoanHienTai==0){
             dfo = HNX;
-        }else {
+        }else{
             dfo = HSX;
         }
         String respond = dfo.respond(request);
@@ -68,8 +68,6 @@ public class Controller {
 
     public static void main(String[] args){
         Controller c = new Controller();
-
-
     }
 
 }

@@ -4,6 +4,7 @@ import ProjectOOP.src.Model.Handle.DataInput;
 import ProjectOOP.src.Model.Handle.DataOutput;
 import ProjectOOP.src.Model.Handle.Tag;
 import ProjectOOP.src.Model.Handle.TagManager;
+import ProjectOOP.src.View.SpawmError;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -73,6 +74,10 @@ public class DataFileOutput {
     public String respond(String request){
         List<DataOutput> dataOutputs = find(request);
         Tag tag = getTagManager().findTag(request);
+        if(tag==null){
+            new SpawmError("Không tìm thấy dữ liệu chứng khoán", "Error");
+            return null;
+        }
         String respondParagraph="";
         DataOutput temp=dataOutputs.get(0);
         switch (tag.getTagType()) {
