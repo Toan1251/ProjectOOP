@@ -71,7 +71,7 @@ public class Controller {
     public String sentRequest(DataFileOutput dfo, int id) {
         String request;
         if (id == 1) {
-            request = ViewBase.userInputString;
+            request = ProjectOOP.src.View.ViewBase.userInputString;
         } else if (id == 2) {
             request = TagView.tagString;
         }
@@ -79,7 +79,7 @@ public class Controller {
     }
 
     // Gửi trả dữ liệu về View
-    public String sentData(ViewBase viewbase, DataFileOutput dfo) {
+    public String sentData(ProjectOOP.src.View.ViewBase viewbase, DataFileOutput dfo) {
         //chua truyen request
         String outputData = dfo.respond(request);
         return outputData;

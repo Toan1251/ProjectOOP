@@ -1,39 +1,22 @@
 package ProjectOOP.src.View;
 
-import ProjectOOP.src.Controller.Controller;
-
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.AdjustmentEvent;
-import java.awt.event.AdjustmentListener;
-import java.io.File;
 
-import javax.sound.midi.ControllerEventListener;
-import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
-import javax.swing.filechooser.FileSystemView;
-import ProjectOOP.src.Controller.Controller;
-
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JComboBox;
 import javax.swing.JScrollPane;
-import javax.swing.JScrollBar;
-import javax.swing.JCheckBox;
 import javax.swing.JColorChooser;
 public class ViewBase {
 	private static JPanel createPanel;
@@ -44,7 +27,7 @@ public class ViewBase {
 	Font viewFont = new Font("SansSerif", Font.LAYOUT_LEFT_TO_RIGHT, 20);
 	
 	public static String userInputString;
-    public static int sanChungKhoanHienTai;
+    static int sanChungKhoanHienTai;
     
 	//TODO: Lưu DataFileOutput của sàn Hà Nội và Hồ Chí Minh. Khi Hàm SendRequest gọi sẽ lấy 1 DataFileOutput của 1 sàn.
 	//  static DataFileOutput SAN_HA_NOI;            
@@ -128,8 +111,8 @@ public class ViewBase {
 
 		lb.setBounds(900, 100, 500, 400);
 				
-		lb.setIcon(new ImageIcon("ProjectOOP/src/View/workshop.png"));
-		caculateButton.setIcon(new ImageIcon("ProjectOOP/src/View/search.png"));
+		lb.setIcon(new ImageIcon("workshop.png"));
+		caculateButton.setIcon(new ImageIcon("search.png"));
 		
 		panel.add(lb);
 		panel.add(resultLabel);
@@ -149,7 +132,7 @@ public class ViewBase {
 	}
 	
 
-	public void CreateMainFrame(int width, int height, String nameFrame, JPanel panel) {
+	public  void CreateMainFrame(int width, int height, String nameFrame, JPanel panel) {
 		JFrame createFrame = new JFrame(nameFrame);
 		createFrame.setSize(width, height);
 		createFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -193,12 +176,10 @@ public class ViewBase {
 		}
 
 	}
-
-
-
 	//# Ham hien thi giao dien App
 	public void ShowFrame()
 	{
+
 		 ViewBase viewBase = new ViewBase(); 
 		 viewBase.CreateMainFrame(1280, 680, "PROJECT OOP", createPanel);
 	}
@@ -206,7 +187,7 @@ public class ViewBase {
 	public static void ShowData(String outputData) {
 		outputTextField.append(outputData);
 	}
-	public static void SendRequest(String data, int chonSanChungKhoan) {
+	private static void SendRequest(String data,int chonSanChungKhoan) {	
 		if(chonSanChungKhoan==0)
 		{
 		//	SAN_HA_NOI.find(data);

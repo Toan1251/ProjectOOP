@@ -16,7 +16,6 @@ public class Main {
     public static void main(String[] args) {
         //Cập nhật dữ liệu chứng khoán mới nhất
         ExtractData ed = new ExtractData();
-        ed.run();
         DataFileInput dfi = new DataFileInput();
         try {
             dfi = new DataFileInput("ProjectOOP/StockDataEOD/20201218/CafeF.HNX.18.12.2020.csv");
