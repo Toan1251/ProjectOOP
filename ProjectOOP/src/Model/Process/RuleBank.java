@@ -26,6 +26,12 @@ public class RuleBank extends Rules {
         myList.add(filterByName(data,"VPB"));
         myList.add(filterByName(data,"NVB"));
         myList.add(filterByName(data,"SHB"));
+        myList.add(filterByName(data,"ACB"));
+        myList.add(filterByName(data,"STB"));
+        myList.add(filterByName(data,"LPB"));
+        myList.add(filterByName(data,"EIB"));
+        myList.add(filterByName(data,"TPB"));
+        myList.add(filterByName(data,"VIB"));
 
         sorting.removeNull(myList);
 

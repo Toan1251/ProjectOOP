@@ -62,6 +62,7 @@ public class TagManager {
     }
 
     //Kiểm tra Tag có tồn tại trong set không
+    //ví dụ: truyền vào
     public boolean isHaveThisTag(String tag) {
         for(Tag temp: tagSet){
             if(temp.getTagName().equals(tag)){

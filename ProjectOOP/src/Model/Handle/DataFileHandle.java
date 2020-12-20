@@ -103,7 +103,13 @@ public class DataFileHandle {
             case "VCB":
             case "VPB":
             case "NVB":
-            case "SHB":{
+            case "SHB":
+            case "ACB":
+            case "STB":
+            case "LPB":
+            case "EIB":
+            case "TPB":
+            case "VIB":{
                 List<DataOutput> demo = new LinkedList<>();
 
                 demo.add(filterByName(dFO.getData(), "BID"));
@@ -115,6 +121,12 @@ public class DataFileHandle {
                 demo.add(filterByName(dFO.getData(), "VPB"));
                 demo.add(filterByName(dFO.getData(), "NCB"));
                 demo.add(filterByName(dFO.getData(), "SHB"));
+                demo.add(filterByName(dFO.getData(),"ACB"));
+                demo.add(filterByName(dFO.getData(),"STB"));
+                demo.add(filterByName(dFO.getData(),"LPB"));
+                demo.add(filterByName(dFO.getData(),"EIB"));
+                demo.add(filterByName(dFO.getData(),"TPB"));
+                demo.add(filterByName(dFO.getData(),"VIB"));
                 sorting.removeNull(demo);
 
 
@@ -141,7 +153,9 @@ public class DataFileHandle {
             case "PVB":
             case "PVC":
             case "PVG":
-            case "PVS":{
+            case "PVS":
+            case "CNG":
+            case "COM":{
                 LinkedList<DataOutput> demo = new LinkedList<>();
 
                 demo.add(filterByName(dFO.getData(), "ASP"));
@@ -159,6 +173,8 @@ public class DataFileHandle {
                 demo.add(filterByName(dFO.getData(),"PVC"));
                 demo.add(filterByName(dFO.getData(),"PVG"));
                 demo.add(filterByName(dFO.getData(),"PVS"));
+                demo.add(filterByName(dFO.getData(),"CNG"));
+                demo.add(filterByName(dFO.getData(),"COM"));
                 sorting.removeNull(demo);
 
 
@@ -312,6 +328,12 @@ public class DataFileHandle {
         }
     }
 
+//    private Map<Integer,String> replaceMap(int num,String str){
+//        Map<Integer,String> temp=new HashMap<>();
+//        temp.put(num,str);
+//        return temp;
+//    }
+
 
     //Tự động thêm câu cho từng Input
     public void autoAddSentences(DataFileOutput dF0) {
@@ -335,61 +357,71 @@ public class DataFileHandle {
         //for (Tag tag : Tags) {
 //        DataOutput temp =new DataOutput();
         if (tag.getTagName().equals("GroupChangeNumber") && tag.getTagType().equals("count")) {
-            op.addSentence_ranking(new GroupChangeNumber().begin(data));
+            op.addSentence_count(new GroupChangeNumber().begin(data));
         }
         if (tag.getTagName().equals("GroupDecrease") && tag.getTagType().equals("ranking")) {
-            op.addSentence_ranking(new GroupDecrease().begin(data));
+//             Map<Integer,String> temp =new HashMap<>();
+//             temp.put(1,new GroupDecrease().begin(data));
+            op.addSentence_ranking(1,new GroupDecrease().begin(data));
         }
         if (tag.getTagName().equals("GroupDecreasePercent") && tag.getTagType().equals("ranking")) {
-            op.addSentence_ranking(new GroupDecreasePercent().begin(data));
+//            Map<Integer,String> temp=new HashMap<>();
+//            temp.put(2,new GroupDecreasePercent().begin(data));
+            op.addSentence_ranking(2,new GroupDecreasePercent().begin(data));
         }
         if (tag.getTagName().equals("GroupIncrease") && tag.getTagType().equals("ranking")) {
-            op.addSentence_ranking(new GroupIncrease().begin(data));
+//            Map<Integer,String> temp=new HashMap<>();
+//            temp.put(3,new GroupIncrease().begin(data));
+            op.addSentence_ranking(3,new GroupIncrease().begin(data));
         }
         if (tag.getTagName().equals("GroupIncreasePercent") && tag.getTagType().equals("ranking")) {
-            op.addSentence_ranking(new GroupIncreasePercent().begin(data));
+//            Map<Integer,String> temp= new HashMap<>();
+//            temp.put(4,new GroupIncreasePercent().begin(data));
+            op.addSentence_ranking(4,new GroupIncreasePercent().begin(data));
         }
         if (tag.getTagName().equals("GroupTopVolume") && tag.getTagType().equals("ranking")) {
-            op.addSentence_nganh(new GroupTopVolume().begin(data));
+//            Map<Integer,String> temp= new HashMap<>();
+//            temp.put(5,new GroupTopVolume().begin(data));
+            op.addSentence_ranking(5,new GroupTopVolume().begin(data));
         }
         if (tag.getTagName().equals("GroupTopAirline") && tag.getTagType().equals("group")) {
-            op.addSentence_nganh(new GroupTopAirline().begin(data));
+            op.addSentence_nganh(1,new GroupTopAirline().begin(data));
         }
         if (tag.getTagName().equals("GroupTopAirlineVol") && tag.getTagType().equals("group")) {
-            op.addSentence_nganh(new GroupTopAirlineVol().begin(data));
+            op.addSentence_nganh(2,new GroupTopAirline().begin(data));
         }
         if (tag.getTagName().equals("GroupTopBank") && tag.getTagType().equals("group")) {
-            op.addSentence_nganh(new GroupTopBank().begin(data));
+            op.addSentence_nganh(1,new GroupTopBank().begin(data));
         }
         if (tag.getTagName().equals("GroupTopBankVol") && tag.getTagType().equals("group")) {
-            op.addSentence_nganh(new GroupTopBankVol().begin(data));
+            op.addSentence_nganh(2,new GroupTopBankVol().begin(data));
         }
         if (tag.getTagName().equals("GroupTopFishery") && tag.getTagType().equals("group")) {
-            op.addSentence_nganh(new GroupTopFishery().begin(data));
+            op.addSentence_nganh(1,new GroupTopFishery().begin(data));
         }
         if (tag.getTagName().equals("GroupTopFisheryVol") && tag.getTagType().equals("group")) {
-            op.addSentence_nganh(new GroupTopFisheryVol().begin(data));
+            op.addSentence_nganh(2,new GroupTopFisheryVol().begin(data));
         }
         if (tag.getTagName().equals("GroupTopPetrol") && tag.getTagType().equals("group")) {
-            op.addSentence_nganh(new GroupTopPetrol().begin(data));
+            op.addSentence_nganh(1,new GroupTopPetrol().begin(data));
         }
         if (tag.getTagName().equals("GroupTopPetrolVol") && tag.getTagType().equals("group")) {
-            op.addSentence_nganh(new GroupTopPetrolVol().begin(data));
+            op.addSentence_nganh(2,new GroupTopPetrolVol().begin(data));
         }
         if (tag.getTagName().equals("GroupTopRubber") && tag.getTagType().equals("group")) {
-            op.addSentence_nganh(new GroupTopRubber().begin(data));
+            op.addSentence_nganh(1,new GroupTopRubber().begin(data));
         }
         if (tag.getTagName().equals("GroupTopRubberVol") && tag.getTagType().equals("group")) {
-            op.addSentence_nganh(new GroupTopRubberVol().begin(data));
+            op.addSentence_nganh(2,new GroupTopRubberVol().begin(data));
         }
         if (tag.getTagName().equals("GroupTopSteel") && tag.getTagType().equals("group")) {
-            op.addSentence_nganh(new GroupTopSteel().begin(data));
+            op.addSentence_nganh(1,new GroupTopSteel().begin(data));
         }
         if (tag.getTagName().equals("GroupTopSteelVol") && tag.getTagType().equals("group")) {
-            op.addSentence_nganh(new GroupTopSteelVol().begin(data));
+            op.addSentence_nganh(2,new GroupTopSteelVol().begin(data));
         }
         if (tag.getTagName().equals("GroupVin") && tag.getTagType().equals("group")) {
-            op.addSentence_nganh(new GroupVin().begin(data));
+            op.addSentence_nganh(1,new GroupVin().begin(data));
         }
         if (tag.getTagType().equals("name")) {
 
