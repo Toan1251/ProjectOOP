@@ -1,5 +1,4 @@
 package ProjectOOP.src.Model.Process;
-import ProjectOOP.src.Model.Handle.DataInput;
 import ProjectOOP.src.Model.Handle.DataOutput;
 import ProjectOOP.src.Model.Handle.SortData;
 
@@ -26,12 +25,14 @@ public class RuleSteel extends Rules {
         myList.add(filterByName(data,"HPG"));
         myList.add(filterByName(data,"HSG"));
         myList.add(filterByName(data,"SMC"));
+        sorting.removeNull(myList);
 
         //sắp xếp theo change
         List<DataOutput> sortedListChange = sorting.sort(myList, 6);
+        double total=0.0;
         for(int i=0;i<sortedListChange.size();i++) {
             double temp=sortedListChange.get(i).getData().getClose()-sortedListChange.get(i).getData().getOpen();
-
+            total+=sortedListChange.get(i).getData().getVolume();
             map.put("nameT" +(i+1), sortedListChange.get(i).getData().getName());
             if(temp>0){
                 map.put("Tlink"+(i+1),"tăng");
@@ -54,15 +55,15 @@ public class RuleSteel extends Rules {
         List<DataOutput> sortedListVolume = sorting.sort(myList, 8);
         for(int i=0;i<sortedListVolume.size();i++) {
             map.put("TVname" + (i + 1),sortedListVolume.get(i).getData().getName());
-            map.put("TVnum"+(i+1),Double.toString(sortedListVolume.get(i).getData().getVolume()));
+            map.put("TVnum"+(i+1),Integer.toString((int)sortedListVolume.get(i).getData().getVolume()));
         }
 
         //tổng số cổ phiếu bán ra
-        map.put("totalT",Double.toString(filterByName(data,"^THEP").getData().getVolume()));
+        map.put("totalT",Integer.toString((int)total));
 
         //số  lần từng cổ phiếu so với tổng
         for(int i=0;i<myList.size();i++) {
-            map.put("timeT"+(i+1), Float.toString((float) ((myList.get(i).getData().getVolume()) / (filterByName(data, "^THEP").getData().getVolume()))));
+            map.put("timeT"+(i+1), Float.toString((float) ((myList.get(i).getData().getVolume()) / total)));
         }
         return map;
 

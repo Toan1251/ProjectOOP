@@ -31,6 +31,7 @@ public class RulePetrol extends Rules {
         myList.add(filterByName(data,"PVC"));
         myList.add(filterByName(data,"PVG"));
         myList.add(filterByName(data,"PVS"));
+        sorting.removeNull(myList);
 
 
 
@@ -42,9 +43,10 @@ public class RulePetrol extends Rules {
 
         //sắp xếp theo change
         List<DataOutput> sortedListChange = sorting.sort(myList, 6);
+        double total=0.0;
         for(int i=0;i<sortedListChange.size();i++) {
             double temp=sortedListChange.get(i).getData().getClose()-sortedListChange.get(i).getData().getOpen();
-
+            total+=sortedListChange.get(i).getData().getVolume();
             map.put("namePetro" +(i+1), sortedListChange.get(i).getData().getName());
             if(temp>0){
                 map.put("Plink"+(i+1),"tăng");
@@ -69,15 +71,15 @@ public class RulePetrol extends Rules {
         List<DataOutput> sortedListVolume = sorting.sort(myList, 8);
         for(int i=0;i<sortedListVolume.size();i++) {
             map.put("PVname" + (i + 1),sortedListVolume.get(i).getData().getName());
-            map.put("PVnum"+(i+1),Double.toString(sortedListVolume.get(i).getData().getVolume()));
+            map.put("PVnum"+(i+1),Integer.toString((int)sortedListVolume.get(i).getData().getVolume()));
         }
 
         //tổng số cổ phiếu bán ra
-        map.put("totalP",Double.toString(filterByName(data,"^DAUKHI").getData().getVolume()));
+        map.put("totalP",Integer.toString((int)total));
 
         //số  lần từng cổ phiếu so với tổng
         for(int i=0;i<myList.size();i++) {
-            map.put("timeP"+(i+1), Float.toString((float) ((myList.get(i).getData().getVolume()) / (filterByName(data, "^DAUKHI").getData().getVolume()))));
+            map.put("timeP"+(i+1), Float.toString((float) ((myList.get(i).getData().getVolume()) / total)));
         }
         return map;
 

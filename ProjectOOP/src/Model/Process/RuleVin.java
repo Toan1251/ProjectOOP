@@ -1,5 +1,4 @@
 package ProjectOOP.src.Model.Process;
-import ProjectOOP.src.Model.Handle.DataInput;
 import ProjectOOP.src.Model.Handle.DataOutput;
 import ProjectOOP.src.Model.Handle.SortData;
 
@@ -20,6 +19,7 @@ public class RuleVin extends Rules {
         myList.add(filterByName(data,"VIC"));
         myList.add(filterByName(data,"VHM"));
         myList.add(filterByName(data,"VRE"));
+        sorting.removeNull(myList);
 
         for (int i=0;i<myList.size();i++){
             double temp= myList.get(i).getData().getClose()-myList.get(i).getData().getOpen();
@@ -63,7 +63,6 @@ public class RuleVin extends Rules {
         List<DataOutput> sortedListChange = sorting.sort(myList, 6);
         for(int i=0;i<sortedListChange.size();i++) {
             double temp = sortedListChange.get(i).getData().getClose()-sortedListChange.get(i).getData().getOpen();
-
             map.put("name" +(i+1), sortedListChange.get(i).getData().getName());
             if(temp>0){
                 map.put("link"+(i+1),"tăng");

@@ -1,5 +1,4 @@
 package ProjectOOP.src.Model.Process;
-import ProjectOOP.src.Model.Handle.DataInput;
 import ProjectOOP.src.Model.Handle.DataOutput;
 import ProjectOOP.src.Model.Handle.SortData;
 
@@ -22,6 +21,8 @@ public class RuleAirline extends Rules {
         myList.add(filterByName(data, "ARM"));
         myList.add(filterByName(data, "CIA"));
         myList.add(filterByName(data, "MAS"));
+
+        sorting.removeNull(myList);
 
 
 
@@ -51,7 +52,7 @@ public class RuleAirline extends Rules {
         List<DataOutput> sortedListVolume = sorting.sort(myList, 8);
         for (int i = 0; i < sortedListVolume.size(); i++) {
             map.put("AVname" + (i + 1), sortedListVolume.get(i).getData().getName());
-            map.put("AVnum" + (i + 1), Double.toString(sortedListVolume.get(i).getData().getVolume()));
+            map.put("AVnum" + (i + 1), Integer.toString((int)sortedListVolume.get(i).getData().getVolume()));
         }
 
         return map;

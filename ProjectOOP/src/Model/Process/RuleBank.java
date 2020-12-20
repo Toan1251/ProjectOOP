@@ -1,5 +1,4 @@
 package ProjectOOP.src.Model.Process;
-import ProjectOOP.src.Model.Handle.DataInput;
 import ProjectOOP.src.Model.Handle.DataOutput;
 import ProjectOOP.src.Model.Handle.SortData;
 
@@ -28,11 +27,16 @@ public class RuleBank extends Rules {
         myList.add(filterByName(data,"NVB"));
         myList.add(filterByName(data,"SHB"));
 
+        sorting.removeNull(myList);
+
+
 
         //sắp xếp theo change
         List<DataOutput> sortedListChange = sorting.sort(myList, 6);
+        double total=0.0;
         for(int i=0;i<sortedListChange.size();i++) {
             double temp = sortedListChange.get(i).getData().getClose()-sortedListChange.get(i).getData().getOpen();
+            total +=sortedListChange.get(i).getData().getVolume();
 
             map.put("nameBank" +(i+1), sortedListChange.get(i).getData().getName());
             if(temp>0){
@@ -59,11 +63,11 @@ public class RuleBank extends Rules {
         List<DataOutput> sortedListVolume = sorting.sort(myList, 8);
         for (int i=0;i<sortedListVolume.size();i++){
             map.put("BVname"+(i+1),sortedListVolume.get(i).getData().getName());
-            map.put("BVnum"+(i+1),Double.toString(sortedListVolume.get(i).getData().getVolume()));
+            map.put("BVnum"+(i+1),Integer.toString((int)sortedListVolume.get(i).getData().getVolume()));
         }
 
         //tổng số cổ phiếu bán ra
-        map.put("totalB",Double.toString(filterByName(data,"^NGANHANG").getData().getVolume()));
+        map.put("totalB",Integer.toString((int)total));
 
 
         return map;
