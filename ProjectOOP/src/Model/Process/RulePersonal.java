@@ -22,7 +22,7 @@ public class RulePersonal extends Rules {
 
     //đây chính là volume value
     private double dauhieu(DataOutput obj){
-        return (obj.getData().getHigh()+obj.getData().getLow())/2*(obj.getData().getVolume());
+        return (obj.getData().getHigh()+obj.getData().getLow())/2*(obj.getData().getVolume()*1000);
     }
 
     //thay thế cho compare (so sánh)
@@ -74,12 +74,12 @@ public class RulePersonal extends Rules {
         //truyền vào các cặp key và value tương ứng.
         map.put("name",tmp.getData().getName());
         map.put("date",dateFormat.format(tmp.getData().getDate()));
-        map.put("numOpen",Integer.toString((int)tmp.getData().getOpen()*1000000));
-        map.put("numHigh",Integer.toString((int)tmp.getData().getHigh()*1000000));
-        map.put("numClose",Integer.toString((int)tmp.getData().getClose()*1000000));
-        map.put("percent",Integer.toString((int)Math.abs(percent)));
-        map.put("volume1",Integer.toString((int)tmp.getData().getVolume()));
-        map.put("gtgd",Double.toString(dauhieu(tmp)*1000000000));//tỉ đồng
+        map.put("numOpen",Long.toString((long)(tmp.getData().getOpen()*1000000)));
+        map.put("numHigh",Long.toString((long)(tmp.getData().getHigh()*1000000)));
+        map.put("numClose",Long.toString((long)(tmp.getData().getClose()*1000000)));
+        map.put("percent",Long.toString((long)Math.abs(percent)));
+        map.put("volume1",Long.toString((long)tmp.getData().getVolume()));
+        map.put("gtgd",Long.toString((long)(dauhieu(tmp)*1000)));//tỉ đồng
 
         //thay thế chỗ dấu hiệu dựa vào lượng gtgd.
         if(dauhieu(tmp)>=8000000){map.put("dauhieu","rất khả quan");}// đã chia 1000, giá trị thực phải *1000;
@@ -142,7 +142,7 @@ public class RulePersonal extends Rules {
 
                 DataOutput obj = randomOBJ(demo);
                 map.put("nameSS", obj.getData().getName() + "thuộc cùng nhóm ngân hàng");
-                map.put("volume2", Integer.toString((int)obj.getData().getVolume()));
+                map.put("volume2", Long.toString((long)obj.getData().getVolume()));
                 sosanh(tmp, obj);
                 level(tmp, obj);
 
@@ -188,7 +188,7 @@ public class RulePersonal extends Rules {
 
                 DataOutput obj = randomOBJ(demo);
                 map.put("nameSS", obj.getData().getName() + "thuộc cùng nhóm dầu khí");
-                map.put("volume2", Integer.toString((int)obj.getData().getVolume()));
+                map.put("volume2", Long.toString((long)obj.getData().getVolume()));
                 sosanh(tmp, obj);
                 level(tmp, obj);
 
@@ -207,7 +207,7 @@ public class RulePersonal extends Rules {
                 sorting.removeNull(demo);
                 DataOutput obj = randomOBJ(demo);
                 map.put("nameSS", obj.getData().getName() + "thuộc cùng nhóm thuỷ sản");
-                map.put("volume2", Integer.toString((int)obj.getData().getVolume()));
+                map.put("volume2", Long.toString((long)obj.getData().getVolume()));
                 sosanh(tmp, obj);
                 level(tmp, obj);
 
@@ -231,7 +231,7 @@ public class RulePersonal extends Rules {
 
                 DataOutput obj = randomOBJ(demo);
                 map.put("nameSS", obj.getData().getName() + "thuộc cùng nhóm hàng không");
-                map.put("volume2", Integer.toString((int)obj.getData().getVolume()));
+                map.put("volume2", Long.toString((long)obj.getData().getVolume()));
                 sosanh(tmp, obj);
                 level(tmp, obj);
 
@@ -254,7 +254,7 @@ public class RulePersonal extends Rules {
                 sorting.removeNull(demo);
                 DataOutput obj = randomOBJ(demo);
                 map.put("nameSS", obj.getData().getName() + "thuộc cùng nhóm cao su");
-                map.put("volume2", Integer.toString((int)obj.getData().getVolume()));
+                map.put("volume2", Long.toString((long)obj.getData().getVolume()));
                 sosanh(tmp, obj);
                 level(tmp, obj);
 
@@ -283,7 +283,7 @@ public class RulePersonal extends Rules {
                 sorting.removeNull(demo);
                 DataOutput obj = randomOBJ(demo);
                 map.put("nameSS", obj.getData().getName() + "thuộc cùng nhóm thép");
-                map.put("volume2", Integer.toString((int)obj.getData().getVolume()));
+                map.put("volume2", Long.toString((long)obj.getData().getVolume()));
                 sosanh(tmp, obj);
                 level(tmp, obj);
 
@@ -291,20 +291,19 @@ public class RulePersonal extends Rules {
             }
             case "VIC":
             case "VHM":
-            case "VRE":
-            case "C69":{
+            case "VRE": {
                 LinkedList<DataOutput> demo = new LinkedList<>();//list chứa các đối tượng để random
 
                 demo.add(filterByName(data, "VIC"));
                 demo.add(filterByName(data, "VHM"));
                 demo.add(filterByName(data, "VRE"));
-                //test
-                demo.add(filterByName(data, "C69"));
+//                //test
+//                demo.add(filterByName(data, "C69"));
 
                 sorting.removeNull(demo);
                 DataOutput obj = randomOBJ(demo);
                 map.put("nameSS", obj.getData().getName() + "thuộc cùng nhóm họ Vin ");
-                map.put("volume2", Integer.toString((int)obj.getData().getVolume()));
+                map.put("volume2", Long.toString((long)obj.getData().getVolume()));
                 sosanh(tmp, obj);
                 level(tmp, obj);
 
@@ -351,13 +350,13 @@ public class RulePersonal extends Rules {
                             || datum.getData().getName().equals("ARM")|| datum.getData().getName().equals("CIA")|| datum.getData().getName().equals("MAS")
                             || datum.getData().getName().equals("ACB")|| datum.getData().getName().equals("STB")|| datum.getData().getName().equals("LPB")
                             || datum.getData().getName().equals("EIB")|| datum.getData().getName().equals("TPB")|| datum.getData().getName().equals("VIB")
-                            || datum.getData().getName().equals("CNG")|| datum.getData().getName().equals("COM")|| datum.getData().getName().equals("C69"))) {
+                            || datum.getData().getName().equals("CNG")|| datum.getData().getName().equals("COM"))) {
                         demo.add(datum);
                     }
                 }
                 DataOutput obj = randomOBJ(demo);
                 map.put("nameSS", obj.getData().getName());
-                map.put("volume2", Integer.toString((int)obj.getData().getVolume()));
+                map.put("volume2", Long.toString((long)obj.getData().getVolume()));
                 sosanh(tmp, obj);
                 level(tmp, obj);
 

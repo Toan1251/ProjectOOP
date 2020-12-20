@@ -36,12 +36,12 @@ public class RuleSteel extends Rules {
             map.put("nameT" +(i+1), sortedListChange.get(i).getData().getName());
             if(temp>0){
                 map.put("Tlink"+(i+1),"tăng");
-                map.put("numT"+(i+1),Integer.toString((int)Math.abs(temp)*1000000));
+                map.put("numT"+(i+1),Long.toString((long)(Math.abs(temp)*1000)));
                 map.put("level"+(i+1),level(temp));
             }
             if(temp<0){
                 map.put("Tlink"+(i+1),"giảm");
-                map.put("numT"+(i+1),Integer.toString((int)Math.abs(temp)*1000000));
+                map.put("numT"+(i+1),Long.toString((long)(Math.abs(temp)*1000)));
                 map.put("level"+(i+1),level(temp));
             }else{
                 map.put("Tlink"+(i+1),"đứng giá");
@@ -55,11 +55,11 @@ public class RuleSteel extends Rules {
         List<DataOutput> sortedListVolume = sorting.sort(myList, 8);
         for(int i=0;i<sortedListVolume.size();i++) {
             map.put("TVname" + (i + 1),sortedListVolume.get(i).getData().getName());
-            map.put("TVnum"+(i+1),Integer.toString((int)sortedListVolume.get(i).getData().getVolume()));
+            map.put("TVnum"+(i+1),Long.toString((long)sortedListVolume.get(i).getData().getVolume()));
         }
 
         //tổng số cổ phiếu bán ra
-        map.put("totalT",Integer.toString((int)total));
+        map.put("totalT",Long.toString((long)total));
 
         //số  lần từng cổ phiếu so với tổng
         for(int i=0;i<myList.size();i++) {

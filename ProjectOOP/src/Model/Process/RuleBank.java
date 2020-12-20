@@ -47,14 +47,14 @@ public class RuleBank extends Rules {
             map.put("nameBank" +(i+1), sortedListChange.get(i).getData().getName());
             if(temp>0){
                 map.put("Blink"+(i+1),"tăng");
-                map.put("numBank"+(i+1),Integer.toString((int)Math.abs(temp)*1000000));
+                map.put("numBank"+(i+1),Long.toString((long)(Math.abs(temp)*1000)));
                 map.put("level"+(i+1),level(temp));
 
 
             }
             if(temp<0){
                 map.put("Blink"+(i+1),"giảm");
-                map.put("numBank"+(i+1),Integer.toString((int)Math.abs(temp)*1000000));
+                map.put("numBank"+(i+1),Long.toString((long)(Math.abs(temp)*1000000)));
                 map.put("level"+(i+1),level(temp));
 
 
@@ -69,11 +69,11 @@ public class RuleBank extends Rules {
         List<DataOutput> sortedListVolume = sorting.sort(myList, 8);
         for (int i=0;i<sortedListVolume.size();i++){
             map.put("BVname"+(i+1),sortedListVolume.get(i).getData().getName());
-            map.put("BVnum"+(i+1),Integer.toString((int)sortedListVolume.get(i).getData().getVolume()));
+            map.put("BVnum"+(i+1),Long.toString((long)sortedListVolume.get(i).getData().getVolume()));
         }
 
         //tổng số cổ phiếu bán ra
-        map.put("totalB",Integer.toString((int)total*1000000));
+        map.put("totalB",Long.toString((long)(total)));
 
 
         return map;

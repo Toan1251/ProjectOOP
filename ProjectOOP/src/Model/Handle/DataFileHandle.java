@@ -291,14 +291,13 @@ public class DataFileHandle {
             //nhóm Vin
             case "VIC":
             case "VHM":
-            case "VRE":
-            case "C69":{
+            case "VRE": {
                 LinkedList<DataOutput> demo = new LinkedList<>();//list chứa các đối tượng để random
 
                 demo.add(filterByName(dFO.getData(), "VIC"));
                 demo.add(filterByName(dFO.getData(), "VHM"));
                 demo.add(filterByName(dFO.getData(), "VRE"));
-                demo.add(filterByName(dFO.getData(), "C69"));
+//                demo.add(filterByName(dFO.getData(), "C69"));
 
                 sorting.removeNull(demo);
 

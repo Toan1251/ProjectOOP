@@ -33,13 +33,13 @@ public class RuleFischery extends Rules {
             map.put("nameF" +(i+1),sortedListChange.get(i).getData().getName());
             if(temp>0){
                 map.put("Flink"+(i+1),"tăng");
-                map.put("numF"+(i+1),Integer.toString((int)Math.abs(temp)*1000000));
+                map.put("numF"+(i+1),Long.toString((long)(Math.abs(temp)*1000)));
                 map.put("level"+(i+1),level(temp));
 
             }
             if(temp<0){
                 map.put("Flink"+(i+1),"giảm");
-                map.put("numF"+(i+1),Integer.toString((int)Math.abs(temp)*1000000));
+                map.put("numF"+(i+1),Long.toString((long)(Math.abs(temp)*1000)));
                 map.put("level"+(i+1),level(temp));
 
             }else {
@@ -54,11 +54,11 @@ public class RuleFischery extends Rules {
         List<DataOutput> sortedListVolume = sorting.sort(myList, 8);
         for(int i=0;i<sortedListVolume.size();i++) {
             map.put("FVname" + (i + 1),sortedListVolume.get(i).getData().getName());
-            map.put("FVnum"+(i+1),Integer.toString((int)sortedListVolume.get(i).getData().getVolume()));
+            map.put("FVnum"+(i+1),Long.toString((long)sortedListVolume.get(i).getData().getVolume()));
         }
 
         //tổng số cổ phiếu bán ra
-        map.put("totalF", Integer.toString((int)total));
+        map.put("totalF", Long.toString((long)total));
 
         //số  lần từng cổ phiếu so với tổng
         for(int i=0;i<myList.size();i++) {

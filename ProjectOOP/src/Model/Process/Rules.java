@@ -94,7 +94,7 @@ public class Rules {
     }
 
     public String levelPc(double temp){
-        double tmp=Math.abs(temp);
+        double tmp=100*Math.abs(temp);
         if(tmp>=10.0){
             return "rất mạnh";
         }

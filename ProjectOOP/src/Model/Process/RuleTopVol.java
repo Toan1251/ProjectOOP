@@ -13,12 +13,12 @@ public class RuleTopVol extends Rules {
         List<DataOutput> sortedListVol = sorting.sort(data, 1);
         for(int i=0;i<3;i++) {
             map.put("vol" + (i + 1), sortedListVol.get(i).getData().getName());
-            map.put("v"+(i+1), Integer.toString((int)sortedListVol.get(i).getData().getVolume()));
+            map.put("v"+(i+1), Long.toString((long)sortedListVol.get(i).getData().getVolume()));
         }
 
         List<DataOutput> sortedListVolValue = sorting.sort(data, 8);
         map.put("rvol",sortedListVolValue.get(0).getData().getName());
-        map.put("rv",Integer.toString((int)sortedListVolValue.get(0).getData().getVolumeValue()));
+        map.put("rv",Long.toString((long)sortedListVolValue.get(0).getData().getVolumeValue()));
         return map;
     }
 }

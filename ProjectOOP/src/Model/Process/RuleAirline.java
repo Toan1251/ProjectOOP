@@ -34,12 +34,12 @@ public class RuleAirline extends Rules {
             map.put("nameA" + (i + 1), sortedListChange.get(i).getData().getName());
             if (temp > 0) {
                 map.put("Alink" + (i + 1), "tăng");
-                map.put("numA" + (i + 1), Integer.toString((int)Math.abs(temp) * 1000000));
+                map.put("numA" + (i + 1), Long.toString((long)(Math.abs(temp) * 1000)));
                 map.put("level" + (i + 1), level(temp));
             }
             if (temp < 0) {
                 map.put("Alink" + (i + 1), "giảm");
-                map.put("numA" + (i + 1), Integer.toString((int)Math.abs(temp) * 1000000));
+                map.put("numA" + (i + 1), Long.toString((long)(Math.abs(temp) * 1000)));
                 map.put("level" + (i + 1), level(temp));
             }else{
                 map.put("Alink" + (i + 1), "không đổi");
@@ -52,7 +52,7 @@ public class RuleAirline extends Rules {
         List<DataOutput> sortedListVolume = sorting.sort(myList, 8);
         for (int i = 0; i < sortedListVolume.size(); i++) {
             map.put("AVname" + (i + 1), sortedListVolume.get(i).getData().getName());
-            map.put("AVnum" + (i + 1), Integer.toString((int)sortedListVolume.get(i).getData().getVolume()));
+            map.put("AVnum" + (i + 1), Long.toString((long)sortedListVolume.get(i).getData().getVolume()));
         }
 
         return map;

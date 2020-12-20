@@ -14,14 +14,14 @@ public class RuleChangePercent extends Rules {
         map.put("tong", Integer.toString(sortedList.size()));
         map.put("name", sortedList.get(0).getData().getName());
         map.put("percent", Double.toString(Math.abs(sortedList.get(0).getData().getChangePercent())));
-        map.put("begin", Integer.toString((int)sortedList.get(0).getData().getOpen()*1000000));
-        map.put("end", Integer.toString((int)sortedList.get(0).getData().getClose()*1000000));
+        map.put("begin", Long.toString((long)(sortedList.get(0).getData().getOpen()*1000)));
+        map.put("end", Long.toString((long)(sortedList.get(0).getData().getClose()*1000)));
 
         List<DataOutput> sortedReverseList = sorting.sort(data, 7, sortedList.size(), true);
         map.put("rname", sortedReverseList.get(0).getData().getName());
         map.put("rpercent", Double.toString(Math.abs(sortedReverseList.get(0).getData().getChangePercent())));
-        map.put("rbegin", Integer.toString((int)sortedReverseList.get(0).getData().getOpen() * 1000000));
-        map.put("rend", Integer.toString((int)sortedReverseList.get(0).getData().getOpen() * 1000000));
+        map.put("rbegin", Long.toString((long)(sortedReverseList.get(0).getData().getOpen() * 1000)));
+        map.put("rend", Long.toString(((long)sortedReverseList.get(0).getData().getOpen() * 1000)));
 
 
         return map;

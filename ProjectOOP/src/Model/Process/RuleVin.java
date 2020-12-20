@@ -19,12 +19,12 @@ public class RuleVin extends Rules {
         myList.add(filterByName(data,"VIC"));
         myList.add(filterByName(data,"VHM"));
         myList.add(filterByName(data,"VRE"));
-        //test
-        myList.add(filterByName(data,"C69"));
+//        //test
+//        myList.add(filterByName(data,"C69"));
 
         sorting.removeNull(myList);
 
-        for (int i=0;i<myList.size();i++){
+        for (int i=0;i<myList.size()-1;i++){
             double temp= myList.get(i).getData().getClose()-myList.get(i).getData().getOpen();
             double temp1=myList.get(i+1).getData().getClose()-myList.get(i+1).getData().getOpen();
             map.put("nameV" +(i+1), myList.get(i).getData().getName());
@@ -32,18 +32,18 @@ public class RuleVin extends Rules {
                 map.put("Vlink"+(i+1),"tăng");
                 map.put("upV"+(i+1),"lên");
                 map.put("levelV"+(i+1),level(temp));
-                map.put("openV"+(i+1),Integer.toString((int)myList.get(i).getData().getOpen()*1000000));
-                map.put("closeV"+(i+1),Integer.toString((int)myList.get(i).getData().getClose()*1000000));
-                map.put("numV"+(i+1),Integer.toString((int)Math.abs(temp)*1000000));}
+                map.put("openV"+(i+1),Long.toString((long)(myList.get(i).getData().getOpen()*1000)));
+                map.put("closeV"+(i+1),Long.toString((long)(myList.get(i).getData().getClose()*1000)));
+                map.put("numV"+(i+1),Long.toString((long)(Math.abs(temp)*1000)));}
 
 
             else if(temp<0){
                 map.put("Vlink"+(i+1),"giảm");
                 map.put("upV"+(i+1),"xuống");
                 map.put("levelV"+(i+1),level(temp));
-                map.put("openV"+(i+1),Integer.toString((int)myList.get(i).getData().getOpen()*1000));
-                map.put("closeV"+(i+1),Integer.toString((int)myList.get(i).getData().getClose()*1000));
-                map.put("numV"+(i+1),Integer.toString((int)Math.abs(temp)*1000000));}
+                map.put("openV"+(i+1),Long.toString((long)(myList.get(i).getData().getOpen()*1000)));
+                map.put("closeV"+(i+1),Long.toString((long)(myList.get(i).getData().getClose()*1000)));
+                map.put("numV"+(i+1),Long.toString((long)(Math.abs(temp)*1000)));}
             else {
                 map.put("Vlink"+(i+1),"đứng giá");
                 map.put("upV"+(i+1),"");
@@ -70,18 +70,18 @@ public class RuleVin extends Rules {
             if(temp>0){
                 map.put("link"+(i+1),"tăng");
                 map.put("up"+(i+1),"lên");
-                map.put("num"+(i+1),Integer.toString((int)Math.abs(temp)*1000000));
+                map.put("num"+(i+1),Long.toString((long)Math.abs(temp)*1000000));
                 map.put("level"+(i+1),level(temp));
-                map.put("open"+(i+1),Integer.toString((int)sortedListChange.get(i).getData().getOpen()));
-                map.put("close"+(i+1),Integer.toString((int)sortedListChange.get(i).getData().getClose()));
+                map.put("open"+(i+1),Long.toString((long)(sortedListChange.get(i).getData().getOpen()*1000)));
+                map.put("close"+(i+1),Long.toString((long)(sortedListChange.get(i).getData().getClose()*1000)));
             }
             else if(temp<0){
                 map.put("link"+(i+1),"giảm");
                 map.put("up"+(i+1),"xuống");
-                map.put("num"+(i+1),Integer.toString((int)Math.abs(temp)*1000000));
+                map.put("num"+(i+1),Long.toString((long)Math.abs(temp)*1000000));
                 map.put("level"+(i+1),level(temp));
-                map.put("open"+(i+1),Integer.toString((int)sortedListChange.get(i).getData().getOpen()));
-                map.put("close"+(i+1),Integer.toString((int)sortedListChange.get(i).getData().getClose()));
+                map.put("open"+(i+1),Long.toString((long)(sortedListChange.get(i).getData().getOpen()*1000)));
+                map.put("close"+(i+1),Long.toString((long)(sortedListChange.get(i).getData().getClose()*1000)));
 
             }else{
                 map.put("link"+(i+1),"đứng giá");
