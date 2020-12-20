@@ -19,6 +19,9 @@ public class RuleVin extends Rules {
         myList.add(filterByName(data,"VIC"));
         myList.add(filterByName(data,"VHM"));
         myList.add(filterByName(data,"VRE"));
+        //test
+        myList.add(filterByName(data,"C69"));
+
         sorting.removeNull(myList);
 
         for (int i=0;i<myList.size();i++){

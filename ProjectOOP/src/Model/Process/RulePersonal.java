@@ -291,12 +291,16 @@ public class RulePersonal extends Rules {
             }
             case "VIC":
             case "VHM":
-            case "VRE": {
+            case "VRE":
+            case "C69":{
                 LinkedList<DataOutput> demo = new LinkedList<>();//list chứa các đối tượng để random
 
                 demo.add(filterByName(data, "VIC"));
                 demo.add(filterByName(data, "VHM"));
                 demo.add(filterByName(data, "VRE"));
+                //test
+                demo.add(filterByName(data, "C69"));
+
                 sorting.removeNull(demo);
                 DataOutput obj = randomOBJ(demo);
                 map.put("nameSS", obj.getData().getName() + "thuộc cùng nhóm họ Vin ");
@@ -347,7 +351,7 @@ public class RulePersonal extends Rules {
                             || datum.getData().getName().equals("ARM")|| datum.getData().getName().equals("CIA")|| datum.getData().getName().equals("MAS")
                             || datum.getData().getName().equals("ACB")|| datum.getData().getName().equals("STB")|| datum.getData().getName().equals("LPB")
                             || datum.getData().getName().equals("EIB")|| datum.getData().getName().equals("TPB")|| datum.getData().getName().equals("VIB")
-                            || datum.getData().getName().equals("CNG")|| datum.getData().getName().equals("COM"))) {
+                            || datum.getData().getName().equals("CNG")|| datum.getData().getName().equals("COM")|| datum.getData().getName().equals("C69"))) {
                         demo.add(datum);
                     }
                 }
