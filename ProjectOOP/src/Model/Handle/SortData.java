@@ -2,10 +2,7 @@ package ProjectOOP.src.Model.Handle;
 
 import ProjectOOP.src.Model.Handle.Sorted.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class SortData {
 
@@ -24,11 +21,18 @@ public class SortData {
     }
 
     //isAscending: Thứ tự tăng dần
+    //Loại bỏ mọi phần tử null trong danh sách đã được sắp xếp
 
     public List<DataOutput> sort(List<DataOutput> data, int attribute){
         List<DataOutput> sortedList = new LinkedList<>(data);
+        List<DataOutput> nullList = new LinkedList<>();
+
+        nullList.add(null);
+        sortedList.removeAll(nullList);
+
         //Sort Data theo thứ tự giảm dần dựa trên các thuộc tính
         if(attribute==VOLUME){
+            //sortedList.sort(new ComparatorByVolume());
             sortedList.sort(new ComparatorByVolume());
         }
         else if(attribute==OPEN){
@@ -65,5 +69,11 @@ public class SortData {
             finalList.add(sortedList.get(i));
         }
         return finalList;
+    }
+
+    public void removeNull(List l){
+        List<Object> nullList = new LinkedList<>();
+        nullList.add(null);
+        l.removeAll(nullList);
     }
 }

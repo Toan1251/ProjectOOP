@@ -156,6 +156,8 @@ public class DataFileHandle {
                 demo.add(filterByName(dFO.getData(),"PVG"));
                 demo.add(filterByName(dFO.getData(),"PVS"));
 
+
+
                 //sắp xếp theo change
                 List<DataOutput> topChange = sorting.sort(demo,6);
                 //sắp xếp theo volume value
@@ -174,6 +176,8 @@ public class DataFileHandle {
                 demo.add(filterByName(dFO.getData(), "IDI"));
                 demo.add(filterByName(dFO.getData(), "VHC"));
                 demo.add(filterByName(dFO.getData(), "TS4"));
+
+
 
                 //sắp xếp theo change
                 List<DataOutput> topChange = sorting.sort(demo,6);
@@ -196,8 +200,9 @@ public class DataFileHandle {
                 demo.add(filterByName(dFO.getData(), "CIA"));
                 demo.add(filterByName(dFO.getData(), "MAS"));
 
+                while(demo.remove((Object) null)){
 
-
+                }
                 //sắp xếp theo change
                 List<DataOutput> topChange = sorting.sort(demo,6);
                 //sắp xếp theo volume value
@@ -220,6 +225,9 @@ public class DataFileHandle {
                 demo.add(filterByName(dFO.getData(), "HRC"));
                 demo.add(filterByName(dFO.getData(), "TRC"));
                 demo.add(filterByName(dFO.getData(), "CSM"));
+
+
+
                 //sắp xếp theo change
                 List<DataOutput> topChange = sorting.sort(demo,6);
                 //sắp xếp theo volume value
@@ -249,6 +257,8 @@ public class DataFileHandle {
                 demo.add(filterByName(dFO.getData(), "HSG"));
                 demo.add(filterByName(dFO.getData(), "SMC"));
 
+
+
                 //sắp xếp theo change
                 List<DataOutput> topChange = sorting.sort(demo,6);
                 //sắp xếp theo volume value
@@ -265,6 +275,9 @@ public class DataFileHandle {
                 demo.add(filterByName(dFO.getData(), "VIC"));
                 demo.add(filterByName(dFO.getData(), "VHM"));
                 demo.add(filterByName(dFO.getData(), "VRE"));
+
+
+
                 //sắp xếp theo change
                 List<DataOutput> topChange = sorting.sort(demo,6);
                 for (DataOutput output : topChange) {

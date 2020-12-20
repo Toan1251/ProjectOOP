@@ -108,6 +108,9 @@ public class RulePersonal extends Rules {
             case "SHB": {
                 List<DataOutput> demo = new LinkedList<>();//list chứa các đối tượng để random
 
+                List<DataOutput> nullList = new LinkedList<>();
+                nullList.add(null);
+
                 demo.add(filterByName(data, "BID"));
                 demo.add(filterByName(data, "CTG"));
                 demo.add(filterByName(data, "HDB"));
@@ -117,6 +120,8 @@ public class RulePersonal extends Rules {
                 demo.add(filterByName(data, "VPB"));
                 demo.add(filterByName(data, "NVB"));
                 demo.add(filterByName(data, "SHB"));
+
+                demo.removeAll(nullList);
 
                 DataOutput obj = randomOBJ(demo);
                 map.put("nameSS", obj.getData().getName() + "thuộc cùng nhóm ngân hàng");
@@ -181,6 +186,7 @@ public class RulePersonal extends Rules {
             case "CIA":
             case "MAS": {
                 LinkedList<DataOutput> demo = new LinkedList<>();//list chứa các đối tượng để random
+
 
                 demo.add(filterByName(data, "HVN"));
                 demo.add(filterByName(data, "VJC"));
