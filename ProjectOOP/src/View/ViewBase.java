@@ -23,9 +23,9 @@ import javax.swing.JColorChooser;
 public class ViewBase {
     private Color setPanelColor;
     private Color buttonColor;
-    static  JComboBox mainmenu= new JComboBox(new String[] { "ACM", "BLF", "BTS" });
-    static  String[] listMenuBox =  new String[] { "ACM", "BLF", "BTS" };
-    static  String[] saiGon =  new String[] {"VPS", "VIP", "TNT"};
+    static  JComboBox mainmenu= new JComboBox(new String[] { "ACM", "BLF", "BTS", "MAS", "VCS" });
+    static  String[] listMenuBox =  new String[] { "ACM", "BLF", "BTS", "MAS", "VCS" };
+    static  String[] saiGon =  new String[] {"VPS", "VIP", "TNT", "VIC", "FMC"};
 
     private Font viewFont = new Font("SansSerif", Font.LAYOUT_LEFT_TO_RIGHT, 20);
 
@@ -67,7 +67,7 @@ public class ViewBase {
         JLabel sanChungKhoanLabel = new JLabel("Chọn sàn: ");
         sanChungKhoanLabel.setFont(viewFont);
 
-        JLabel hotTagLabel = new JLabel("Tìm kiếm nhiều nhất Hà Nội: ");
+        JLabel hotTagLabel = new JLabel("Tìm kiếm nhiều nhất: ");
         hotTagLabel.setFont(viewFont);
 
         JLabel nameProject = new JLabel("TIN CHỨNG KHOÁN");
@@ -205,13 +205,13 @@ public class ViewBase {
     {
         if(sanChungKhoanHienTai==0)
         {
-           for(int i=0;i<3;i++) {
+           for(int i=0;i<5;i++) {
                mainmenu.removeItemAt(0);
                mainmenu.addItem(listMenuBox[i]);
            }
         }
         else {
-            for(int i=0;i<3;i++) {
+            for(int i=0;i<5;i++) {
                 {  mainmenu.removeItemAt(0);
                 mainmenu.addItem(saiGon[i]);}
         }

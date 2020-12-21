@@ -135,7 +135,7 @@ public class DataFileOutput {
                 // thử thêm change
             case "change":
                 for(DataOutput output: dataOutputs){
-                    respondParagraph += output.getSentence_name().get(1) + "\n";
+                    respondParagraph += output.getSentence_name().get(1) + "\n\n";
                 }
         }
         return respondParagraph;
