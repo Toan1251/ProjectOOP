@@ -75,8 +75,8 @@ public class RulePetrol extends Rules {
         map.put("totalP", Long.toString((long) total));
 
         //số  lần từng cổ phiếu so với tổng
-        for (int i = 0; i < myList.size(); i++) {
-            double tmp = myList.get(i).getData().getVolume() / total * 100;
+        for (int i = 0; i < sortedListVolume.size(); i++) {
+            double tmp = sortedListVolume.get(i).getData().getVolume() / total * 100;
             map.put("timeP" + (i + 1), Double.toString((double) Math.round(tmp * 1000) / 1000));
         }
         return map;

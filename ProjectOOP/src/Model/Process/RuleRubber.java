@@ -65,8 +65,8 @@ public class RuleRubber extends Rules {
         map.put("totalC", Long.toString((long) total));
 
         //số  lần từng cổ phiếu so với tổng
-        for (int i = 0; i < myList.size(); i++) {
-            double temp = myList.get(i).getData().getVolume() / total * 100;
+        for (int i = 0; i < sortedListVolume.size(); i++) {
+            double temp = sortedListVolume.get(i).getData().getVolume() / total * 100;
             map.put("timeC" + (i + 1), Double.toString((double) Math.round(temp * 1000) / 1000));
         }
 
