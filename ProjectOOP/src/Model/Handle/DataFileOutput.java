@@ -4,6 +4,7 @@ import ProjectOOP.src.View.SpawmError;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class DataFileOutput {
     private List<DataOutput> data;
@@ -89,41 +90,23 @@ public class DataFileOutput {
                 break;
             case "group":
 //                DataOutput temp = dataOutputs.get(0);
-                if (request.equals("GroupTopAirline")) {
-                    respondParagraph = temp.getSentence_nganh().get(1);
+                if (request.equals("GroupTopAirline")||request.equals("GroupTopAirlineVol")) {
+                    respondParagraph = addS(temp.getSentence_nganh());
                 }
-                if (request.equals("GroupTopAirlineVol")) {
-                    respondParagraph = temp.getSentence_nganh().get(2);
+                if (request.equals("GroupTopBank")||request.equals("GroupTopBankVol")) {
+                    respondParagraph = addS(temp.getSentence_nganh());
                 }
-                if (request.equals("GroupTopBank")) {
-                    respondParagraph = temp.getSentence_nganh().get(1);
+                if (request.equals("GroupTopFishery")||request.equals("GroupTopFisheryVol")) {
+                    respondParagraph = addS(temp.getSentence_nganh());
                 }
-                if (request.equals("GroupTopBankVol")) {
-                    respondParagraph = temp.getSentence_nganh().get(2);
+                if (request.equals("GroupTopPetrol")||request.equals("GroupTopPetrolVol")) {
+                    respondParagraph = addS(temp.getSentence_nganh());
                 }
-                if (request.equals("GroupTopFishery")) {
-                    respondParagraph = temp.getSentence_nganh().get(1);
+                if (request.equals("GroupTopRubber")||request.equals("GroupTopRubberVol")) {
+                    respondParagraph = addS(temp.getSentence_nganh());
                 }
-                if (request.equals("GroupTopFisheryVol")) {
-                    respondParagraph = temp.getSentence_nganh().get(2);
-                }
-                if (request.equals("GroupTopPetrol")) {
-                    respondParagraph = temp.getSentence_nganh().get(1);
-                }
-                if (request.equals("GroupTopPetrolVol")) {
-                    respondParagraph = temp.getSentence_nganh().get(2);
-                }
-                if (request.equals("GroupTopRubber")) {
-                    respondParagraph = temp.getSentence_nganh().get(1);
-                }
-                if (request.equals("GroupTopRubberVol")) {
-                    respondParagraph = temp.getSentence_nganh().get(2);
-                }
-                if (request.equals("GroupTopSteel")) {
-                    respondParagraph = temp.getSentence_nganh().get(1);
-                }
-                if (request.equals("GroupTopSteelVol")) {
-                    respondParagraph = temp.getSentence_nganh().get(2);
+                if (request.equals("GroupTopSteel")||request.equals("GroupTopSteelVol")) {
+                    respondParagraph = addS(temp.getSentence_nganh());
                 }
                 if (request.equals("GroupVin")) {
                     respondParagraph = temp.getSentence_nganh().get(1);
@@ -131,17 +114,13 @@ public class DataFileOutput {
                 break;
             case "ranking":
 //                DataOutput temp = dataOutputs.get(0);
-                if (request.equals("GroupDecrease")) {
-                    respondParagraph = temp.getSentence_nganh().get(1);
+                if (request.equals("GroupDecrease")||request.equals("GroupDecreasePercent")) {
+                    respondParagraph += temp.getSentence_ranking().get(1);
+                    respondParagraph += temp.getSentence_ranking().get(2);
                 }
-                if (request.equals("GroupDecreasePercent")) {
-                    respondParagraph = temp.getSentence_nganh().get(2);
-                }
-                if (request.equals("GroupIncrease")) {
-                    respondParagraph = temp.getSentence_nganh().get(3);
-                }
-                if (request.equals("GroupIncreasePercent")) {
-                    respondParagraph = temp.getSentence_nganh().get(4);
+                if (request.equals("GroupIncrease")||request.equals("GroupIncreasePercent")) {
+                    respondParagraph += temp.getSentence_ranking().get(3);
+                    respondParagraph += temp.getSentence_ranking().get(4);
                 }
                 if (request.equals("GroupTopVolume")) {
                     respondParagraph = temp.getSentence_nganh().get(5);
@@ -153,6 +132,14 @@ public class DataFileOutput {
                 break;
         }
         return respondParagraph;
+    }
+
+    private String addS(Map<Integer,String> tmp){
+        String result="";
+        for(int i=1;i<=tmp.size();i++){
+            result+=tmp.get(i);
+        }
+        return result;
     }
 
 

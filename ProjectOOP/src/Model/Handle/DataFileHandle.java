@@ -53,28 +53,6 @@ public class DataFileHandle {
 
     public void addRankingTag(DataFileOutput dFO) {
         SortData sorting = new SortData();
-
-//        // sorting.sort trả về 1 linkedList gồm TOP_DATA phần tử
-//        for(int i = 1; i <= sorting.MAX_FIELD; i++){
-//            String tagName = "";
-//            String tagType = "ranking";
-//            if(i==sorting.VOLUME){
-//                tagName = "Volume";
-//            }else if(i==sorting.OPEN){
-//                tagName = "Open";
-//            }else if(i==sorting.CLOSE){
-//                tagName = "Close";
-//            }else if(i==sorting.HIGH){
-//                tagName = "High";
-//            }else if(i==sorting.LOW){
-//                tagName = "Low";
-//            }else if(i==sorting.CHANGE){
-//                tagName = "GroupChangeNumber";
-//            }else if(i==sorting.CHANGE_PERCENT){
-//                tagName = "";
-//            }else if(i==sorting.VOLUME_VALUE){
-//                tagName = "Volume Value";
-//            }
         List<DataOutput> top5Asc = sorting.sort(dFO.getData(), 6, TOP_DATA, false);
         List<DataOutput> top5Desc = sorting.sort(dFO.getData(), 6, TOP_DATA, true);
         List<DataOutput> topAscPc = sorting.sort(dFO.getData(), 7, 1, false);
