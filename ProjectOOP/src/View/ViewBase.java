@@ -23,7 +23,7 @@ import javax.swing.JColorChooser;
 public class ViewBase {
     private Color setPanelColor;
     private Color buttonColor;
-    static  JComboBox mainmenu= new JComboBox(new String[] { "ACM", "BLF", "BTS", "MAS", "VCS" });
+    static  JComboBox mainmenu= new JComboBox(new String[] { "ACM", "C69", "BTS", "MAS", "VCS" });
     static  String[] listMenuBox =  new String[] { "ACM", "C69", "BTS", "MAS", "VCS" };
     static  String[] saiGon =  new String[] {"VPS", "VIP", "TNT", "VIC", "FMC"};
 
