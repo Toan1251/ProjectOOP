@@ -14,9 +14,9 @@ public class GroupIncreasePercent extends Group {
     @Override
     public String begin(List<DataOutput> data) {
         //thêm câu vào list sentences chung chờ xử lí
-        addGroupSentences("Được biết, trong tổng số <tong> mã thì dẫn đầu là là cổ phiếu <name> với mức tăng <percent>%, tương ứng tăng từ <begin> đồng lên <end> đồng. .");
-        addGroupSentences("Giữ vị trí quán quân về tăng giá là <name> với mức tăng <percent>%, tương ứng tăng từ <begin> lên <end> đồng.");
-        addGroupSentences("Đứng đầu danh sách tăng giá là mã <name>, tăng từ <begin> đồng lên <end> đồng, tương ứng với mức tăng <percent>%.");
+        addGroupSentences("Được biết, trong tổng số <tong> mã thì dẫn đầu là là cổ phiếu <name> với mức tăng <percent>%, tương ứng tăng từ <begin> đồng lên <end> đồng, ngay sau đó là <name2> với mức tăng <percent2>% ( <begin2> lên <end2> (đồng) ),xếp thứ 3 là <name3> tăng từ <begin3> đồng lên <end3> đồng, tương ứng <percent3>%. Hai mã xếp cuối là trong top5 là <name4> và <name5>, tăng lần lượt <percent4>% và <percent5>%. ");
+        addGroupSentences("Giữ vị trí quán quân về tăng giá trong số <tong> mã là <name1> với mức tăng <percent1>%, tương ứng tăng từ <begin1> lên <end1> đồng. Á quân là <name2> với mức tăng <percent2>% ( <begin2> lên <end2> (đồng) ),xếp thứ 3 là <name3> tăng từ <begin3> đồng lên <end3> đồng, tương ứng <percent3>%. Hai mã xếp cuối là trong top5 là <name4> và <name5>, tăng lần lượt <percent4>% và <percent5>%. ");
+        addGroupSentences("Đứng đầu danh sách tăng giá là mã <name1>, tăng từ <begin1> đồng lên <end1> đồng, tương ứng với mức tăng <percent1>%, ngay sau đó là <name2> với mức tăng <percent2>% ( <begin2> lên <rend2> (đồng) ),xếp thứ 3 là <name3> tăng từ <begin3> đồng lên <end3> đồng, tương ứng <percent3>%. Hai mã xếp cuối là trong top5 là <name4> và <name5>, tăng lần lượt <percent4>% và <rpercent5>%. ");
 
         // phương thức dùng để tạo 1 map chứa các giá trị cần thay và tên biến tương ứng.
         this.eachMap = (new RuleChangePercent()).PushInMap(data);
