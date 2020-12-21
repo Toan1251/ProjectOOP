@@ -53,7 +53,7 @@ public class ViewBase {
         outputTextField.setLineWrap(true);
         outputTextField.setWrapStyleWord(true);
         JScrollPane scrollPane = new JScrollPane(outputTextField);
-        scrollPane.setBounds(810, 160, 450, 450);
+        scrollPane.setBounds(850, 160, 580, 600);
 
         JLabel getInput = new JLabel("Tìm kiếm mã chứng khoán: ");
         getInput.setFont(viewFont);
@@ -96,7 +96,7 @@ public class ViewBase {
         getInput.setBounds(80, 50, 290, 70);
         getInput.setForeground(Color.black);
 
-        resultLabel.setBounds(980, 69, 250, 100);
+        resultLabel.setBounds(1060, 69, 250, 100);
         resultLabel.setForeground(Color.black);
 
 
@@ -110,10 +110,10 @@ public class ViewBase {
         panel.setLayout(null);
         panel.setBackground(setPanelColor);
 
-        lb.setBounds(60, 300, 500, 400);
+        lb.setBounds(60, 200, 800, 700);
         hotTagLabel.setBounds(80,220,250,20);
 
-        lb2.setBounds(390, 350, 500, 400);
+        lb2.setBounds(390, 200, 800, 700);
 
         lb.setIcon(new ImageIcon("ProjectOOP/src/View/workshop.png"));
         lb2.setIcon(new ImageIcon("ProjectOOP/src/View/chungkhoan.png"));

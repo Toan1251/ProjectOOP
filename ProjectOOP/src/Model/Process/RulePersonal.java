@@ -72,12 +72,12 @@ public class RulePersonal extends Rules {
         //truyền vào các cặp key và value tương ứng.
         map.put("name", tmp.getData().getName());
         map.put("date", dateFormat.format(tmp.getData().getDate()));
-        map.put("numOpen", Long.toString((long) (tmp.getData().getOpen() * 1000000)));
-        map.put("numHigh", Long.toString((long) (tmp.getData().getHigh() * 1000000)));
-        map.put("numClose", Long.toString((long) (tmp.getData().getClose() * 1000000)));
+        map.put("numOpen", Long.toString((long) (tmp.getData().getOpen() * 1000)));
+        map.put("numHigh", Long.toString((long) (tmp.getData().getHigh() * 1000)));
+        map.put("numClose", Long.toString((long) (tmp.getData().getClose() * 1000)));
         map.put("percent", Double.toString((double) Math.round(percent * 1000) / 1000));
         map.put("volume1", Long.toString((long) tmp.getData().getVolume()));
-        map.put("gtgd", Long.toString((long) (dauhieu(tmp) * 1000)));//tỉ đồng
+        map.put("gtgd", Long.toString((long) (dauhieu(tmp))));//tỉ đồng
 
         //thay thế chỗ dấu hiệu dựa vào lượng gtgd.
         if (dauhieu(tmp) / 1000 >= 8000000) {
