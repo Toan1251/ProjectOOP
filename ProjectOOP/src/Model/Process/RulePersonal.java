@@ -1,12 +1,12 @@
 package ProjectOOP.src.Model.Process;
+
 import ProjectOOP.src.Model.Handle.DataOutput;
 import ProjectOOP.src.Model.Handle.SortData;
 
-import java.beans.DesignMode;
-import java.util.List;
-import java.util.LinkedList;
-import java.util.Map;
 import java.text.SimpleDateFormat;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class RulePersonal extends Rules {
@@ -15,87 +15,93 @@ public class RulePersonal extends Rules {
     private Random random = new Random();
 
     //tìm đối tượng ngẫu nhiên trong 1 list các dataoutput và trả về 1 dataoutput
-    private DataOutput randomOBJ(List<DataOutput> data){
+    private DataOutput randomOBJ(List<DataOutput> data) {
         int index = random.nextInt(data.size());
         return data.get(index);
     }
 
     //đây chính là volume value
-    private double dauhieu(DataOutput obj){
-        return (obj.getData().getHigh()+obj.getData().getLow())/2*(obj.getData().getVolume()*1000);
+    private double dauhieu(DataOutput obj) {
+        return (obj.getData().getHigh() + obj.getData().getLow()) / 2 * (obj.getData().getVolume() * 1000);
     }
 
     //thay thế cho compare (so sánh)
-    private void sosanh(DataOutput a,DataOutput b){
+    private void sosanh(DataOutput a, DataOutput b) {
 
-        if(dauhieu(a)>dauhieu(b)){
-            map.put("compare","nhiều hơn");}
-        else if (dauhieu(a)<dauhieu(b)){
-            map.put("compare","ít hơn");
-        }
-        else {
-            map.put("compare","bằng nhau");
+        if (dauhieu(a) > dauhieu(b)) {
+            map.put("compare", "nhiều hơn");
+        } else if (dauhieu(a) < dauhieu(b)) {
+            map.put("compare", "ít hơn");
+        } else {
+            map.put("compare", "bằng nhau");
         }
     }
 
     //thay thế cho levelSS (nói về mức độ chênh lệch)
-    private void level(DataOutput a,DataOutput b){
+    private void level(DataOutput a, DataOutput b) {
 
-        if(a.getData().getVolume()-b.getData().getVolume()<=1000000){
-            map.put("levelSS","một chút");}
-        else if (a.getData().getVolume()-b.getData().getVolume()>1000000 && (a.getData().getVolume()-b.getData().getVolume())<4000000){
-            map.put("levelSS","khá nhiều");
-        }
-        else {
-            map.put("levelSS","rất nhiều");
+        if (a.getData().getVolume() - b.getData().getVolume() <= 1000000) {
+            map.put("levelSS", "một chút");
+        } else if (a.getData().getVolume() - b.getData().getVolume() > 1000000 && (a.getData().getVolume() - b.getData().getVolume()) < 4000000) {
+            map.put("levelSS", "khá nhiều");
+        } else {
+            map.put("levelSS", "rất nhiều");
         }
     }
 
 
-    public Map<String, String> PushInMap(List<DataOutput> data,String name) {
+    public Map<String, String> PushInMap(List<DataOutput> data, String name) {
 
         //tìm kiếm đối tượng có tên muốn tìm và trả về đối tượng đó.
         //tạo tmp y hệt đối tượng tìm được.
-        DataOutput tmp = data.stream().filter(x->x.getData().getName().equals(name)).findAny().orElse(null);
+        DataOutput tmp = data.stream().filter(x -> x.getData().getName().equals(name)).findAny().orElse(null);
 
         //tạo kiểu hiển thị ngày tháng năm (pattern)
         //như ở dưới là day/month/year.
-        String pattern ="dd/MM/yyyy";
+        String pattern = "dd/MM/yyyy";
         SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
 
         //change có giá trị bằng độ chênh lệch của giá trị cổ phiếu.
-        double change=tmp.getData().getClose()-tmp.getData().getOpen();
+        double change = tmp.getData().getClose() - tmp.getData().getOpen();
 //        double percent=Math.abs ((double) Math.round((((tmp.getData().getClose())*1000)/((tmp.getData().getOpen())*1000)-1)*10000)/100);
-        double percent=Math.abs(tmp.getData().getChangePercent()*100);
+        double percent = Math.abs(tmp.getData().getChangePercent() * 100);
 
         //lấy tỉ lệ % tăng hoặc giảm
 
 
         //truyền vào các cặp key và value tương ứng.
-        map.put("name",tmp.getData().getName());
-        map.put("date",dateFormat.format(tmp.getData().getDate()));
-        map.put("numOpen",Long.toString((long)(tmp.getData().getOpen()*1000000)));
-        map.put("numHigh",Long.toString((long)(tmp.getData().getHigh()*1000000)));
-        map.put("numClose",Long.toString((long)(tmp.getData().getClose()*1000000)));
-        map.put("percent",Double.toString((double)Math.round(percent*1000)/1000));
-        map.put("volume1",Long.toString((long)tmp.getData().getVolume()));
-        map.put("gtgd",Long.toString((long)(dauhieu(tmp)*1000)));//tỉ đồng
+        map.put("name", tmp.getData().getName());
+        map.put("date", dateFormat.format(tmp.getData().getDate()));
+        map.put("numOpen", Long.toString((long) (tmp.getData().getOpen() * 1000000)));
+        map.put("numHigh", Long.toString((long) (tmp.getData().getHigh() * 1000000)));
+        map.put("numClose", Long.toString((long) (tmp.getData().getClose() * 1000000)));
+        map.put("percent", Double.toString((double) Math.round(percent * 1000) / 1000));
+        map.put("volume1", Long.toString((long) tmp.getData().getVolume()));
+        map.put("gtgd", Long.toString((long) (dauhieu(tmp) * 1000)));//tỉ đồng
 
         //thay thế chỗ dấu hiệu dựa vào lượng gtgd.
-        if(dauhieu(tmp)/1000>=8000000){map.put("dauhieu","rất khả quan");}// đã chia 1000, giá trị thực phải *1000;
-        else if(5000000<dauhieu(tmp)/1000 &&dauhieu(tmp)/1000<8000000){map.put("dau hieu","khá khả quan");}
-        else {map.put("dauhieu","không mấy khả quan");}
+        if (dauhieu(tmp) / 1000 >= 8000000) {
+            map.put("dauhieu", "rất khả quan");
+        }// đã chia 1000, giá trị thực phải *1000;
+        else if (5000000 < dauhieu(tmp) / 1000 && dauhieu(tmp) / 1000 < 8000000) {
+            map.put("dau hieu", "khá khả quan");
+        } else {
+            map.put("dauhieu", "không mấy khả quan");
+        }
 
 
         //nói về tình trạng cổ phiếu
-        if (change>0){map.put("link","tăng");}
-        else if(change<0){map.put("link","giảm");}
-        else if(change ==0 && (tmp.getData().getOpen()==tmp.getData().getHigh() || tmp.getData().getOpen()==tmp.getData().getLow())){map.put("link","đứng giá");}
-        else map.put("link","biến động");
+        if (change > 0) {
+            map.put("link", "tăng");
+        } else if (change < 0) {
+            map.put("link", "giảm");
+        } else if (change == 0 && (tmp.getData().getOpen() == tmp.getData().getHigh() || tmp.getData().getOpen() == tmp.getData().getLow())) {
+            map.put("link", "đứng giá");
+        } else map.put("link", "biến động");
 
         //nói về mức độ
-        map.put("level",level(change));
-        map.put("levelPC",levelPc(tmp.getData().getChangePercent()));
+        map.put("level", level(change));
+        map.put("levelPC", levelPc(tmp.getData().getChangePercent()));
 
         //nếu obj cần tìm thuộc nhóm ngân hàng
         SortData sorting = new SortData();
@@ -115,7 +121,7 @@ public class RulePersonal extends Rules {
             case "LPB":
             case "EIB":
             case "TPB":
-            case "VIB":{
+            case "VIB": {
                 List<DataOutput> demo = new LinkedList<>();//list chứa các đối tượng để random
 
 //                List<DataOutput> nullList = new LinkedList<>();
@@ -130,19 +136,19 @@ public class RulePersonal extends Rules {
                 demo.add(filterByName(data, "VPB"));
                 demo.add(filterByName(data, "NVB"));
                 demo.add(filterByName(data, "SHB"));
-                demo.add(filterByName(data,"ACB"));
-                demo.add(filterByName(data,"STB"));
-                demo.add(filterByName(data,"LPB"));
-                demo.add(filterByName(data,"EIB"));
-                demo.add(filterByName(data,"TPB"));
-                demo.add(filterByName(data,"VIB"));
+                demo.add(filterByName(data, "ACB"));
+                demo.add(filterByName(data, "STB"));
+                demo.add(filterByName(data, "LPB"));
+                demo.add(filterByName(data, "EIB"));
+                demo.add(filterByName(data, "TPB"));
+                demo.add(filterByName(data, "VIB"));
                 sorting.removeNull(demo);
 
 //                demo.removeAll(nullList);
 
                 DataOutput obj = randomOBJ(demo);
                 map.put("nameSS", obj.getData().getName() + "thuộc cùng nhóm ngân hàng");
-                map.put("volume2", Long.toString((long)obj.getData().getVolume()));
+                map.put("volume2", Long.toString((long) obj.getData().getVolume()));
                 sosanh(tmp, obj);
                 level(tmp, obj);
 
@@ -164,7 +170,7 @@ public class RulePersonal extends Rules {
             case "PVS":
             case "CNG":
             case "COM":
-            case "PVG":{
+            case "PVG": {
                 LinkedList<DataOutput> demo = new LinkedList<>();//list chứa các đối tượng để random
 
                 demo.add(filterByName(data, "ASP"));
@@ -174,21 +180,21 @@ public class RulePersonal extends Rules {
                 demo.add(filterByName(data, "PVD"));
                 demo.add(filterByName(data, "PVT"));
                 demo.add(filterByName(data, "PXS"));
-                demo.add(filterByName(data,"APP"));
-                demo.add(filterByName(data,"PCT"));
-                demo.add(filterByName(data,"PGS"));
-                demo.add(filterByName(data,"PLC"));
-                demo.add(filterByName(data,"PVB"));
-                demo.add(filterByName(data,"PVC"));
-                demo.add(filterByName(data,"PVG"));
-                demo.add(filterByName(data,"PVS"));
-                demo.add(filterByName(data,"CNG"));
-                demo.add(filterByName(data,"COM"));
+                demo.add(filterByName(data, "APP"));
+                demo.add(filterByName(data, "PCT"));
+                demo.add(filterByName(data, "PGS"));
+                demo.add(filterByName(data, "PLC"));
+                demo.add(filterByName(data, "PVB"));
+                demo.add(filterByName(data, "PVC"));
+                demo.add(filterByName(data, "PVG"));
+                demo.add(filterByName(data, "PVS"));
+                demo.add(filterByName(data, "CNG"));
+                demo.add(filterByName(data, "COM"));
                 sorting.removeNull(demo);
 
                 DataOutput obj = randomOBJ(demo);
                 map.put("nameSS", obj.getData().getName() + "thuộc cùng nhóm dầu khí");
-                map.put("volume2", Long.toString((long)obj.getData().getVolume()));
+                map.put("volume2", Long.toString((long) obj.getData().getVolume()));
                 sosanh(tmp, obj);
                 level(tmp, obj);
 
@@ -207,7 +213,7 @@ public class RulePersonal extends Rules {
                 sorting.removeNull(demo);
                 DataOutput obj = randomOBJ(demo);
                 map.put("nameSS", obj.getData().getName() + "thuộc cùng nhóm thuỷ sản");
-                map.put("volume2", Long.toString((long)obj.getData().getVolume()));
+                map.put("volume2", Long.toString((long) obj.getData().getVolume()));
                 sosanh(tmp, obj);
                 level(tmp, obj);
 
@@ -217,7 +223,7 @@ public class RulePersonal extends Rules {
             case "VJC":
             case "CIA":
             case "MAS":
-            case "ARM":{
+            case "ARM": {
                 LinkedList<DataOutput> demo = new LinkedList<>();//list chứa các đối tượng để random
 
 
@@ -231,7 +237,7 @@ public class RulePersonal extends Rules {
 
                 DataOutput obj = randomOBJ(demo);
                 map.put("nameSS", obj.getData().getName() + "thuộc cùng nhóm hàng không");
-                map.put("volume2", Long.toString((long)obj.getData().getVolume()));
+                map.put("volume2", Long.toString((long) obj.getData().getVolume()));
                 sosanh(tmp, obj);
                 level(tmp, obj);
 
@@ -254,7 +260,7 @@ public class RulePersonal extends Rules {
                 sorting.removeNull(demo);
                 DataOutput obj = randomOBJ(demo);
                 map.put("nameSS", obj.getData().getName() + "thuộc cùng nhóm cao su");
-                map.put("volume2", Long.toString((long)obj.getData().getVolume()));
+                map.put("volume2", Long.toString((long) obj.getData().getVolume()));
                 sosanh(tmp, obj);
                 level(tmp, obj);
 
@@ -283,7 +289,7 @@ public class RulePersonal extends Rules {
                 sorting.removeNull(demo);
                 DataOutput obj = randomOBJ(demo);
                 map.put("nameSS", obj.getData().getName() + "thuộc cùng nhóm thép");
-                map.put("volume2", Long.toString((long)obj.getData().getVolume()));
+                map.put("volume2", Long.toString((long) obj.getData().getVolume()));
                 sosanh(tmp, obj);
                 level(tmp, obj);
 
@@ -303,7 +309,7 @@ public class RulePersonal extends Rules {
                 sorting.removeNull(demo);
                 DataOutput obj = randomOBJ(demo);
                 map.put("nameSS", obj.getData().getName() + "thuộc cùng nhóm họ Vin ");
-                map.put("volume2", Long.toString((long)obj.getData().getVolume()));
+                map.put("volume2", Long.toString((long) obj.getData().getVolume()));
                 sosanh(tmp, obj);
                 level(tmp, obj);
 
@@ -344,19 +350,19 @@ public class RulePersonal extends Rules {
                             || datum.getData().getName().equals("^THUCPHAM") || datum.getData().getName().equals("^THUONGMAI") || datum.getData().getName().equals("^THUYSAN")
                             || datum.getData().getName().equals("^TWII") || datum.getData().getName().equals("^UPCOM") || datum.getData().getName().equals("^VANTAI")
                             || datum.getData().getName().equals("^VLXD") || datum.getData().getName().equals("^VN30") || datum.getData().getName().equals("^VNINDEX")
-                            || datum.getData().getName().equals("^XAYDUNG")|| datum.getData().getName().equals("APP")|| datum.getData().getName().equals("PCT")
-                            || datum.getData().getName().equals("PGS")|| datum.getData().getName().equals("PLC")|| datum.getData().getName().equals("PVB")
-                            || datum.getData().getName().equals("PVC")|| datum.getData().getName().equals("PVG")|| datum.getData().getName().equals("PVS")
-                            || datum.getData().getName().equals("ARM")|| datum.getData().getName().equals("CIA")|| datum.getData().getName().equals("MAS")
-                            || datum.getData().getName().equals("ACB")|| datum.getData().getName().equals("STB")|| datum.getData().getName().equals("LPB")
-                            || datum.getData().getName().equals("EIB")|| datum.getData().getName().equals("TPB")|| datum.getData().getName().equals("VIB")
-                            || datum.getData().getName().equals("CNG")|| datum.getData().getName().equals("COM"))) {
+                            || datum.getData().getName().equals("^XAYDUNG") || datum.getData().getName().equals("APP") || datum.getData().getName().equals("PCT")
+                            || datum.getData().getName().equals("PGS") || datum.getData().getName().equals("PLC") || datum.getData().getName().equals("PVB")
+                            || datum.getData().getName().equals("PVC") || datum.getData().getName().equals("PVG") || datum.getData().getName().equals("PVS")
+                            || datum.getData().getName().equals("ARM") || datum.getData().getName().equals("CIA") || datum.getData().getName().equals("MAS")
+                            || datum.getData().getName().equals("ACB") || datum.getData().getName().equals("STB") || datum.getData().getName().equals("LPB")
+                            || datum.getData().getName().equals("EIB") || datum.getData().getName().equals("TPB") || datum.getData().getName().equals("VIB")
+                            || datum.getData().getName().equals("CNG") || datum.getData().getName().equals("COM"))) {
                         demo.add(datum);
                     }
                 }
                 DataOutput obj = randomOBJ(demo);
                 map.put("nameSS", obj.getData().getName());
-                map.put("volume2", Long.toString((long)obj.getData().getVolume()));
+                map.put("volume2", Long.toString((long) obj.getData().getVolume()));
                 sosanh(tmp, obj);
                 level(tmp, obj);
 

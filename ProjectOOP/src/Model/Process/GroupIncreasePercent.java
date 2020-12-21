@@ -1,5 +1,5 @@
 package ProjectOOP.src.Model.Process;
-import ProjectOOP.src.Model.Handle.DataInput;
+
 import ProjectOOP.src.Model.Handle.DataOutput;
 
 import java.util.List;
@@ -23,7 +23,6 @@ public class GroupIncreasePercent extends Group {
 
         //phương thức xử lí và đưa câu đã lựa chọn vào list chung để phục vụ việc tạo đoạn văn sau này
         return getOutput();
-
 
 
     }

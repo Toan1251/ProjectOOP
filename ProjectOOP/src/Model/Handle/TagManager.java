@@ -1,6 +1,5 @@
 package ProjectOOP.src.Model.Handle;
 
-import ProjectOOP.src.Model.Handle.Tag;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -64,8 +63,8 @@ public class TagManager {
     //Kiểm tra Tag có tồn tại trong set không
     //ví dụ: truyền vào
     public boolean isHaveThisTag(String tag) {
-        for(Tag temp: tagSet){
-            if(temp.getTagName().equals(tag)){
+        for (Tag temp : tagSet) {
+            if (temp.getTagName().equals(tag)) {
                 return true;
             }
         }

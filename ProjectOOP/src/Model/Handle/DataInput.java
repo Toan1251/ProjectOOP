@@ -2,7 +2,7 @@ package ProjectOOP.src.Model.Handle;
 
 import java.util.Date;
 
-public class DataInput{
+public class DataInput {
     /*
     public String Name;
     public Date Date;
@@ -18,7 +18,7 @@ public class DataInput{
 
     }
 
-    public DataInput(String Name, java.util.Date Date ,
+    public DataInput(String Name, java.util.Date Date,
                      double Open, double High, double Low,
                      double Close, double Volume) {
         this.Name = Name;
@@ -86,30 +86,30 @@ public class DataInput{
         Volume = volume;
     }
 
-    public double getChange(){
-        return getClose()-getOpen();
+    public double getChange() {
+        return getClose() - getOpen();
     }
 
-    public double getVolumeValue(){
-        if(getHigh()==getLow()){
-            return getVolume()*getHigh();
-        }
-        else {
+    public double getVolumeValue() {
+        if (getHigh() == getLow()) {
+            return getVolume() * getHigh();
+        } else {
 
-            return getVolume() * ((getHigh() + getLow())/2);
+            return getVolume() * ((getHigh() + getLow()) / 2);
         }
     }
 
-    public double getChangePercent(){
-        double cp = getChange()/getOpen();
-        if(cp==Double.POSITIVE_INFINITY || cp==Double.NaN){
+    public double getChangePercent() {
+        double cp = getChange() / getOpen();
+        if (cp == Double.POSITIVE_INFINITY || cp == Double.NaN) {
             return 0;
         }
         return cp;
     }
+
     //Debug
-    public void Debug(){
-        System.out.println(Name+", "+Date+", "+Open+", "+High+", "+Low+", "+Close+", "+Volume);
+    public void Debug() {
+        System.out.println(Name + ", " + Date + ", " + Open + ", " + High + ", " + Low + ", " + Close + ", " + Volume);
     }
 
     @Override

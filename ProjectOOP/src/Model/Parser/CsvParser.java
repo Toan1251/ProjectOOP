@@ -8,7 +8,10 @@ import ProjectOOP.src.Model.Handle.DataInput;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
 
 public class CsvParser {
     private final List<String[]> lines;
@@ -22,7 +25,7 @@ public class CsvParser {
     }
 
     // đọc file csv
-    public CsvParser(String Csv) throws Exception{
+    public CsvParser(String Csv) throws Exception {
         this.lines = new LinkedList<String[]>();
         this.data = new LinkedList<DataInput>();
         final String fileName;
@@ -73,7 +76,7 @@ public class CsvParser {
     }
 
     //Debug
-    public void Debug(){
+    public void Debug() {
         for (DataInput datum : data) {
             datum.Debug();
         }

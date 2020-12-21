@@ -50,10 +50,8 @@ public class Tag {
     }
 
 
-
-
     //Debug
-    public void Debug(){
-        System.out.println(tagName+" : "+tagType);
+    public void Debug() {
+        System.out.println(tagName + " : " + tagType);
     }
 }

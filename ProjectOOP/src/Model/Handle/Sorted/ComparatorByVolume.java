@@ -6,9 +6,9 @@ import java.util.Comparator;
 
 public class ComparatorByVolume implements Comparator<DataOutput> {
 
-	@Override
-	public int compare(DataOutput d1, DataOutput d2) {
+    @Override
+    public int compare(DataOutput d1, DataOutput d2) {
 
-		return Double.compare(d2.getData().getVolume(), d1.getData().getVolume());
-	}
+        return Double.compare(d2.getData().getVolume(), d1.getData().getVolume());
+    }
 }

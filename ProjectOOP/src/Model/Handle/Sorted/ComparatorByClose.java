@@ -6,9 +6,9 @@ import java.util.Comparator;
 
 public class ComparatorByClose implements Comparator<DataOutput> {
 
-	@Override
-	public int compare(DataOutput d1, DataOutput d2) {
+    @Override
+    public int compare(DataOutput d1, DataOutput d2) {
 
-		return Double.compare(d2.getData().getClose(), d1.getData().getClose());
-	}
+        return Double.compare(d2.getData().getClose(), d1.getData().getClose());
+    }
 }

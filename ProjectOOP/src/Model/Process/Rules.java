@@ -1,23 +1,23 @@
 package ProjectOOP.src.Model.Process;
-import ProjectOOP.src.Model.Handle.DataInput;
+
 import ProjectOOP.src.Model.Handle.DataOutput;
 
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+
 public class Rules {
-    protected Map<String,String> map;
-    public Map<String,String> PushInMap(List<DataOutput> data){
-        return null;
-    };
+    protected Map<String, String> map;
 
-
-
-
-    public Rules(){
+    public Rules() {
         map = new HashMap<>();
 
+    }
+
+    ;
+
+    public Map<String, String> PushInMap(List<DataOutput> data) {
+        return null;
     }
 
 //    public Rules (int index,double valueChange,double PercentChange){
@@ -84,31 +84,27 @@ public class Rules {
     //phương thức nói về mức độ
     public String level(double valueChange) {
         double tmp = Math.abs(valueChange);
-        if(tmp >= 1000.0)  {
+        if (tmp >= 1000.0) {
             return "mạnh";
-        }
-        else if(tmp >= 500.0 && tmp<1000.0) {
+        } else if (tmp >= 500.0 && tmp < 1000.0) {
             return "khá mạnh";
-        }
-        else return "nhẹ";
+        } else return "nhẹ";
     }
 
-    public String levelPc(double temp){
-        double tmp=100*Math.abs(temp);
-        if(tmp>=10.0){
+    public String levelPc(double temp) {
+        double tmp = 100 * Math.abs(temp);
+        if (tmp >= 10.0) {
             return "rất mạnh";
-        }
-        else if(tmp>=5.0 && tmp<10.0){
+        } else if (tmp >= 5.0 && tmp < 10.0) {
             return "mạnh";
-        }
-        else return "nhẹ";
+        } else return "nhẹ";
     }
 
 
     //phương thức tìm đối tượng trong list data có tên cụ thể
     //trả về 1 đối tượng
-    public DataOutput filterByName(List<DataOutput> data,String name){
-        return data.stream().filter(x->x.getData().getName().equals(name)).findAny().orElse(null);
+    public DataOutput filterByName(List<DataOutput> data, String name) {
+        return data.stream().filter(x -> x.getData().getName().equals(name)).findAny().orElse(null);
     }
 
     //phương thức tìm đối tượng trong list data có tên cụ thể

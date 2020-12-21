@@ -1,223 +1,167 @@
 package ProjectOOP.src.View;
 
 
-
 import ProjectOOP.src.Controller.Controller;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Image;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.AdjustmentEvent;
-import java.awt.event.AdjustmentListener;
-import java.io.File;
 
-import javax.sound.midi.ControllerEventListener;
-import javax.swing.DefaultListModel;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
-
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.JComboBox;
-import javax.swing.JScrollPane;
-import javax.swing.JScrollBar;
-import javax.swing.JCheckBox;
-import javax.swing.JColorChooser;
 public class ViewBase {
-	private Color setPanelColor;
-	private Color buttonColor;
+    public static String userInputString;
+    public static int sanChungKhoanHienTai;
+    public static int countTagView = 0;
+    public static JTextArea outputTextField = new JTextArea(3, 1);
+    public static JColorChooser buttonColorChooser = new JColorChooser(Color.blue);
+    static JTextField inputTextField = new JTextField(1);
+    JColorChooser backGroundColorChooser = new JColorChooser(Color.green);
+    JComboBox sanChungKhoan = new JComboBox(new String[]{"San Ha Noi", "San Ho Chi Minh"});
+    private Color setPanelColor;
+    private Color buttonColor;
+    private Font viewFont = new Font("SansSerif", Font.LAYOUT_LEFT_TO_RIGHT, 20);
 
-	private Font viewFont = new Font("SansSerif", Font.LAYOUT_LEFT_TO_RIGHT, 20);
+    //# Ham hien thi giao dien App
+    public static void ShowFrame() {
+        JPanel createPanel = new JPanel();
+        ViewBase viewBase = new ViewBase();
+        viewBase.CreateMainFrame(1280, 680, "PROJECT OOP", createPanel);
+    }
 
-	public static String userInputString;
-	public static int sanChungKhoanHienTai;
+    //# Hien thi ket qua
+    public static void ShowData(String outputData) {
+        outputTextField.selectAll();
+        outputTextField.replaceSelection("");
+        outputTextField.append(outputData);
+    }
 
-	//TODO: Lưu DataFileOutput của sàn Hà Nội và Hồ Chí Minh. Khi Hàm SendRequest gọi sẽ lấy 1 DataFileOutput của 1 sàn.
-	//  static DataFileOutput SAN_HA_NOI;
-	//  static DataFileOutput SAN_HO_CHI_MINH;
+    private void CreateMainComponent(JPanel panel) {
+        backGroundColorChooser.setColor(0, 153, 76);
+        setPanelColor = backGroundColorChooser.getColor();
+        buttonColorChooser.setColor(102, 178, 255);
+        buttonColor = buttonColorChooser.getColor();
 
-	public static JTextArea outputTextField = new JTextArea(3, 1);
-	public static JColorChooser buttonColorChooser = new JColorChooser(Color.blue);
-	static JTextField inputTextField = new JTextField(1);
-	JColorChooser backGroundColorChooser = new JColorChooser(Color.green);
-	JComboBox sanChungKhoan = new JComboBox(new String[] {"San Ha Noi","San Ho Chi Minh"});
+        JButton chooseButton = new JButton("Chon Tag");
+        JButton caculateButton = new JButton("Xu ly");
 
-	public static void main(String[] args) {
-		ViewBase obj = new ViewBase();
-		obj.ShowFrame();
-		ShowData("");
-	}
+        JLabel lb = new JLabel();
 
+        outputTextField.setFont(viewFont);
+        outputTextField.setEditable(false);
+        outputTextField.setLineWrap(true);
+        outputTextField.setWrapStyleWord(true);
+        JScrollPane scrollPane = new JScrollPane(outputTextField);
+        scrollPane.setBounds(80, 220, 600, 220);
 
-	private void CreateMainComponent(JPanel panel) {
-		backGroundColorChooser.setColor(0, 153, 76);
-		setPanelColor=backGroundColorChooser.getColor();
-		buttonColorChooser.setColor(102,178,255);
-		buttonColor=buttonColorChooser.getColor();
+        JLabel getInput = new JLabel("Search: ");
+        getInput.setFont(viewFont);
+        JLabel resultLabel = new JLabel("Result ");
+        resultLabel.setFont(viewFont);
+        JLabel sanChungKhoanLabel = new JLabel("Chọn sàn: ");
+        sanChungKhoanLabel.setFont(viewFont);
+        JLabel hotTagLabel = new JLabel("HOT: ");
+        hotTagLabel.setFont(viewFont);
 
-		JButton chooseButton = new JButton("Chon Tag");
-		JButton caculateButton = new JButton("Xu ly");
+        JLabel nameProject = new JLabel("TEAM CHỨNG KHOÁN");
+        nameProject.setForeground(Color.black);
 
-		JLabel lb = new JLabel();
+        JComboBox listMenuBox = new JComboBox(new String[]{"ACM", "BLF", "BTS"});
 
-		outputTextField.setFont(viewFont);
-		outputTextField.setEditable(false);
-		outputTextField.setLineWrap(true);
-		outputTextField.setWrapStyleWord(true);
-		JScrollPane scrollPane = new JScrollPane(outputTextField);
-		scrollPane.setBounds(80, 220, 600, 220);
+        inputTextField.setBounds(80, 100, 450, 30);
+        inputTextField.setFont(viewFont);
 
-		JLabel getInput = new JLabel("Search: ");
-		getInput.setFont(viewFont);
-		JLabel resultLabel = new JLabel("Result ");
-		resultLabel.setFont(viewFont);
-		JLabel sanChungKhoanLabel = new JLabel("Chọn sàn: ");
-		sanChungKhoanLabel.setFont(viewFont);
-		JLabel hotTagLabel = new JLabel("HOT: ");
-		hotTagLabel.setFont(viewFont);
+        listMenuBox.setBounds(80, 500, 300, 30);
+        listMenuBox.addActionListener(new ActionListener() {
 
-		JLabel nameProject = new JLabel("TEAM CHỨNG KHOÁN");
-		nameProject.setForeground(Color.black);
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inputTextField.setText(listMenuBox.getSelectedItem().toString());
 
-		JComboBox listMenuBox = new JComboBox(new String[] { "ACM", "BLF", "BTS" });
+            }
+        });
+        panel.add(listMenuBox);
+        sanChungKhoan.setBounds(380, 170, 300, 27);
 
-		inputTextField.setBounds(80, 100, 450, 30);
-		inputTextField.setFont(viewFont);
+        chooseButton.setBounds(80, 170, 100, 25);
+        chooseButton.setBackground(buttonColor);
 
-		listMenuBox.setBounds(80, 500, 300, 30);
-		listMenuBox.addActionListener(new ActionListener() {
+        caculateButton.setBounds(550, 100, 100, 30);
+        caculateButton.setBackground(buttonColor);
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				inputTextField.setText(listMenuBox.getSelectedItem().toString());
+        getInput.setBounds(10, 79, 150, 70);
+        getInput.setForeground(Color.black);
 
-			}
-		});
-		panel.add(listMenuBox);
-		sanChungKhoan.setBounds(380, 170, 300, 27);
+        resultLabel.setBounds(10, 270, 100, 100);
+        resultLabel.setForeground(Color.black);
 
-		chooseButton.setBounds(80, 170, 100, 25);
-		chooseButton.setBackground(buttonColor);
+        sanChungKhoanLabel.setBounds(270, 170, 100, 25);
+        sanChungKhoanLabel.setForeground(Color.black);
 
-		caculateButton.setBounds(550, 100, 100, 30);
-		caculateButton.setBackground(buttonColor);
+        nameProject.setFont(new Font("SansSerif", Font.BOLD, 40));
+        nameProject.setBounds(460, 0, 480, 80);
 
-		getInput.setBounds(10, 79, 150, 70);
-		getInput.setForeground(Color.black);
+        panel.add(sanChungKhoan);
+        panel.setLayout(null);
+        panel.setBackground(setPanelColor);
 
-		resultLabel.setBounds(10, 270, 100, 100);
-		resultLabel.setForeground(Color.black);
+        lb.setBounds(840, 100, 500, 400);
+        hotTagLabel.setBounds(15, 505, 60, 20);
 
-		sanChungKhoanLabel.setBounds(270, 170, 100, 25);
-		sanChungKhoanLabel.setForeground(Color.black);
+        lb.setIcon(new ImageIcon("workshop.png"));
+        caculateButton.setIcon(new ImageIcon("search.png"));
 
-		nameProject.setFont(new Font("SansSerif",Font.BOLD , 40));
-		nameProject.setBounds(460, 0, 480, 80);
+        panel.add(lb);
+        panel.add(resultLabel);
+        panel.add(getInput);
+        panel.add(inputTextField);
+        panel.add(chooseButton);
+        panel.add(caculateButton);
+        panel.add(sanChungKhoanLabel);
+        panel.add(lb);
+        panel.add(nameProject);
+        panel.add(scrollPane);
+        panel.add(hotTagLabel);
 
-		panel.add(sanChungKhoan);
-		panel.setLayout(null);
-		panel.setBackground(setPanelColor);
+        SetAction(chooseButton, 1);
+        SetAction(caculateButton, 2);
+    }
 
-		lb.setBounds(900, 100, 500, 400);
-		hotTagLabel.setBounds(15,505,60,20);
+    public void CreateMainFrame(int width, int height, String nameFrame, JPanel panel) {
+        JFrame createFrame = new JFrame(nameFrame);
+        createFrame.setSize(width, height);
+        createFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        panel = new JPanel();
+        createFrame.add(panel);
+        CreateMainComponent(panel);
+        createFrame.setVisible(true);
 
-		lb.setIcon(new ImageIcon("workshop.png"));
-		caculateButton.setIcon(new ImageIcon("search.png"));
+    }
 
-		panel.add(lb);
-		panel.add(resultLabel);
-		panel.add(getInput);
-		panel.add(inputTextField);
-		panel.add(chooseButton);
-		panel.add(caculateButton);
-		panel.add(sanChungKhoanLabel);
-		panel.add(lb);
-		panel.add(nameProject);
-		panel.add(scrollPane);
-		panel.add(hotTagLabel);
+    //#Tao action cho cac button
+    private void SetAction(JButton nameButton, int ID) {
+        nameButton.addActionListener(new ActionListener() {
 
-		SetAction(chooseButton, 1);
-		SetAction(caculateButton, 2);
-	}
-
-
-	public  void CreateMainFrame(int width, int height, String nameFrame, JPanel panel) {
-		JFrame createFrame = new JFrame(nameFrame);
-		createFrame.setSize(width, height);
-		createFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		panel = new JPanel();
-		createFrame.add(panel);
-		CreateMainComponent(panel);
-		createFrame.setVisible(true);
-
-	}
-
-	//#Tao action cho cac button
-	private void SetAction(JButton nameButton, int ID) {
-		nameButton.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent event) {
-				SetViewWindow(ID);
-				if (ID == 2)
-				{
-					userInputString = ViewBase.inputTextField.getText().toUpperCase();
-					if(userInputString.length()!=3){
-						new SpawmError("Vui lòng nhập 3 ký tự để tìm kiếm", "Error");
-						return;
-					}
-
-					//Sàn chứng khoán được chọn sẽ được kiểm tra index của nó trong ComboBox. Lưu lại vào biến sanChungKhoanHienTai
-					//Quy theo ID: 0-Sàn Hà Nội, ID:1-Sàn HCM
-					sanChungKhoanHienTai = sanChungKhoan.getSelectedIndex();
-					Controller.request();
-
-				}
-			}
-		});
-	}
-
-	//# Tao cua so moi tu cac button
-	private static void SetViewWindow(int ID) {
-		if(ID==1)
-		{TagView.CreateTagWindow();
-		}
-		else if(ID==2){
-			SendRequest(userInputString,sanChungKhoanHienTai);
-		}
-	}
-	//# Ham hien thi giao dien App
-	public static void ShowFrame()
-	{
-		JPanel createPanel = new JPanel();
-		ViewBase viewBase = new ViewBase();
-		viewBase.CreateMainFrame(1280, 680, "PROJECT OOP", createPanel);
-	}
-	//# Hien thi ket qua
-	public static void ShowData(String outputData) {
-		outputTextField.append(outputData);
-	}
-	private static void SendRequest(String data,int chonSanChungKhoan) {
-		if(chonSanChungKhoan==0)
-		{
-			//TODO: Gọi method Find của Sàn Hà Nội
-		}
-		else if(chonSanChungKhoan==1)
-		{
-			//TODO: Gọi method Find của Sàn Hồ Chí Minh
-		}
-	}
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                if (ID == 1) {
+                    if (countTagView == 0) {
+                        TagView.CreateTagWindow();
+                        countTagView++;
+                    }
+                } else if (ID == 2) {
+                    userInputString = ViewBase.inputTextField.getText().toUpperCase();
+                    if (userInputString.length() != 3) {
+                        {
+                            new SpawmError("Vui lòng nhập đúng 3 ký tự", "Error");
+                            return;
+                        }
+                    }
+                    sanChungKhoanHienTai = sanChungKhoan.getSelectedIndex();
+                    Controller.request();
+                }
+            }
+        });
+    }
 
 }
 

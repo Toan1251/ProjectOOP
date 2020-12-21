@@ -1,11 +1,14 @@
 package ProjectOOP.src.Model.Process;
-import ProjectOOP.src.Model.Handle.DataInput;
+
 import ProjectOOP.src.Model.Handle.DataOutput;
 
 import java.util.LinkedList;
 import java.util.List;
 
 public class GroupPersonal extends Group {
+    //List chứa các câu sau khi đã random và xử lí từng nhóm câu
+    List<String> done = new LinkedList<>();
+
     //override lại phương thức để lấy value ứng với key
     @Override
     public String replaceVariable(String key) {
@@ -17,16 +20,13 @@ public class GroupPersonal extends Group {
         return divideSentences(randomSentence(list));
     }
 
-    //List chứa các câu sau khi đã random và xử lí từng nhóm câu
-    List<String> done= new LinkedList<>();
-
     @Override
     public String begin(List<DataOutput> data) {//xem lai
         return null;
     }
 
     //trả về 1 list chứa các câu cần thiết
-    public List<String> Process(List<DataOutput> data,String name){
+    public List<String> Process(List<DataOutput> data, String name) {
 
         List<String> temp1 = new LinkedList<>();
         temp1.add("Trong phiên giao dịch ngày hôm nay, <date> , cổ phiếu của <name> có dấu hiệu <link> <level>.");
@@ -42,15 +42,13 @@ public class GroupPersonal extends Group {
         temp3.add("Còn về khối lượng giao dịch trong ngày thì <name> đã bán được <volume1> cổ phiếu, tương ứng với <gtgd> đồng,đây có thể coi là một dấu hiệu <dauhieu>, so sánh với <nameSS> với <volume2> cổ phiếu được bán ra thì <name> <compare> <levelSS>. ");
 
         //thay thế key cho các câu đã được chọn và đưa vào list done.
-        this.eachMap = (new RulePersonal()).PushInMap(data,name);
+        this.eachMap = (new RulePersonal()).PushInMap(data, name);
         done.add(getOutput(temp1));
         done.add(getOutput(temp2));
         done.add(getOutput(temp3));
 
         //đưa tất cả câu đã chọn thành 1 đoạn văn và đưa vào dữ liệu chung
         return done;
-
-
 
 
     }

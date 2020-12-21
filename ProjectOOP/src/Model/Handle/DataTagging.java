@@ -1,10 +1,9 @@
 package ProjectOOP.src.Model.Handle;
 
-import ProjectOOP.src.Model.Process.GroupTopAirline;
-
-public class DataTagging{
+public class DataTagging {
     private DataInput data;
     private TagManager tags;
+
     /*
     Todo: Thêm các hàm hoặc các lớp cần thiết tự động bổ sung các tag cần thiết cho 1 đơn vị dữ liệu
     */
@@ -44,14 +43,13 @@ public class DataTagging{
         // Todo: thêm tag Ranking và group, bo tag kieu change
 //        String name;
         // thêm name Tag
-        Tag tagName = new Tag(data.getName(),"name");
+        Tag tagName = new Tag(data.getName(), "name");
 
         //thêm vào tag count tính số tăng giảm cho tất cả các dataoutput
-        Tag tagCount=new Tag("GroupChangeNumber","count");
+        Tag tagCount = new Tag("GroupChangeNumber", "count");
         this.tags.addTag(tagName);
         this.tags.addTag(tagCount);
     }
-
 
 
     @Override
@@ -70,7 +68,7 @@ public class DataTagging{
     }
 
     //Debug
-    public void Debug(){
+    public void Debug() {
         data.Debug();
         tags.Debug();
     }
