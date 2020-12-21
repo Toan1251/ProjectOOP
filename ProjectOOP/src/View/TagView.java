@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.ArrayList;
 
 
 public class TagView {
@@ -21,6 +22,15 @@ public class TagView {
         tagListModel.addElement("Nhóm cổ phiếu cao su");
         tagListModel.addElement("Nhóm cổ phiếu Sắt, Thép");
         tagListModel.addElement("Nhóm cổ phiếu Vin");
+
+        ArrayList<String> tagGroup = new ArrayList<>();
+        tagGroup.add("GroupTopAirline");
+        tagGroup.add("GroupTopBank");
+        tagGroup.add("GroupTopFishery");
+        tagGroup.add("GroupTopPetrol");
+        tagGroup.add("GroupTopRubber");
+        tagGroup.add("GroupTopVin");
+
         
         
         JList tagList = new JList(tagListModel);
@@ -37,9 +47,9 @@ public class TagView {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (tagList.getSelectedIndex() != -1) {
-                    String getTagString = String.valueOf(tagList.getSelectedValuesList()).replace("[", "").replace("]", "");
-                    ViewBase.inputTextField.setText(getTagString);
-                    ViewBase.userInputString = getTagString;
+                    int getTagString = tagList.getSelectedIndex();
+                    ViewBase.inputTextField.setText(tagGroup.get(getTagString));
+                    ViewBase.userInputString = tagGroup.get(getTagString);
                     ProjectOOP.src.Controller.Controller.request();
                 }
             }

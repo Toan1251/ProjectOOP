@@ -33,18 +33,18 @@ public class RuleFischery extends Rules {
             map.put("nameF" + (i + 1), sortedListChange.get(i).getData().getName());
             if (temp > 0) {
                 map.put("Flink" + (i + 1), "tăng");
-                map.put("numF" + (i + 1), Long.toString((long) (Math.abs(temp) * 1000000)));
+                map.put("numF" + (i + 1), Long.toString((long) (Math.abs(temp) * 1000)));
                 map.put("level" + (i + 1), level(temp));
 
             }
             if (temp < 0) {
                 map.put("Flink" + (i + 1), "giảm");
-                map.put("numF" + (i + 1), Long.toString((long) (Math.abs(temp) * 1000000)));
+                map.put("numF" + (i + 1), Long.toString((long) (Math.abs(temp) * 1000)));
                 map.put("level" + (i + 1), level(temp));
 
             } else {
                 map.put("Flink" + (i + 1), "đứng giá");
-                map.put("numF" + (i + 1), "");
+                map.put("numF" + (i + 1), Long.toString((long)sortedListChange.get(i).getData().getOpen()*1000));
                 map.put("level" + (i + 1), "");
 
             }
