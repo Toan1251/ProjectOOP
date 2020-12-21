@@ -367,7 +367,7 @@ public class DataFileHandle {
             op.addSentence_nganh(1, new GroupTopAirline().begin(data));
         }
         if (tag.getTagName().equals("GroupTopAirlineVol") && tag.getTagType().equals("group")) {
-            op.addSentence_nganh(2, new GroupTopAirline().begin(data));
+            op.addSentence_nganh(2, new GroupTopAirlineVol().begin(data));
         }
         if (tag.getTagName().equals("GroupTopBank") && tag.getTagType().equals("group")) {
             op.addSentence_nganh(1, new GroupTopBank().begin(data));

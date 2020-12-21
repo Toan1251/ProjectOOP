@@ -42,7 +42,7 @@ public class RuleAirline extends Rules {
                 map.put("numA" + (i + 1), Long.toString((long) (Math.abs(temp) * 1000)));
                 map.put("level" + (i + 1), level(temp));
             } else {
-                map.put("Alink" + (i + 1), "không đổi");
+                map.put("Alink" + (i + 1), "đứng giá");
                 map.put("numA" + (i + 1), Long.toString((long) sortedListChange.get(i).getData().getOpen() * 1000));
                 map.put("level" + (i + 1), "");
             }
