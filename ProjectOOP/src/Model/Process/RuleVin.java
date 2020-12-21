@@ -76,14 +76,14 @@ public class RuleVin extends Rules {
             if (temp > 0) {
                 map.put("link" + (i + 1), "tăng");
                 map.put("up" + (i + 1), "lên");
-                map.put("num" + (i + 1), Long.toString((long) Math.abs(temp) * 1000));
+                map.put("num" + (i + 1), Long.toString((long) (Math.abs(temp) * 1000)));
                 map.put("level" + (i + 1), level(temp));
                 map.put("open" + (i + 1), Long.toString((long) (sortedListChange.get(i).getData().getOpen() * 1000)));
                 map.put("close" + (i + 1), Long.toString((long) (sortedListChange.get(i).getData().getClose() * 1000)));
             } else if (temp < 0) {
                 map.put("link" + (i + 1), "giảm");
                 map.put("up" + (i + 1), "xuống");
-                map.put("num" + (i + 1), Long.toString((long) Math.abs(temp) * 1000));
+                map.put("num" + (i + 1), Long.toString((long) (Math.abs(temp) * 1000)));
                 map.put("level" + (i + 1), level(temp));
                 map.put("open" + (i + 1), Long.toString((long) (sortedListChange.get(i).getData().getOpen() * 1000)));
                 map.put("close" + (i + 1), Long.toString((long) (sortedListChange.get(i).getData().getClose() * 1000)));
