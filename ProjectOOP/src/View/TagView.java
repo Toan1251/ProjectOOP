@@ -14,12 +14,15 @@ public class TagView {
         DefaultListModel tagListModel = new DefaultListModel();
         JButton acceptButton = new JButton("Accept");
 
-        tagListModel.addElement("GroupVin");
-        tagListModel.addElement("GroupTopBank");
-        tagListModel.addElement("Tag 3");
-        tagListModel.addElement("Tag 4");
-        tagListModel.addElement("Tag 5");
-
+        tagListModel.addElement("Nhóm cổ phiếu Hàng không");
+        tagListModel.addElement("Nhóm cổ phiếu Ngân hàng");
+        tagListModel.addElement("Nhóm cổ phiếu Thuỷ sản");
+        tagListModel.addElement("Nhóm cổ phiếu Xăng dầu");
+        tagListModel.addElement("Nhóm cổ phiếu cao su");
+        tagListModel.addElement("Nhóm cổ phiếu Sắt, Thép");
+        tagListModel.addElement("Nhóm cổ phiếu Vin");
+        
+        
         JList tagList = new JList(tagListModel);
         tagList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         JScrollPane scrollPane = new JScrollPane(tagList);
