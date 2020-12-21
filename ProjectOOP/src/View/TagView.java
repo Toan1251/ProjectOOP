@@ -13,7 +13,16 @@ public class TagView {
     public static void CreateTagWindow() {
         JPanel panelView;
         DefaultListModel tagListModel = new DefaultListModel();
-        JButton acceptButton = new JButton("Accept");
+        JButton acceptButton = new JButton("Tìm Kiếm");
+
+        //tagListModel.addElement("Nhóm cổ phiếu Vin");
+        tagListModel.addElement("Thống kê thay đổi chứng khoán");
+        tagListModel.addElement("Các mã cổ phiếu tăng ngày hôm nay");
+        tagListModel.addElement("Các mã cổ phiếu giảm ngày hôm nay");
+        tagListModel.addElement("Top 5 cổ phiếu tăng nhiều nhất");
+        tagListModel.addElement("Top 5 cổ phiếu giảm nhiều nhất");
+        tagListModel.addElement("Top 5 cổ phiếu có khối lượng giao dịch lớn nhất");
+
 
         tagListModel.addElement("Nhóm cổ phiếu Hàng không");
         tagListModel.addElement("Nhóm cổ phiếu Ngân hàng");
@@ -21,28 +30,25 @@ public class TagView {
         tagListModel.addElement("Nhóm cổ phiếu Xăng dầu");
         tagListModel.addElement("Nhóm cổ phiếu cao su");
         tagListModel.addElement("Nhóm cổ phiếu Sắt, Thép");
-        tagListModel.addElement("Nhóm cổ phiếu Vin");
-        tagListModel.addElement("Top 5 cổ phiếu tăng nhiều nhất");
-        tagListModel.addElement("Top 5 cổ phiếu giảm nhiều nhất");
-        tagListModel.addElement("Top 5 cổ phiếu có khối lượng giao dịch lớn nhất");
-        tagListModel.addElement("Các mã cổ phiếu tăng ngày hôm nay");
-        tagListModel.addElement("Các mã cổ phiếu giảm ngày hôm nay");
-        tagListModel.addElement("Thống kê thay đổi chứng khoán");
+
 
         ArrayList<String> tagGroup = new ArrayList<>();
+
+        //tagGroup.add("GroupVin");
+        tagGroup.add("GroupChangeNumber");
+        tagGroup.add("up");
+        tagGroup.add("down");
+        tagGroup.add("GroupIncreasePercent");
+        tagGroup.add("GroupDecreasePercent");
+        tagGroup.add("GroupTopVolume");
+
+
         tagGroup.add("GroupTopAirline");
         tagGroup.add("GroupTopBank");
         tagGroup.add("GroupTopFishery");
         tagGroup.add("GroupTopPetrol");
         tagGroup.add("GroupTopRubber");
         tagGroup.add("GroupTopSteel");
-        tagGroup.add("GroupVin");
-        tagGroup.add("GroupIncreasePercent");
-        tagGroup.add("GroupDecreasePercent");
-        tagGroup.add("GroupTopVolume");
-        tagGroup.add("up");
-        tagGroup.add("down");
-        tagGroup.add("GroupChangeNumber");
         
         
         JList tagList = new JList(tagListModel);

@@ -16,7 +16,7 @@ public class GroupChangeNumber extends Group {
     public String begin(List<DataOutput> data) {
         //thêm câu vào list sentences chung chờ xử lí
         addGroupSentences("Tại thời điểm đóng cửa, toàn thị trường có <soLuongTang> mã tăng giá, <soLuongGiam> mã giảm giá và <soLuongKhongDoi> mã đứng giá,trong đó có <tangtran> mã tăng trần và <giamsan> mã giảm sàn. ");
-        addGroupSentences("Trong phiên hôm nay,số mã <code1> hiện lên tới <soLuong1> mã, bằng <solan> lần số mã <code2> với <soLuong2> mã.");
+        addGroupSentences("Trong phiên hôm nay,số mã <code1> hiện lên tới <soLuong1> mã, bằng khoảng <solan> lần số mã <code2> với <soLuong2> mã.");
         addGroupSentences("Theo thống kê, kết thúc phiên đã có <giam> trên tổng số <tong> mã giảm với <giamSan> mã giảm sàn, <tang> mã tăng giá trong đó có <tangTran> mã tăng trần, <dung> mã đứng giá.");
 
 

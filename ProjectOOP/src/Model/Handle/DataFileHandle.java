@@ -47,7 +47,7 @@ public class DataFileHandle {
         //Todo: Thêm các tag kiểu ranking cho data
         addRankingTag(dFO);
         for (DataOutput dO : dFO.getData()) {
-            dFO.getTagManager().addTag(dO.getTags().getTagSet());
+            dFO.getTagManager().getTagSet().addAll(dO.getTags().getTagSet());
         }
     }
 
@@ -265,28 +265,6 @@ public class DataFileHandle {
                 addTagIn(dFO, topChange, topValue, "GroupTopSteel", "GroupTopSteelVol", "group");
                 break;
             }
-            //nhóm Vin
-            case "VIC":
-            case "VHM":
-            case "VRE": {
-                LinkedList<DataOutput> demo = new LinkedList<>();//list chứa các đối tượng để random
-
-                demo.add(filterByName(dFO.getData(), "VIC"));
-                demo.add(filterByName(dFO.getData(), "VHM"));
-                demo.add(filterByName(dFO.getData(), "VRE"));
-
-                sorting.removeNull(demo);
-
-
-                //sắp xếp theo change
-                List<DataOutput> topChange = sorting.sort(demo, 6);
-                for (DataOutput output : topChange) {
-                    int index = dFO.getData().indexOf(output);
-                    dFO.getData().get(index).getTags().addTag(new Tag("GroupVin", "group"));
-                }
-                break;
-            }
-
 
         }
     }
@@ -398,9 +376,6 @@ public class DataFileHandle {
         }
         if (tag.getTagName().equals("GroupTopSteelVol") && tag.getTagType().equals("group")) {
             op.addSentence_nganh(2, new GroupTopSteelVol().begin(data));
-        }
-        if (tag.getTagName().equals("GroupVin") && tag.getTagType().equals("group")) {
-            op.addSentence_nganh(1, new GroupVin().begin(data));
         }
         if (tag.getTagType().equals("name")) {
             op.addSentences_name(new GroupPersonal().Process(data, tag.getTagName()));

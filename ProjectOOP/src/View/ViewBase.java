@@ -23,6 +23,9 @@ import javax.swing.JColorChooser;
 public class ViewBase {
     private Color setPanelColor;
     private Color buttonColor;
+    static  JComboBox mainmenu= new JComboBox(new String[] { "ACM", "BLF", "BTS" });
+    static  String[] listMenuBox =  new String[] { "ACM", "BLF", "BTS" };
+    static  String[] saiGon =  new String[] {"VPS", "VIP", "TNT"};
 
     private Font viewFont = new Font("SansSerif", Font.LAYOUT_LEFT_TO_RIGHT, 20);
 
@@ -64,28 +67,36 @@ public class ViewBase {
         JLabel sanChungKhoanLabel = new JLabel("Chọn sàn: ");
         sanChungKhoanLabel.setFont(viewFont);
 
-        JLabel hotTagLabel = new JLabel("Tìm kiếm nhiều nhất: ");
+        JLabel hotTagLabel = new JLabel("Tìm kiếm nhiều nhất Hà Nội: ");
         hotTagLabel.setFont(viewFont);
 
         JLabel nameProject = new JLabel("TIN CHỨNG KHOÁN");
         nameProject.setForeground(Color.black);
 
-        JComboBox listMenuBox = new JComboBox(new String[] { "ACM", "BLF", "BTS" });
+
+
 
         inputTextField.setBounds(80, 100, 450, 30);
         inputTextField.setFont(viewFont);
 
-        listMenuBox.setBounds(80, 250, 450, 33);
-        listMenuBox.addActionListener(new ActionListener() {
+        mainmenu.setBounds(80, 250, 450, 33);
+        mainmenu.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                inputTextField.setText(listMenuBox.getSelectedItem().toString());
+                inputTextField.setText(mainmenu.getSelectedItem().toString());
 
             }
         });
-        panel.add(listMenuBox);
+       //q panel.add(listMenuBox);
         sanChungKhoan.setBounds(80, 170, 450, 33);
+        sanChungKhoan.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                sanChungKhoanHienTai=sanChungKhoan.getSelectedIndex();
+                ChangeMenụ̣();
+            }
+        });
 
         chooseButton.setBounds(550, 170, 100, 30);
         chooseButton.setBackground(buttonColor);
@@ -131,6 +142,7 @@ public class ViewBase {
         panel.add(scrollPane);
         panel.add(hotTagLabel);
         panel.add(lb2);
+        panel.add(mainmenu);
 
         SetAction(chooseButton, 1);
         SetAction(caculateButton, 2);
@@ -189,5 +201,21 @@ public class ViewBase {
         outputTextField.replaceSelection("");
         outputTextField.append(outputData);
     }
+    private static void ChangeMenụ̣()
+    {
+        if(sanChungKhoanHienTai==0)
+        {
+           for(int i=0;i<3;i++) {
+               mainmenu.removeItemAt(0);
+               mainmenu.addItem(listMenuBox[i]);
+           }
+        }
+        else {
+            for(int i=0;i<3;i++) {
+                {  mainmenu.removeItemAt(0);
+                mainmenu.addItem(saiGon[i]);}
+        }
 
-}
+    }
+
+}}
