@@ -403,7 +403,6 @@ public class DataFileHandle {
             op.addSentence_nganh(1, new GroupVin().begin(data));
         }
         if (tag.getTagType().equals("name")) {
-
             op.addSentences_name(new GroupPersonal().Process(data, tag.getTagName()));
         }
     }

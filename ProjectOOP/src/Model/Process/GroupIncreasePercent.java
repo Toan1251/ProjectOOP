@@ -15,7 +15,7 @@ public class GroupIncreasePercent extends Group {
     public String begin(List<DataOutput> data) {
         //thêm câu vào list sentences chung chờ xử lí
         addGroupSentences("Được biết, trong tổng số <tong> mã thì dẫn đầu là là cổ phiếu <name> với mức tăng <percent>%, tương ứng tăng từ <begin> đồng lên <end> đồng. .");
-        addGroupSentences("Giữ vị trí quán quân về tăng giá tại HoSE là <name> với mức tăng <percent>%, tương ứng tăng từ <begin> lên <end> đồng.");
+        addGroupSentences("Giữ vị trí quán quân về tăng giá là <name> với mức tăng <percent>%, tương ứng tăng từ <begin> lên <end> đồng.");
         addGroupSentences("Đứng đầu danh sách tăng giá là mã <name>, tăng từ <begin> đồng lên <end> đồng, tương ứng với mức tăng <percent>%.");
 
         // phương thức dùng để tạo 1 map chứa các giá trị cần thay và tên biến tương ứng.

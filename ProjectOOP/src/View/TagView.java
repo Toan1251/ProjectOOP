@@ -25,6 +25,9 @@ public class TagView {
         tagListModel.addElement("Top 5 cổ phiếu tăng nhiều nhất");
         tagListModel.addElement("Top 5 cổ phiếu giảm nhiều nhất");
         tagListModel.addElement("Top 5 cổ phiếu có khối lượng giao dịch lớn nhất");
+        tagListModel.addElement("Các mã cổ phiếu tăng ngày hôm nay");
+        tagListModel.addElement("Các mã cổ phiếu giảm ngày hôm nay");
+        tagListModel.addElement("Thống kê thay đổi chứng khoán");
 
         ArrayList<String> tagGroup = new ArrayList<>();
         tagGroup.add("GroupTopAirline");
@@ -37,6 +40,9 @@ public class TagView {
         tagGroup.add("GroupIncreasePercent");
         tagGroup.add("GroupDecreasePercent");
         tagGroup.add("GroupTopVolume");
+        tagGroup.add("up");
+        tagGroup.add("down");
+        tagGroup.add("GroupChangeNumber");
         
         
         JList tagList = new JList(tagListModel);

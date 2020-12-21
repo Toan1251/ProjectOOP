@@ -44,6 +44,14 @@ public class DataTagging {
 //        String name;
         // thêm name Tag
         Tag tagName = new Tag(data.getName(), "name");
+        // thêm tag Tăng giảm
+        if(data.getChange()>0){
+            this.tags.addTag(new Tag("up", "change"));
+        }else if(data.getChange()<0){
+            this.tags.addTag(new Tag("down", "change"));
+        }else{
+            this.tags.addTag(new Tag("stand", "change"));
+        }
 
         //thêm vào tag count tính số tăng giảm cho tất cả các dataoutput
         Tag tagCount = new Tag("GroupChangeNumber", "count");

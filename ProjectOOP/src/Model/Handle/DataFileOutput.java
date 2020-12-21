@@ -114,19 +114,15 @@ public class DataFileOutput {
                 break;
             case "ranking":
 //                DataOutput temp = dataOutputs.get(0);
-                if (request.equals("GroupDecrease")||request.equals("GroupDecreasePercent")) {
-                    if(temp.getSentence_ranking().get(1)!=null){
-                    respondParagraph += temp.getSentence_ranking().get(1);
-                    }
+                if (request.equals("GroupDecreasePercent")) {
                     if(temp.getSentence_ranking().get(2)!=null) {
                         respondParagraph += temp.getSentence_ranking().get(2);
                     }
                 }
-                if (request.equals("GroupIncrease")||request.equals("GroupIncreasePercent")) {
-                    if(temp.getSentence_ranking().get(3)!=null){
-                    respondParagraph += temp.getSentence_ranking().get(3);}
+                if (request.equals("GroupIncreasePercent")) {
                     if(temp.getSentence_ranking().get(4)!=null){
-                    respondParagraph += temp.getSentence_ranking().get(4);}
+                    respondParagraph += temp.getSentence_ranking().get(4);
+                    }
                 }
                 if (request.equals("GroupTopVolume")) {
                     respondParagraph = temp.getSentence_ranking().get(5);
@@ -137,10 +133,10 @@ public class DataFileOutput {
                 respondParagraph = temp.getSentence_count().get(0);
                 break;
                 // thử thêm change
-            //case "change":
-              //  for(DataOutput output: dataOutputs){
-                //    respondParagraph += output.getSentence_name();
-                //}
+            case "change":
+                for(DataOutput output: dataOutputs){
+                    respondParagraph += output.getSentence_name().get(1) + "\n";
+                }
         }
         return respondParagraph;
     }

@@ -36,6 +36,14 @@ public class RuleChange extends Rules {
 
         }
 
+        map.put("giam",Integer.toString(giam));
+        map.put("tang",Integer.toString(tang));
+        map.put("giamSan",Integer.toString(giamsan));
+        map.put("tangTran",Integer.toString(tangtran));
+        map.put("dung",Integer.toString(dunggia));
+
+
+
         if ((tang / giam) > 1) {
             map.put("code1", "tăng");
             map.put("code2", "giảm");
