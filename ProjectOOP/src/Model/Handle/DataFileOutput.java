@@ -123,13 +123,18 @@ public class DataFileOutput {
                     respondParagraph += temp.getSentence_ranking().get(4);
                 }
                 if (request.equals("GroupTopVolume")) {
-                    respondParagraph = temp.getSentence_nganh().get(5);
+                    respondParagraph = temp.getSentence_ranking().get(5);
                 }
                 break;
             case "count":
                 //do tất cả chỉ có 1 câu thuộc kiểu count
                 respondParagraph = temp.getSentence_count().get(0);
                 break;
+                // thử thêm change
+            //case "change":
+              //  for(DataOutput output: dataOutputs){
+                //    respondParagraph += output.getSentence_name();
+                //}
         }
         return respondParagraph;
     }

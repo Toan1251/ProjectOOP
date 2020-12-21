@@ -22,6 +22,9 @@ public class TagView {
         tagListModel.addElement("Nhóm cổ phiếu cao su");
         tagListModel.addElement("Nhóm cổ phiếu Sắt, Thép");
         tagListModel.addElement("Nhóm cổ phiếu Vin");
+        tagListModel.addElement("Top 5 cổ phiếu tăng nhiều nhất");
+        tagListModel.addElement("Top 5 cổ phiếu giảm nhiều nhất");
+        tagListModel.addElement("Top 5 cổ phiếu có khối lượng giao dịch lớn nhất");
 
         ArrayList<String> tagGroup = new ArrayList<>();
         tagGroup.add("GroupTopAirline");
@@ -31,7 +34,9 @@ public class TagView {
         tagGroup.add("GroupTopRubber");
         tagGroup.add("GroupTopSteel");
         tagGroup.add("GroupVin");
-
+        tagGroup.add("GroupIncreasePercent");
+        tagGroup.add("GroupDecreasePercent");
+        tagGroup.add("GroupTopVolume");
         
         
         JList tagList = new JList(tagListModel);
@@ -49,7 +54,7 @@ public class TagView {
             public void actionPerformed(ActionEvent e) {
                 if (tagList.getSelectedIndex() != -1) {
                     int getTagString = tagList.getSelectedIndex();
-                    ViewBase.inputTextField.setText(tagGroup.get(getTagString));
+                    ViewBase.inputTextField.setText(tagList.getSelectedValue().toString().replace("[", "").replace("]",""));
                     ViewBase.userInputString = tagGroup.get(getTagString);
                     ProjectOOP.src.Controller.Controller.request();
                 }
