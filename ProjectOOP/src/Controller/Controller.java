@@ -66,8 +66,4 @@ public class Controller {
         ViewBase.ShowData(respond);
     }
 
-    public static void main(String[] args) {
-        Controller c = new Controller();
-    }
-
 }
