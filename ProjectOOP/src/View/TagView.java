@@ -46,7 +46,7 @@ public class TagView {
         });
 
         JFrame createFrame = new JFrame("Chon Tag");
-        acceptButton.setBackground(new Color(102, 178, 255));
+        acceptButton.setBackground(new Color(102,178,255));
         acceptButton.setBounds(200, 100, 80, 50);
 
         createFrame.setSize(600, 400);
@@ -97,7 +97,7 @@ public class TagView {
             }
         });
         createFrame.add(scrollPane);
-        createFrame.add(acceptButton, BorderLayout.EAST);
+        createFrame.add(acceptButton,BorderLayout.EAST);
         createFrame.setVisible(true);
     }
 }
