@@ -69,6 +69,7 @@ public class RuleRubber extends Rules {
             double temp = myList.get(i).getData().getVolume() / total * 100;
             map.put("timeC" + (i + 1), Double.toString((double) Math.round(temp * 1000) / 1000));
         }
+
         return map;
     }
 }

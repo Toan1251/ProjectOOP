@@ -75,7 +75,7 @@ public class RulePersonal extends Rules {
         map.put("numOpen", Long.toString((long) (tmp.getData().getOpen() * 1000)));
         map.put("numHigh", Long.toString((long) (tmp.getData().getHigh() * 1000)));
         map.put("numClose", Long.toString((long) (tmp.getData().getClose() * 1000)));
-        map.put("percent", Double.toString((double) Math.round(percent * 1000) / 1000));
+//        map.put("percent", Double.toString((double) Math.round(percent * 1000) / 1000));
         map.put("volume1", Long.toString((long) tmp.getData().getVolume()));
         map.put("gtgd", Long.toString((long) (dauhieu(tmp))));//tỉ đồng
 
@@ -90,17 +90,30 @@ public class RulePersonal extends Rules {
         }
 
 
+        if(change !=0){
+                    map.put("percent", Double.toString((double) Math.round(percent * 1000) / 1000)+"%");
+
+        }else{
+            map.put("percent", "");
+
+        }
+
         //nói về tình trạng cổ phiếu
         if (change > 0) {
             map.put("link", "tăng");
         } else if (change < 0) {
             map.put("link", "giảm");
-        } else if (change == 0 && (tmp.getData().getOpen() == tmp.getData().getHigh() || tmp.getData().getOpen() == tmp.getData().getLow())) {
+        } else if (change == 0) {
             map.put("link", "đứng giá");
-        } else map.put("link", "biến động");
+        }
+//        else map.put("link", "biến động");
 
         //nói về mức độ
-        map.put("level", level(change));
+        if(change!=0) {
+            map.put("level", level(change));
+        }else{
+            map.put("level","");
+        }
         map.put("levelPC", levelPc(tmp.getData().getChangePercent()));
 
         //nếu obj cần tìm thuộc nhóm ngân hàng
@@ -147,7 +160,7 @@ public class RulePersonal extends Rules {
 //                demo.removeAll(nullList);
 
                 DataOutput obj = randomOBJ(demo);
-                map.put("nameSS", obj.getData().getName() + "thuộc cùng nhóm ngân hàng");
+                map.put("nameSS", obj.getData().getName() + " thuộc cùng nhóm ngân hàng");
                 map.put("volume2", Long.toString((long) obj.getData().getVolume()));
                 sosanh(tmp, obj);
                 level(tmp, obj);
@@ -193,7 +206,7 @@ public class RulePersonal extends Rules {
                 sorting.removeNull(demo);
 
                 DataOutput obj = randomOBJ(demo);
-                map.put("nameSS", obj.getData().getName() + "thuộc cùng nhóm dầu khí");
+                map.put("nameSS", obj.getData().getName() + " thuộc cùng nhóm dầu khí");
                 map.put("volume2", Long.toString((long) obj.getData().getVolume()));
                 sosanh(tmp, obj);
                 level(tmp, obj);
@@ -212,7 +225,7 @@ public class RulePersonal extends Rules {
                 demo.add(filterByName(data, "TS4"));
                 sorting.removeNull(demo);
                 DataOutput obj = randomOBJ(demo);
-                map.put("nameSS", obj.getData().getName() + "thuộc cùng nhóm thuỷ sản");
+                map.put("nameSS", obj.getData().getName() + " thuộc cùng nhóm thuỷ sản");
                 map.put("volume2", Long.toString((long) obj.getData().getVolume()));
                 sosanh(tmp, obj);
                 level(tmp, obj);
@@ -236,7 +249,7 @@ public class RulePersonal extends Rules {
 
 
                 DataOutput obj = randomOBJ(demo);
-                map.put("nameSS", obj.getData().getName() + "thuộc cùng nhóm hàng không");
+                map.put("nameSS", obj.getData().getName() + " thuộc cùng nhóm hàng không");
                 map.put("volume2", Long.toString((long) obj.getData().getVolume()));
                 sosanh(tmp, obj);
                 level(tmp, obj);
@@ -259,7 +272,7 @@ public class RulePersonal extends Rules {
                 demo.add(filterByName(data, "CSM"));
                 sorting.removeNull(demo);
                 DataOutput obj = randomOBJ(demo);
-                map.put("nameSS", obj.getData().getName() + "thuộc cùng nhóm cao su");
+                map.put("nameSS", obj.getData().getName() + " thuộc cùng nhóm cao su");
                 map.put("volume2", Long.toString((long) obj.getData().getVolume()));
                 sosanh(tmp, obj);
                 level(tmp, obj);
@@ -288,7 +301,7 @@ public class RulePersonal extends Rules {
                 demo.add(filterByName(data, "SMC"));
                 sorting.removeNull(demo);
                 DataOutput obj = randomOBJ(demo);
-                map.put("nameSS", obj.getData().getName() + "thuộc cùng nhóm thép");
+                map.put("nameSS", obj.getData().getName() + " thuộc cùng nhóm thép");
                 map.put("volume2", Long.toString((long) obj.getData().getVolume()));
                 sosanh(tmp, obj);
                 level(tmp, obj);
@@ -308,7 +321,7 @@ public class RulePersonal extends Rules {
 
                 sorting.removeNull(demo);
                 DataOutput obj = randomOBJ(demo);
-                map.put("nameSS", obj.getData().getName() + "thuộc cùng nhóm họ Vin ");
+                map.put("nameSS", obj.getData().getName() + " thuộc cùng nhóm họ Vin ");
                 map.put("volume2", Long.toString((long) obj.getData().getVolume()));
                 sosanh(tmp, obj);
                 level(tmp, obj);

@@ -97,7 +97,9 @@ public class Rules {
             return "rất mạnh";
         } else if (tmp >= 5.0 && tmp < 10.0) {
             return "mạnh";
-        } else return "nhẹ";
+        } else if (tmp>0.0 && tmp<5.0) {
+            return"nhẹ";
+        }else return"";
     }
 
 

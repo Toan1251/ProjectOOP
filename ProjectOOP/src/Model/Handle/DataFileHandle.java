@@ -274,7 +274,6 @@ public class DataFileHandle {
                 demo.add(filterByName(dFO.getData(), "VIC"));
                 demo.add(filterByName(dFO.getData(), "VHM"));
                 demo.add(filterByName(dFO.getData(), "VRE"));
-//                demo.add(filterByName(dFO.getData(), "C69"));
 
                 sorting.removeNull(demo);
 

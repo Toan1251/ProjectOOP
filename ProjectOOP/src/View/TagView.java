@@ -29,7 +29,8 @@ public class TagView {
         tagGroup.add("GroupTopFishery");
         tagGroup.add("GroupTopPetrol");
         tagGroup.add("GroupTopRubber");
-        tagGroup.add("GroupTopVin");
+        tagGroup.add("GroupTopSteel");
+        tagGroup.add("GroupVin");
 
         
         
