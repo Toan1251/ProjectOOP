@@ -115,12 +115,18 @@ public class DataFileOutput {
             case "ranking":
 //                DataOutput temp = dataOutputs.get(0);
                 if (request.equals("GroupDecrease")||request.equals("GroupDecreasePercent")) {
+                    if(temp.getSentence_ranking().get(1)!=null){
                     respondParagraph += temp.getSentence_ranking().get(1);
-                    respondParagraph += temp.getSentence_ranking().get(2);
+                    }
+                    if(temp.getSentence_ranking().get(2)!=null) {
+                        respondParagraph += temp.getSentence_ranking().get(2);
+                    }
                 }
                 if (request.equals("GroupIncrease")||request.equals("GroupIncreasePercent")) {
-                    respondParagraph += temp.getSentence_ranking().get(3);
-                    respondParagraph += temp.getSentence_ranking().get(4);
+                    if(temp.getSentence_ranking().get(3)!=null){
+                    respondParagraph += temp.getSentence_ranking().get(3);}
+                    if(temp.getSentence_ranking().get(4)!=null){
+                    respondParagraph += temp.getSentence_ranking().get(4);}
                 }
                 if (request.equals("GroupTopVolume")) {
                     respondParagraph = temp.getSentence_ranking().get(5);

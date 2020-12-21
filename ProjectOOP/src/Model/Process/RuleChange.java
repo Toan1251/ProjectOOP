@@ -72,7 +72,7 @@ public class RuleChange extends Rules {
         for (int i = 0; i < sortedReverseList.size(); i++) {
             double temp = sortedReverseList.get(i).getData().getClose() - sortedReverseList.get(i).getData().getOpen();
             map.put("rname" + (i + 1), sortedReverseList.get(i).getData().getName());
-            map.put("rnum1", Long.toString((long) ((Math.abs(temp)) * 1000)));
+            map.put("rnum" +(i+1), Long.toString((long) (Math.abs(temp) * 1000)));
 
         }
 
