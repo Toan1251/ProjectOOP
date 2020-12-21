@@ -34,16 +34,16 @@ public class RuleVin extends Rules {
                 map.put("Vlink" + (i + 1), "tăng");
                 map.put("upV" + (i + 1), "lên");
                 map.put("levelV" + (i + 1), level(temp));
-                map.put("openV" + (i + 1), Long.toString((long) (myList.get(i).getData().getOpen() * 1000)));
-                map.put("closeV" + (i + 1), Long.toString((long) (myList.get(i).getData().getClose() * 1000)));
-                map.put("numV" + (i + 1), Long.toString((long) (Math.abs(temp) * 1000)));
+                map.put("openV" + (i + 1), ", từ "+Long.toString((long) (myList.get(i).getData().getOpen() * 1000)));
+                map.put("closeV" + (i + 1), Long.toString((long) (myList.get(i).getData().getClose() * 1000))+" đồng");
+                map.put("numV" + (i + 1), Long.toString((long) (Math.abs(temp) * 1000))+" đồng");
             } else if (temp < 0) {
                 map.put("Vlink" + (i + 1), "giảm");
                 map.put("upV" + (i + 1), "xuống");
                 map.put("levelV" + (i + 1), level(temp));
-                map.put("openV" + (i + 1), Long.toString((long) (myList.get(i).getData().getOpen() * 1000)));
-                map.put("closeV" + (i + 1), Long.toString((long) (myList.get(i).getData().getClose() * 1000)));
-                map.put("numV" + (i + 1), Long.toString((long) (Math.abs(temp) * 1000)));
+                map.put("openV" + (i + 1),", từ "+ Long.toString((long) (myList.get(i).getData().getOpen() * 1000)));
+                map.put("closeV" + (i + 1), Long.toString((long) (myList.get(i).getData().getClose() * 1000))+" đồng");
+                map.put("numV" + (i + 1), Long.toString((long) (Math.abs(temp) * 1000))+" đồng");
             } else {
                 map.put("Vlink" + (i + 1), "đứng giá");
                 map.put("upV" + (i + 1), "");
@@ -57,13 +57,13 @@ public class RuleVin extends Rules {
         double temp2 = myList.get(1).getData().getClose() - myList.get(1).getData().getOpen();
         if (temp1 > 0 && temp2 > 0) {
             map.put("statement", "đang trên đà tăng");
-        } else if (temp1 >= 0 && temp2 < 0) {
+        } else if (temp1 > 0 && temp2 < 0) {
             map.put("statement", "đang biến động");
-        } else if (temp1 < 0 && temp2 >= 0) {
+        } else if (temp1 < 0 && temp2 > 0) {
             map.put("statement", "đang biến động");
         } else if (temp1 < 0 && temp2 < 0) {
             map.put("statement", "đang trên đà giảm");
-        } else if (temp1 == 0 && temp2 == 0) {
+        } else {
             map.put("statement", "đang đứng giá");
         }
 
@@ -76,17 +76,17 @@ public class RuleVin extends Rules {
             if (temp > 0) {
                 map.put("link" + (i + 1), "tăng");
                 map.put("up" + (i + 1), "lên");
-                map.put("num" + (i + 1), Long.toString((long) (Math.abs(temp) * 1000)));
+                map.put("num" + (i + 1), Long.toString((long) (Math.abs(temp) * 1000))+" đồng");
                 map.put("level" + (i + 1), level(temp));
                 map.put("open" + (i + 1), Long.toString((long) (sortedListChange.get(i).getData().getOpen() * 1000)));
-                map.put("close" + (i + 1), Long.toString((long) (sortedListChange.get(i).getData().getClose() * 1000)));
+                map.put("close" + (i + 1), Long.toString((long) (sortedListChange.get(i).getData().getClose() * 1000))+" đồng");
             } else if (temp < 0) {
                 map.put("link" + (i + 1), "giảm");
                 map.put("up" + (i + 1), "xuống");
-                map.put("num" + (i + 1), Long.toString((long) (Math.abs(temp) * 1000)));
+                map.put("num" + (i + 1), Long.toString((long) (Math.abs(temp) * 1000))+" đồng");
                 map.put("level" + (i + 1), level(temp));
                 map.put("open" + (i + 1), Long.toString((long) (sortedListChange.get(i).getData().getOpen() * 1000)));
-                map.put("close" + (i + 1), Long.toString((long) (sortedListChange.get(i).getData().getClose() * 1000)));
+                map.put("close" + (i + 1), Long.toString((long) (sortedListChange.get(i).getData().getClose() * 1000))+" đồng");
 
             } else {
                 map.put("link" + (i + 1), "đứng giá");
