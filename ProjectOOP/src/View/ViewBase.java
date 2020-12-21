@@ -107,8 +107,8 @@ public class ViewBase {
         lb.setBounds(840, 100, 500, 400);
         hotTagLabel.setBounds(15, 505, 60, 20);
 
-        lb.setIcon(new ImageIcon("workshop.png"));
-        caculateButton.setIcon(new ImageIcon("search.png"));
+        lb.setIcon(new ImageIcon("ProjectOOP/src/View/workshop.png"));
+        caculateButton.setIcon(new ImageIcon("ProjectOOP/src/View/search.png"));
 
         panel.add(lb);
         panel.add(resultLabel);
