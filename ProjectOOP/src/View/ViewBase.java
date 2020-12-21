@@ -176,9 +176,9 @@ public class ViewBase {
                 else if (ID == 2)
                 {
                     userInputString = ViewBase.inputTextField.getText().toUpperCase();
-                    if(userInputString.length()!=3 ){
+                    if(userInputString.length() < 3 ){
                         {
-                            new SpawmError("Vui lòng nhập đúng 3 ký tự", "Error");
+                            new SpawmError("Vui lòng nhập ít nhất 3 ký tự", "Error");
                             return;
                         }
                     }

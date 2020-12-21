@@ -22,13 +22,11 @@ public class TagView {
         tagListModel.addElement("Top 5 cổ phiếu tăng nhiều nhất");
         tagListModel.addElement("Top 5 cổ phiếu giảm nhiều nhất");
         tagListModel.addElement("Top 5 cổ phiếu có khối lượng giao dịch lớn nhất");
-
-
         tagListModel.addElement("Nhóm cổ phiếu Hàng không");
-        tagListModel.addElement("Nhóm cổ phiếu Ngân hàng");
         tagListModel.addElement("Nhóm cổ phiếu Thuỷ sản");
         tagListModel.addElement("Nhóm cổ phiếu Xăng dầu");
         tagListModel.addElement("Nhóm cổ phiếu cao su");
+        tagListModel.addElement("Nhóm cổ phiếu Ngân hàng");
         tagListModel.addElement("Nhóm cổ phiếu Sắt, Thép");
 
 
@@ -41,13 +39,11 @@ public class TagView {
         tagGroup.add("GroupIncreasePercent");
         tagGroup.add("GroupDecreasePercent");
         tagGroup.add("GroupTopVolume");
-
-
         tagGroup.add("GroupTopAirline");
-        tagGroup.add("GroupTopBank");
         tagGroup.add("GroupTopFishery");
         tagGroup.add("GroupTopPetrol");
         tagGroup.add("GroupTopRubber");
+        tagGroup.add("GroupTopBank");
         tagGroup.add("GroupTopSteel");
         
         
